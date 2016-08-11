@@ -1,7 +1,7 @@
-users_name = gets.chomp()
+puts "What's your first name?"
+first_name = gets.chomp()
 
-puts "Hello, " + users_name
+puts "What's your second name?"
+second_name = gets.chomp()
 
-10.times do
-  puts users_name
-end
+puts "Hello, " + first_name + second_name
