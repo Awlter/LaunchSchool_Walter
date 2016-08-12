@@ -1,7 +1,12 @@
 # preparation.rb
 require "pry"
-a = 2.3 * 2.3 * 2.3
+y = 0 
+
+3.times do
+  y += 1
+  x = y
+end
 
 binding.pry
 
-puts a
+puts x
