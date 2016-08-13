@@ -1,7 +1,7 @@
-def add_three(number)
-  return number + 10
-  number + 3
+def add_three(n)
+  new_value = n + 3
+  puts new_value
+  new_value
 end
 
-return_value = add_three(3)
-p return_value
+add_three(5).times {|n| puts "will this work?"}
