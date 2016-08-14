@@ -1,9 +1,8 @@
-def add (a, b)
-  a + b
+def some_method(number)
+  number = 7 
+  # this is implicitly returned by the method
 end
 
-def subtract(a, b)
-  a - b
-end
-
-puts add(20, 45)
+a = 5
+puts some_method(a)
+puts a
