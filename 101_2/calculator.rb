@@ -15,6 +15,6 @@ when 'subtract'
 when 'multiply'
   numb1 * numb2
 when 'divide'
-  numb1/numb2
+  numb1.to_f / numb2
 end
 puts(answer)
