@@ -1,0 +1,15 @@
+# calculator_messages.yml
+
+welcome: "Welcome to Calculator! Enter your name:"
+valid_name: "Make sure to end a valid name."
+say_hi: "Hi, "
+first_number: "Choose the first number you want."
+second_number: "Choose the second number you want"
+invalid_number: "Hmm... that doesn't look like a number"
+operator_prompt: "<<-MSG
+What operation would you like to perform?
+  1) Add
+  2) Subtract
+  3) Multiply
+  4) Divide
+MSG"
