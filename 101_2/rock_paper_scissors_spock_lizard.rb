@@ -34,15 +34,19 @@ computer_score = 0
 loop do
   choice = ''
   loop do
-    prompt "Choose one: #{VALID_CHOICES.join(', ')}
-            with the first or first two letters"
+    prompt <<-MSG
+  Choose one: #{VALID_CHOICES.join(', ')}
+    'r' for rock, 'p' for paper, 'sc' for scissors
+    'sp' for spock, 'l' for lizard
+    MSG
     user_choice = gets.chomp
     choice = USER_CHOICE_TRANSLATER[user_choice]
 
     if VALID_CHOICES.include?(choice)
       break
     else
-      prompt "Please choose from: #{VALID_CHOICES.join(', ')}"
+      prompt "Please choose the first or the first two
+      lettes of #{VALID_CHOICES.join(', ')}"
     end
   end
 
