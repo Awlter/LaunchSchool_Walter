@@ -6,17 +6,20 @@ USER_CHOICE_TRANSLATER = {
   'sp' => 'spock',
   'l' => 'lizard'
 }
+WINNING_CONDITION = {
+  'rock' => %w(scissors lizard),
+  'paper' => %w(rock spock),
+  'scissors' => %w(paper lizard),
+  'spock' => %w(rock scissors),
+  'lizard' => %w(paper spock)
+}
 
 def prompt(message)
   puts "=> #{message}"
 end
 
-def wins?(first, second)
-  (first == 'rock' && (second == 'scissors' || second == 'lizard')) ||
-    (first == 'paper' && (second == 'rock' || second == 'spock')) ||
-    (first == 'scissors' && (second == 'paper' || second == 'lizard')) ||
-    (first == 'spock' && (second == 'rock' || second == 'scissors')) ||
-    (first == 'lizard' && (second == 'paper' || second == 'spock'))
+def wins?(player, computer)
+  WINNING_CONDITION[player][0] == computer || WINNING_CONDITION[player][1] == computer
 end
 
 def results(player, computer)
