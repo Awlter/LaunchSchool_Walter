@@ -19,7 +19,7 @@ def prompt(message)
 end
 
 def wins?(player, computer)
-  WINNING_CONDITION[player][0] == computer || WINNING_CONDITION[player][1] == computer
+  WINNING_CONDITION[player].include?(computer)
 end
 
 def results(player, computer)

@@ -37,11 +37,11 @@
 # p sentence.split.reverse.join(' ')
 
 # question 6
-def change_name(name)
-  name += 'bob' 
-  p name     # does this reassignment change the object outside the method?
-end
+# def change_name(name)
+  # name += 'bob' 
+  # p name     # does this reassignment change the object outside the method?
+# end
 
-name = 'jim'
-change_name(name)
-puts name
+# name = 'jim'
+# change_name(name)
+# puts name
