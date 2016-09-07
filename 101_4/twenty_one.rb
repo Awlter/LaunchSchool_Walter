@@ -13,7 +13,7 @@ def deck_initializer
   deck = {}
   (2..10).each { |num| deck[num] = [num] * 4 }
   ['Jack', 'Queen', 'King'].each { |card| deck[card] = [10] * 4 }
-  deck['Ace'] = [0] * 4
+  deck['Ace'] = [1] * 4
   deck
 end
 
@@ -30,9 +30,23 @@ def cards_dealer(dck)
 end
 
 # Add value
-def value_caculater(crd_fce)
-  deck_initializer
-  20
+def value_calculator(crd_fce)
+  if crd_fce.count('Ace') == 0
+    value = CARD.values_at(*crd_fce).inject(:+)
+  elsif crd_fce.count('Ace') == 1
+    value = CARD.values_at(*crd_fce).inject(:+)
+    value += 10 if value < 11
+  elsif crd_fce.count('Ace') == 2
+    value = CARD.values_at(*crd_fce).inject(:+)
+    value += 10 if value < 11
+  elsif crd_fce.count('Ace') == 3
+    value = CARD.values_at(*crd_fce).inject(:+)
+    value += 10 if value < 11
+  else
+    value = CARD.values_at(*crd_fce).inject(:+)
+    value += 10 if value < 11   
+  end
+  value
 end  
 
 loop do
@@ -64,28 +78,27 @@ loop do
       end
     end
     prompt "Cards: #{player_card.join(', ')}"
-
-    break if value_caculater(player_card) > 21
+    binding.pry 
 
     loop do
-      if value_caculater(player_card) < 17
+      if value_calculator(player_card) < 17
         computer_card.push(cards_dealer(deck))
       else
         break
       end
     end
 
-    break if answer == 'stay'
+    break if answer == 'stay' || value_calculator(player_card) > 21
 
   end
 
-  if value_caculater(player_card) > 21
+  if value_calculator(player_card) > 21
     prompt "Computer won!"
-  elsif value_caculater(computer_card) > 21
+  elsif value_calculator(computer_card) > 21
     prompt "Player won!"
-  elsif value_caculater(player_card) > value_caculater(computer_card)
+  elsif value_calculator(player_card) > value_calculator(computer_card)
     prompt "Player won!"
-  elsif value_caculater(player_card) < value_caculater(computer_card)
+  elsif value_calculator(player_card) < value_calculator(computer_card)
     prompt "Computer won!"
   else
     prompt "It's a tie!"
