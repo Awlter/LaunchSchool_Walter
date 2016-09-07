@@ -1,3 +1,7 @@
+def prompt(msg)
+  puts "=> #{msg}"
+end
+
 #Initialize the deck
 def deck_initializer
   deck = {}
@@ -8,11 +12,31 @@ def deck_initializer
 end
 
 #Deal cards
+
 def cards_dealer(dck)
-  random_key = dck.keys.sample
-  dck[random_key].pop
+  card_face = ''
+  loop do
+    card_face = dck.keys.sample
+    card_value = dck[card_face].pop
+    break if card_value
+  end
+  card_face
 end
 
 deck = deck_initializer
-p cards_dealer(deck)
-p deck
+
+player_card_1 = cards_dealer(deck)
+player_card_2 = cards_dealer(deck)
+
+computer_card_1 = cards_dealer(deck)
+computer_card_2 = cards_dealer(deck)
+
+prompt "Your first card is: #{player_card_1}."
+prompt "Your second card is: #{player_card_2}."
+prompt "One of the computer's card is #{computer_card_1}"
+
+
+
+
+
+
