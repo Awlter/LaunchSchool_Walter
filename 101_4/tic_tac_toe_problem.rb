@@ -90,7 +90,6 @@ def computer_plays_piece(brd)
   square = choose_square(brd).sample if !ai_square(brd)
 
   brd[square] = COMPUTER_SQUARE
-  display_board(brd)
 end
 
 def choose_square(brd)
@@ -138,28 +137,46 @@ def score_board(brd, usr_scr, comp_scr)
   end
 end
 
+def play_pieces(brd, choose)
+  loop do
+    if choose == 'player'
+      player_plays_piece(brd)
+      break if someone_win?(brd) || full?(brd)
+
+      computer_plays_piece(brd)
+      break if someone_win?(brd) || full?(brd)
+      display_board(brd)
+    elsif choose == 'computer'
+      computer_plays_piece(brd)
+      break if someone_win?(brd) || full?(brd)
+      display_board(brd)
+
+      player_plays_piece(brd)
+      break if someone_win?(brd) || full?(brd)
+    else
+      prompt "Please choose a from 'player' or 'computer'"
+      break
+    end
+  end
+end
+
 # main loop
 loop do
   board = board_initializer
-  display_board(board)
 
   user_score = '0'
   computer_score = '0'
   loop do
-    loop do
-      player_plays_piece(board)
-      break if someone_win?(board) || full?(board)
-      
-      computer_plays_piece(board)
-      break if someone_win?(board) || full?(board)
-    end
-
     display_board(board)
+    prompt "Who play first? (player or computer)"
+    choose = gets.chomp.to_s
+
+    play_pieces(board, choose)
+
     display_result(board)
     score_board(board, user_score, computer_score)
     break if user_score == '3' || computer_score == '3'
     board = board_initializer
-    display_board(board)
   end
 
   prompt "The winner is #{detect_winner(board)}"
