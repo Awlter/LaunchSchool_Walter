@@ -25,17 +25,30 @@ end
 
 deck = deck_initializer
 
-player_card_1 = cards_dealer(deck)
-player_card_2 = cards_dealer(deck)
+player_card = []
+player_card.push(cards_dealer(deck))
+player_card.push(cards_dealer(deck))
 
-computer_card_1 = cards_dealer(deck)
-computer_card_2 = cards_dealer(deck)
+computer_card = []
+computer_card.push(cards_dealer(deck))
+computer_card.push(cards_dealer(deck))
 
-prompt "Your first card is: #{player_card_1}."
-prompt "Your second card is: #{player_card_2}."
-prompt "One of the computer's card is #{computer_card_1}"
+prompt "Player's cards are: #{player_card.join(', ')}."
+prompt "One of the computer's card is: #{computer_card.first}."
 
-
+loop do
+  prompt "Hit or stay"
+  answer = gets.chomp.to_s
+  if answer == 'hit' 
+    player_card.push(cards_dealer(deck))
+    break
+  elsif answer == 'stay'
+    break
+  else
+    prompt "Please input 'hit' or 'stay'."
+  end
+end
+prompt player_card.join(', ')
 
 
 
