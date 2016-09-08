@@ -12,4 +12,3 @@ def deck_initializer
 end
 
 cards = deck_initializer
-p cards
