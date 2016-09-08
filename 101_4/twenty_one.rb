@@ -40,14 +40,16 @@ def value_calculator(crd_fce)
 end
 
 def display_result(plyer_crd, cmpter_crd)
-  if value_calculator(plyer_crd) > 21
+  if value_calculator(plyer_crd) > 21 ||
+     value_calculator(plyer_crd) < value_calculator(cmpter_crd)
+
     prompt "Computer won!" + " Computer: #{value_calculator(cmpter_crd)}"
-  elsif value_calculator(cmpter_crd) > 21
+
+  elsif value_calculator(cmpter_crd) > 21 ||
+        value_calculator(plyer_crd) > value_calculator(cmpter_crd)
+
     prompt "Player won!" + " Computer: #{value_calculator(cmpter_crd)}"
-  elsif value_calculator(plyer_crd) > value_calculator(cmpter_crd)
-    prompt "Player won!" + " Computer: #{value_calculator(cmpter_crd)}"
-  elsif value_calculator(plyer_crd) < value_calculator(cmpter_crd)
-    prompt "Computer won!" + " Computer: #{value_calculator(cmpter_crd)}"
+
   else
     prompt "It's a tie!" + " Computer: #{value_calculator(cmpter_crd)}"
   end
