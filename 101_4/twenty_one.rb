@@ -36,16 +36,15 @@ def value_calculator(crd_fce)
   value
 end
 
-def bust?(plyer_ttl,cmpter_ttl)
+def bust?(plyer_ttl, cmpter_ttl)
   if plyer_ttl > 21 && cmpter_ttl > 21
     "Both sides have busted, it's a tie"
   elsif plyer_ttl > 21
     "Player busted. Computer won!"
   elsif cmpter_ttl > 21
     "Computer busted. Player won!"
-  else
-    nil
   end
+  nil
 end
 
 def display_result(plyer_ttl, cmpter_ttl)
