@@ -108,7 +108,7 @@ loop do
   reply = ''
   loop do
     reply = gets.chomp.to_s.downcase
-    if reply.start_with?('y') || reply.start_with?('n')
+    if reply.start_with?('y', 'n')
       break
     else
       prompt "Please input 'yes' or 'no'"
