@@ -27,12 +27,8 @@ def deal_cards(deck)
 end
 
 def calculate_value(card_face)
-  if card_face.include?('Ace')
-    value = CARD.values_at(*card_face).inject(:+)
-    value += 10 if value <= 11
-  else
-    value = CARD.values_at(*card_face).inject(:+)
-  end
+  value = CARD.values_at(*card_face).inject(:+)
+  value += 10 if card_face.include?('Ace') && value <= 11
   value
 end
 
