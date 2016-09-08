@@ -5,7 +5,7 @@ def prompt(msg)
   puts "=> #{msg}"
 end  
 
-def new_deck_shuffler
+def initialize_deck
   cards = []
   VALUES.each do |value|
     SUITS.each do |suit|
@@ -17,13 +17,30 @@ end
 # main loop
 loop do
   # configuration
-  deck = new_deck_shuffler
+  deck = initialize_deck
   player_cards = []
   dealer_cards = []
-  player_value = 0
-  dealer_value = 0
   player_cards << deck.pop(2)
   dealer_cards << deck.pop(2)
+  prompt "Your cards are #{player_cards.join(', ')}"
+  prompt "Dealer's card is #{dealer_cards.first} and ?"
+
+  loop do
+    answer = ''
+    prompt "Hit or stay?"
+    loop do
+      answer = gets.chomp.to_s.downcase
+      if answer.start_with?('h', 's')
+        break
+      else
+        prompt "Sorry, please input 'hit' or 'stay'."
+      end
+    end
+
+    player_cards << deck.pop if answer.start_with?('h')
+    break if answer.start_with?('s') || bust?(total(player_cards))
+  end
+  # display_results
 
   prompt "Do you want to play again?"
   again = gets.chomp.to_s
