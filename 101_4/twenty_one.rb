@@ -30,14 +30,27 @@ end
 
 # Add value
 def value_calculator(crd_fce)
-  if crd_fce.include?('Ace') == 0
+  if crd_fce.include?('Ace').zero?
     value = CARD.values_at(*crd_fce).inject(:+)
     value += 10 if value < 11
   else
     value = CARD.values_at(*crd_fce).inject(:+)
   end
   value
-  binding.pry
+end
+
+def display_result(plyer_crd, cmpter_crd)
+  if value_calculator(plyer_crd) > 21
+    prompt "Computer won!" + " Computer: #{value_calculator(cmpter_crd)}"
+  elsif value_calculator(cmpter_crd) > 21
+    prompt "Player won!" + " Computer: #{value_calculator(cmpter_crd)}"
+  elsif value_calculator(plyer_crd) > value_calculator(cmpter_crd)
+    prompt "Player won!" + " Computer: #{value_calculator(cmpter_crd)}"
+  elsif value_calculator(plyer_crd) < value_calculator(cmpter_crd)
+    prompt "Computer won!" + " Computer: #{value_calculator(cmpter_crd)}"
+  else
+    prompt "It's a tie!" + " Computer: #{value_calculator(cmpter_crd)}"
+  end
 end
 
 loop do
@@ -54,6 +67,7 @@ loop do
   prompt "Player's cards are: #{player_card.join(', ')}."
   prompt "One of the computer's card is: #{computer_card.first}."
 
+  # player loop
   loop do
     answer = ''
     loop do
@@ -70,8 +84,9 @@ loop do
     end
     prompt "Cards: #{player_card.join(', ')}"
 
+    # computer loop
     loop do
-      if value_calculator(player_card) < 17
+      if value_calculator(computer_card) < 17
         computer_card.push(cards_dealer(deck))
       else
         break
@@ -81,17 +96,7 @@ loop do
     break if answer == 'stay' || value_calculator(player_card) > 21
   end
 
-  if value_calculator(player_card) > 21
-    prompt "Computer won!" + " Computer: #{value_calculator(computer_card)}"
-  elsif value_calculator(computer_card) > 21
-    prompt "Player won!" + " Computer: #{value_calculator(computer_card)}"
-  elsif value_calculator(player_card) > value_calculator(computer_card)
-    prompt "Player won!" + " Computer: #{value_calculator(computer_card)}"
-  elsif value_calculator(player_card) < value_calculator(computer_card)
-    prompt "Computer won!" + " Computer: #{value_calculator(computer_card)}"
-  else
-    prompt "It's a tie!" + " Computer: #{value_calculator(computer_card)}"
-  end
+  display_result(player_card, computer_card)
 
   prompt "Do you want to play again?(y)"
   reply = gets.chomp.to_s
