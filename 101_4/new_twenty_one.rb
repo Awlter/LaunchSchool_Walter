@@ -1,7 +1,7 @@
 SUITS = ['H', 'D', 'S', 'C']
 VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
 
-def deck_initializer
+def deck
   cards = []
   VALUES.each do |value|
     SUITS.each do |suit|
@@ -11,4 +11,4 @@ def deck_initializer
   cards
 end
 
-cards = deck_initializer
+cards = deck
