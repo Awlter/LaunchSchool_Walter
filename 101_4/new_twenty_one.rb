@@ -1,9 +1,11 @@
+require 'pry'
+
 SUITS = ['H', 'D', 'S', 'C']
 VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
 
 def prompt(msg)
   puts "=> #{msg}"
-end  
+end
 
 def initialize_deck
   cards = []
@@ -24,19 +26,19 @@ def total(input_cards)
       sum += 10
     else
       sum += card[1].to_i
-    end    
+    end
   end
 
   input_cards.join.count('A').times do
     sum -= 10 if sum > 21
   end
 
-  sum.to_s
+  sum
 end
 
 def bust?(input_cards)
   total(input_cards) > 21
-end  
+end
 
 # main loop
 loop do
@@ -64,10 +66,10 @@ loop do
     end
 
     player_cards << deck.pop if answer.start_with?('h')
-    break if answer.start_with?('s') || bust?(total(player_cards))
+    break if answer.start_with?('s') || bust?(player_cards)
   end
 
-  prompt "#{total(player_cards)}"
+  prompt "#{total(player_cards).to_s}"
   # display_results
 
   prompt "Do you want to play again?"
