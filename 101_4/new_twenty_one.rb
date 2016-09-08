@@ -14,6 +14,30 @@ def initialize_deck
   end
   cards.shuffle
 end
+
+def total(input_cards)
+  sum = 0
+  input_cards.each do |card|
+    if card.include?('A')
+      sum += 11
+    elsif card[1].to_i == 0
+      sum += 10
+    else
+      sum += card[1].to_i
+    end    
+  end
+
+  input_cards.join.count('A').times do
+    sum -= 10 if sum > 21
+  end
+
+  sum.to_s
+end
+
+def bust?(input_cards)
+  total(input_cards) > 21
+end  
+
 # main loop
 loop do
   # configuration
@@ -42,6 +66,8 @@ loop do
     player_cards << deck.pop if answer.start_with?('h')
     break if answer.start_with?('s') || bust?(total(player_cards))
   end
+
+  prompt "#{total(player_cards)}"
   # display_results
 
   prompt "Do you want to play again?"
