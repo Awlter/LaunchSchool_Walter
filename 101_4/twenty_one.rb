@@ -43,8 +43,9 @@ def bust?(plyer_ttl, cmpter_ttl)
     "Player busted. Computer won!"
   elsif cmpter_ttl > 21
     "Computer busted. Player won!"
+  else
+    nil
   end
-  nil
 end
 
 def display_result(plyer_ttl, cmpter_ttl)
@@ -80,7 +81,7 @@ loop do
     answer = ''
     loop do
       prompt "Hit or stay"
-      answer = gets.chomp.to_s
+      answer = gets.chomp.to_s.downcase
       if answer == 'hit'
         player_card.push(cards_dealer(deck))
         player_total = value_calculator(player_card)
@@ -107,7 +108,15 @@ loop do
 
   display_result(player_total, computer_total)
 
-  prompt "Do you want to play again?(y)"
-  reply = gets.chomp.to_s
-  break unless reply.start_with?('y')
+  prompt "Do you want to play again?(yes or no)"
+  reply = ''
+  loop do
+    reply = gets.chomp.to_s.downcase
+    if reply.start_with?('y') || reply.start_with?('n')
+      break
+    else
+      prompt "Please input 'yes' or 'no'"
+    end
+  end
+  break if reply.start_with?('n')
 end
