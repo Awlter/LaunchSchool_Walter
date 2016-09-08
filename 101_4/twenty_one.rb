@@ -8,7 +8,7 @@ def prompt(msg)
   puts "=> #{msg}"
 end
 
-def deck_initializer
+def initialize_deck
   deck = {}
   (2..10).each { |num| deck[num] = [num] * 4 }
   ['Jack', 'Queen', 'King'].each { |card| deck[card] = [10] * 4 }
@@ -16,7 +16,7 @@ def deck_initializer
   deck
 end
 
-def cards_dealer(deck)
+def deal_cards(deck)
   card_face = ''
   loop do
     card_face = deck.keys.sample
@@ -26,7 +26,7 @@ def cards_dealer(deck)
   card_face
 end
 
-def value_calculator(card_face)
+def calculate_value(card_face)
   if card_face.include?('Ace')
     value = CARD.values_at(*card_face).inject(:+)
     value += 10 if value <= 11
@@ -61,21 +61,21 @@ def display_result(player_total, computer_total)
 end
 
 loop do
-  deck = deck_initializer
+  deck = initialize_deck
 
   player_card = []
-  player_card.push(cards_dealer(deck))
-  player_card.push(cards_dealer(deck))
+  player_card.push(deal_cards(deck))
+  player_card.push(deal_cards(deck))
 
   computer_card = []
-  computer_card.push(cards_dealer(deck))
-  computer_card.push(cards_dealer(deck))
+  computer_card.push(deal_cards(deck))
+  computer_card.push(deal_cards(deck))
 
   prompt "Player's cards are: #{player_card.join(', ')}."
   prompt "The dealer is showing #{computer_card.first}."
 
-  player_total = value_calculator(player_card)
-  computer_total = value_calculator(computer_card)
+  player_total = calculate_value(player_card)
+  computer_total = calculate_value(computer_card)
   loop do
     # player loop
     answer = ''
@@ -83,8 +83,8 @@ loop do
       prompt "Player value is #{player_total}. Hit or stay?"
       answer = gets.chomp.to_s.downcase
       if answer == 'hit'
-        player_card.push(cards_dealer(deck))
-        player_total = value_calculator(player_card)
+        player_card.push(deal_cards(deck))
+        player_total = calculate_value(player_card)
         break
       elsif answer == 'stay'
         break
@@ -97,8 +97,8 @@ loop do
     # computer loop
     loop do
       if computer_total < 17
-        computer_card.push(cards_dealer(deck))
-        computer_total = value_calculator(computer_card)
+        computer_card.push(deal_cards(deck))
+        computer_total = calculate_value(computer_card)
       else
         break
       end
