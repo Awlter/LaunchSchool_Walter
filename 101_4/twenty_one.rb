@@ -2,13 +2,13 @@ require 'pry'
 
 CARD = { 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6,
          7 => 7, 8 => 8, 9 => 9, 10 => 10, 'Jack' => 10,
-         'Queen' => 10, 'King' => 10, 'Ace' => 1}
+         'Queen' => 10, 'King' => 10, 'Ace' => 1 }
 
 def prompt(msg)
   puts "=> #{msg}"
 end
 
-#Initialize the deck
+# Initialize the deck
 def deck_initializer
   deck = {}
   (2..10).each { |num| deck[num] = [num] * 4 }
@@ -17,8 +17,7 @@ def deck_initializer
   deck
 end
 
-#Deal cards
-
+# Deal cards
 def cards_dealer(dck)
   card_face = ''
   loop do
@@ -31,23 +30,15 @@ end
 
 # Add value
 def value_calculator(crd_fce)
-  if crd_fce.count('Ace') == 0
-    value = CARD.values_at(*crd_fce).inject(:+)
-  elsif crd_fce.count('Ace') == 1
-    value = CARD.values_at(*crd_fce).inject(:+)
-    value += 10 if value < 11
-  elsif crd_fce.count('Ace') == 2
-    value = CARD.values_at(*crd_fce).inject(:+)
-    value += 10 if value < 11
-  elsif crd_fce.count('Ace') == 3
+  if crd_fce.include?('Ace') == 0
     value = CARD.values_at(*crd_fce).inject(:+)
     value += 10 if value < 11
   else
     value = CARD.values_at(*crd_fce).inject(:+)
-    value += 10 if value < 11   
   end
   value
-end  
+  binding.pry
+end
 
 loop do
   deck = deck_initializer
@@ -68,7 +59,7 @@ loop do
     loop do
       prompt "Hit or stay"
       answer = gets.chomp.to_s
-      if answer == 'hit' 
+      if answer == 'hit'
         player_card.push(cards_dealer(deck))
         break
       elsif answer == 'stay'
@@ -78,7 +69,6 @@ loop do
       end
     end
     prompt "Cards: #{player_card.join(', ')}"
-    binding.pry 
 
     loop do
       if value_calculator(player_card) < 17
@@ -89,19 +79,18 @@ loop do
     end
 
     break if answer == 'stay' || value_calculator(player_card) > 21
-
   end
 
   if value_calculator(player_card) > 21
-    prompt "Computer won!"
+    prompt "Computer won!" + " Computer: #{value_calculator(computer_card)}"
   elsif value_calculator(computer_card) > 21
-    prompt "Player won!"
+    prompt "Player won!" + " Computer: #{value_calculator(computer_card)}"
   elsif value_calculator(player_card) > value_calculator(computer_card)
-    prompt "Player won!"
+    prompt "Player won!" + " Computer: #{value_calculator(computer_card)}"
   elsif value_calculator(player_card) < value_calculator(computer_card)
-    prompt "Computer won!"
+    prompt "Computer won!" + " Computer: #{value_calculator(computer_card)}"
   else
-    prompt "It's a tie!"
+    prompt "It's a tie!" + " Computer: #{value_calculator(computer_card)}"
   end
 
   prompt "Do you want to play again?(y)"
