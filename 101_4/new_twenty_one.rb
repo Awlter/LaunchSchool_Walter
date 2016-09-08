@@ -20,9 +20,11 @@ loop do
   deck = initialize_deck
   player_cards = []
   dealer_cards = []
-  player_cards << deck.pop(2)
-  dealer_cards << deck.pop(2)
-  prompt "Your cards are #{player_cards.join(', ')}"
+  2.times do
+    player_cards << deck.pop
+    dealer_cards << deck.pop
+  end
+  prompt "Your cards are #{player_cards.first} and #{player_cards[1]}."
   prompt "Dealer's card is #{dealer_cards.first} and ?"
 
   loop do
