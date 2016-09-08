@@ -8,7 +8,6 @@ def prompt(msg)
   puts "=> #{msg}"
 end
 
-# Initialize the deck
 def deck_initializer
   deck = {}
   (2..10).each { |num| deck[num] = [num] * 4 }
@@ -17,7 +16,6 @@ def deck_initializer
   deck
 end
 
-# Deal cards
 def cards_dealer(dck)
   card_face = ''
   loop do
@@ -28,30 +26,37 @@ def cards_dealer(dck)
   card_face
 end
 
-# Add value
 def value_calculator(crd_fce)
-  if crd_fce.include?('Ace').zero?
+  if crd_fce.include?('Ace')
     value = CARD.values_at(*crd_fce).inject(:+)
-    value += 10 if value < 11
+    value += 10 if value <= 11
   else
     value = CARD.values_at(*crd_fce).inject(:+)
   end
   value
 end
 
-def display_result(plyer_crd, cmpter_crd)
-  if value_calculator(plyer_crd) > 21 ||
-     value_calculator(plyer_crd) < value_calculator(cmpter_crd)
-
-    prompt "Computer won!" + " Computer: #{value_calculator(cmpter_crd)}"
-
-  elsif value_calculator(cmpter_crd) > 21 ||
-        value_calculator(plyer_crd) > value_calculator(cmpter_crd)
-
-    prompt "Player won!" + " Computer: #{value_calculator(cmpter_crd)}"
-
+def bust?(plyer_ttl,cmpter_ttl)
+  if plyer_ttl > 21 && cmpter_ttl > 21
+    "Both sides have busted, it's a tie"
+  elsif plyer_ttl > 21
+    "Player busted. Computer won!"
+  elsif cmpter_ttl > 21
+    "Computer busted. Player won!"
   else
-    prompt "It's a tie!" + " Computer: #{value_calculator(cmpter_crd)}"
+    nil
+  end
+end
+
+def display_result(plyer_ttl, cmpter_ttl)
+  if bust?(plyer_ttl, cmpter_ttl)
+    prompt bust?(plyer_ttl, cmpter_ttl)
+  elsif plyer_ttl < cmpter_ttl
+    prompt "Computer won!" + " Computer: #{cmpter_ttl}"
+  elsif plyer_ttl > cmpter_ttl
+    prompt "Player won!" + " Computer: #{cmpter_ttl}"
+  else
+    prompt "It's a tie!" + " Computer: #{cmpter_ttl}"
   end
 end
 
@@ -69,14 +74,17 @@ loop do
   prompt "Player's cards are: #{player_card.join(', ')}."
   prompt "One of the computer's card is: #{computer_card.first}."
 
-  # player loop
+  player_total = value_calculator(player_card)
+  computer_total = value_calculator(computer_card)
   loop do
+    # player loop
     answer = ''
     loop do
       prompt "Hit or stay"
       answer = gets.chomp.to_s
       if answer == 'hit'
         player_card.push(cards_dealer(deck))
+        player_total = value_calculator(player_card)
         break
       elsif answer == 'stay'
         break
@@ -88,17 +96,17 @@ loop do
 
     # computer loop
     loop do
-      if value_calculator(computer_card) < 17
+      if computer_total < 17
         computer_card.push(cards_dealer(deck))
+        computer_total = value_calculator(computer_card)
       else
         break
       end
     end
-
-    break if answer == 'stay' || value_calculator(player_card) > 21
+    break if answer == 'stay' || player_total > 21
   end
 
-  display_result(player_card, computer_card)
+  display_result(player_total, computer_total)
 
   prompt "Do you want to play again?(y)"
   reply = gets.chomp.to_s
