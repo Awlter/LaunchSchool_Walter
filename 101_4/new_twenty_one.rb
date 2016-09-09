@@ -45,9 +45,9 @@ def display_result(player_cards, dealer_cards)
     prompt "Player busted, dealer won with #{total(dealer_cards)}."
   elsif bust?(dealer_cards)
     prompt "Dealer busted, player won with #{total(player_cards)}"
-  elsif player_total < computer_total
+  elsif total(player_cards) < total(dealer_cards)
     prompt "Dealer won! Dealer: #{total(dealer_cards)}"
-  elsif player_total > computer_total
+  elsif total(player_cards) > total(dealer_cards)
     prompt "Player won! Dealer: #{total(dealer_cards)}"
   else
     prompt "It's a tie! Dealer: #{total(dealer_cards)}"
@@ -99,7 +99,8 @@ loop do
 
     player_cards << deck.pop if answer.start_with?('h')
     prompt "Your cards are #{player_cards}."
-    prompt "#{total(player_cards)}"
+    prompt "Dealer's card is #{dealer_cards.first} and [?]"
+    prompt "Your cards' value is #{total(player_cards)}."
     break if answer.start_with?('s') || bust?(player_cards)
   end
 
@@ -109,5 +110,18 @@ loop do
   else
     prompt "Now it's dealer's turn..."
   end
-  # display_results
+
+  loop do
+    if bust?(dealer_cards)
+      break
+    elsif total(dealer_cards) < 17
+      dealer_cards << deck.pop
+      prompt "Dealer add a card."
+    else
+      break
+    end
+  end
+
+  display_result(player_cards, dealer_cards)
+  play_again? ? next : break
 end
