@@ -40,6 +40,38 @@ def bust?(input_cards)
   total(input_cards) > 21
 end
 
+def display_result(player_cards, dealer_cards)
+  if bust?(player_cards)
+    prompt "Player busted, dealer won with #{total(dealer_cards)}."
+  elsif bust?(dealer_cards)
+    prompt "Dealer busted, player won with #{total(player_cards)}"
+  elsif player_total < computer_total
+    prompt "Dealer won! Dealer: #{total(dealer_cards)}"
+  elsif player_total > computer_total
+    prompt "Player won! Dealer: #{total(dealer_cards)}"
+  else
+    prompt "It's a tie! Dealer: #{total(dealer_cards)}"
+  end
+end
+
+def play_again?
+  prompt "Do you want to play again?('Yes'/'No')"
+  answer = ''
+  loop do
+    answer = gets.chomp.to_s.downcase
+    if answer.start_with?('y', 'n')
+      break
+    else
+      prompt "Sorry, I don't understand. Please input 'yes' or 'no'"
+    end
+  end
+  if answer.start_with?('y')
+    true
+  else
+    false
+  end
+end
+
 # main loop
 loop do
   # configuration
@@ -66,13 +98,16 @@ loop do
     end
 
     player_cards << deck.pop if answer.start_with?('h')
+    prompt "Your cards are #{player_cards}."
+    prompt "#{total(player_cards)}"
     break if answer.start_with?('s') || bust?(player_cards)
   end
 
-  prompt "#{total(player_cards).to_s}"
+  if bust?(player_cards)
+    display_result(player_cards, dealer_cards)
+    play_again? ? next : break
+  else
+    prompt "Now it's dealer's turn..."
+  end
   # display_results
-
-  prompt "Do you want to play again?"
-  again = gets.chomp.to_s
-  break unless again.start_with?('y')
 end
