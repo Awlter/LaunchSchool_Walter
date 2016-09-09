@@ -72,12 +72,33 @@ def play_again?
   end
 end
 
+def end_of_round?(player_cards, dealer_cards)
+  if bust?(player_cards) || bust?(dealer_cards)
+    display_result(player_cards, dealer_cards)
+    if play_again?
+      return next
+    else
+      return break
+    end
+  elsif !bust?(player_cards) && total(dealer_cards) < 17
+    nil
+  else
+    display_result(player_cards, dealer_cards)
+    if play_again?
+      return next
+    else
+      return break
+    end
+  end
+end
+
 # main loop
 loop do
   # configuration
   deck = initialize_deck
   player_cards = []
   dealer_cards = []
+
   2.times do
     player_cards << deck.pop
     dealer_cards << deck.pop
@@ -104,17 +125,10 @@ loop do
     break if answer.start_with?('s') || bust?(player_cards)
   end
 
-  if bust?(player_cards)
-    display_result(player_cards, dealer_cards)
-    play_again? ? next : break
-  else
-    prompt "Now it's dealer's turn..."
-  end
-
+  end_of_round?(player_cards, dealer_cards)
+  puts "-----------------------------------"
   loop do
-    if bust?(dealer_cards)
-      break
-    elsif total(dealer_cards) < 17
+    if total(dealer_cards) < 17
       dealer_cards << deck.pop
       prompt "Dealer add a card."
     else
@@ -122,6 +136,5 @@ loop do
     end
   end
 
-  display_result(player_cards, dealer_cards)
-  play_again? ? next : break
+  end_of_round?(player_cards, dealer_cards)
 end
