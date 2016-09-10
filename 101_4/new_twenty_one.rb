@@ -48,29 +48,44 @@ def total(input_cards)
   end
 
   sum
-end
+end 
 
 def bust?(input_cards)
   total(input_cards) > 21
 end
 
-def display_result(player_cards, dealer_cards)
-  prompt "Dealer's cards: #{dealer_cards}"
-
+def winner(player_cards, dealer_cards)
   player_total = total(player_cards)
   dealer_total = total(dealer_cards)
 
   if bust?(player_cards)
-    prompt "Player busted! Dealer won with #{dealer_total}."
+    :player_bust
   elsif bust?(dealer_cards)
-    prompt "Dealer busted at #{dealer_total}! Player won with #{player_total}"
-  elsif dealer_total > player_total
-    prompt "Dealer won! Dealer #{dealer_total}"
-  elsif dealer_total < player_total
-    prompt "Player won! Dealer: #{dealer_total}"
-  else
-    prompt "It's a tie! Both: #{dealer_total}"
+    :dealer_bust
+  elsif player_total > dealer_total
+    :player
+  elsif player_total < dealer_total
+    :dealer
   end
+end
+
+def display_result(player_cards, dealer_cards)
+  winner = winner(player_cards, dealer_cards)
+  case winner
+    when :player_bust
+      prompt "Player busted! Dealer won!"
+    when :dealer_bust
+      prompt "Dealer busted! Player won!"
+    when dealer_total > player_total
+      prompt "Dealer won!"
+    when dealer_total < player_total
+      prompt "Player won!"
+    else
+      prompt "It's a tie!"
+  end
+  puts "------------------------------"
+  prompt "Player: #{total(player_cards)} v.s. Dealer: #{total(dealer_cards)}"
+  puts "------------------------------"
 end
 
 def play_again?
@@ -89,7 +104,6 @@ def play_again?
   answer.start_with?('y')
 end
 
-# main loop
 loop do
   # configuration
   deck = initialize_deck
@@ -108,20 +122,16 @@ loop do
     answer = hit_or_stay?
 
     player_cards << deck.pop if answer.start_with?('h')
-    
+    puts "------------------------------"
     prompt "Your cards are #{player_cards}."
     prompt "Dealer's card is #{dealer_cards.first} and [?]"
     prompt "Your cards' value is #{total(player_cards)}."
-    
+    puts "------------------------------"
     break if answer.start_with?('s') || bust?(player_cards)
   end
 
-  if bust?(player_cards)
-    display_result(player_cards, dealer_cards)
-    play_again? ? next : break
-  else
-    prompt "Now it's dealer's turn..."
-  end
+  prompt "Now it's dealer's turn..."
+  sleep 1.5
 
   sequence = 1
   loop do
