@@ -17,6 +17,20 @@ def initialize_deck
   cards.shuffle
 end
 
+def hit_or_stay?
+  answer = ''
+  prompt "Hit or stay?"
+  loop do
+    answer = gets.chomp.to_s.downcase
+    if answer.start_with?('h', 's')
+      break
+    else
+      prompt "Sorry, please input 'hit' or 'stay'."
+    end
+  end
+  answer
+end
+
 def total(input_cards)
   sum = 0
   input_cards.each do |card|
@@ -41,22 +55,28 @@ def bust?(input_cards)
 end
 
 def display_result(player_cards, dealer_cards)
+  prompt "Dealer's cards: #{dealer_cards}"
+
+  player_total = total(player_cards)
+  dealer_total = total(dealer_cards)
+
   if bust?(player_cards)
-    prompt "Player busted, dealer won with #{total(dealer_cards)}."
+    prompt "Player busted! Dealer won with #{dealer_total}."
   elsif bust?(dealer_cards)
-    prompt "Dealer busted, player won with #{total(player_cards)}"
-  elsif total(player_cards) < total(dealer_cards)
-    prompt "Dealer won! Dealer: #{total(dealer_cards)}"
-  elsif total(player_cards) > total(dealer_cards)
-    prompt "Player won! Dealer: #{total(dealer_cards)}"
+    prompt "Dealer busted at #{dealer_total}! Player won with #{player_total}"
+  elsif dealer_total > player_total
+    prompt "Dealer won! Dealer #{dealer_total}"
+  elsif dealer_total < player_total
+    prompt "Player won! Dealer: #{dealer_total}"
   else
-    prompt "It's a tie! Dealer: #{total(dealer_cards)}"
+    prompt "It's a tie! Both: #{dealer_total}"
   end
 end
 
 def play_again?
   prompt "Do you want to play again?('Yes'/'No')"
   answer = ''
+
   loop do
     answer = gets.chomp.to_s.downcase
     if answer.start_with?('y', 'n')
@@ -65,31 +85,8 @@ def play_again?
       prompt "Sorry, I don't understand. Please input 'yes' or 'no'"
     end
   end
-  if answer.start_with?('y')
-    true
-  else
-    false
-  end
-end
 
-def end_of_round?(player_cards, dealer_cards)
-  if bust?(player_cards) || bust?(dealer_cards)
-    display_result(player_cards, dealer_cards)
-    if play_again?
-      return next
-    else
-      return break
-    end
-  elsif !bust?(player_cards) && total(dealer_cards) < 17
-    nil
-  else
-    display_result(player_cards, dealer_cards)
-    if play_again?
-      return next
-    else
-      return break
-    end
-  end
+  answer.start_with?('y')
 end
 
 # main loop
@@ -103,38 +100,40 @@ loop do
     player_cards << deck.pop
     dealer_cards << deck.pop
   end
+
   prompt "Your cards are #{player_cards.first} and #{player_cards[1]}."
   prompt "Dealer's card is #{dealer_cards.first} and ?"
 
   loop do
-    answer = ''
-    prompt "Hit or stay?"
-    loop do
-      answer = gets.chomp.to_s.downcase
-      if answer.start_with?('h', 's')
-        break
-      else
-        prompt "Sorry, please input 'hit' or 'stay'."
-      end
-    end
+    answer = hit_or_stay?
 
     player_cards << deck.pop if answer.start_with?('h')
+    
     prompt "Your cards are #{player_cards}."
     prompt "Dealer's card is #{dealer_cards.first} and [?]"
     prompt "Your cards' value is #{total(player_cards)}."
+    
     break if answer.start_with?('s') || bust?(player_cards)
   end
 
-  end_of_round?(player_cards, dealer_cards)
-  puts "-----------------------------------"
+  if bust?(player_cards)
+    display_result(player_cards, dealer_cards)
+    play_again? ? next : break
+  else
+    prompt "Now it's dealer's turn..."
+  end
+
+  sequence = 1
   loop do
     if total(dealer_cards) < 17
       dealer_cards << deck.pop
-      prompt "Dealer add a card."
+      prompt "Cards added: #{sequence}."
+      sequence += 1
     else
       break
     end
   end
 
-  end_of_round?(player_cards, dealer_cards)
+  display_result(player_cards, dealer_cards)
+  play_again? ? next : break
 end

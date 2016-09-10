@@ -8,6 +8,7 @@
 # when i = 8 4 4 4 12, append '-'
 
 # def uuid_generator
+# version 1
 #   characters = ('0'..'9').to_a + ('a'..'f').to_a
 
 #   uuid = ''
@@ -20,6 +21,24 @@
   #     adder += 1
   #   end
   # end
+
+# version 2
+
+# def uuid
+#   uuid = ''
+#   uuid_parts = [8, 4, 4, 4, 12]
+#   characters = ('0'..'9').to_a + ('a'..'f').to_a
+  
+#   while (num = uuid_parts.pop)
+#     num.times { uuid << characters.sample}
+#     uuid << '-'
+#   end
+  
+#   uuid.slice!(-1)
+#   uuid
+# end
+
+# p uuid
 
 # solution
 # def uuid_generator
