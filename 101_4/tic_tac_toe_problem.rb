@@ -13,6 +13,7 @@ def prompt(msg)
 end
 
 def display_board(mark)
+  system 'clear'
   puts " "
   puts "     |     |     "
   puts "  #{mark[1]}  |  #{mark[2]}  |  #{mark[3]}  "
@@ -87,7 +88,7 @@ end
 
 def computer_plays_piece(brd)
   square = ai_square(brd)
-  square = choose_square(brd).sample if !ai_square(brd)
+  square = choose_square(brd).sample unless ai_square(brd)
 
   brd[square] = COMPUTER_SQUARE
 end
@@ -127,14 +128,16 @@ def display_result(brd)
   end
 end
 
-def score_board(brd, usr_scr, comp_scr)
+def add(brd, usr_scr, comp_scr)
   if detect_winner(brd) == :user
-    prompt "User: #{usr_scr.next!}! | Computer: #{comp_scr}!"
+    usr_scr.next!
   elsif detect_winner(brd) == :computer
-    prompt "User: #{usr_scr}! | Computer: #{comp_scr.next!}!"
-  else
-    prompt "User: #{usr_scr}! | Computer: #{comp_scr}!"
+    comp_scr.next!
   end
+end
+
+def display_score(usr_scr, comp_scr)
+  prompt "User: #{usr_scr}! | Computer: #{comp_scr}!"
 end
 
 def play_pieces(brd, choose)
@@ -167,14 +170,17 @@ loop do
   user_score = '0'
   computer_score = '0'
   loop do
-    display_board(board)
     prompt "Who play first? (player or computer)"
     choose = gets.chomp.to_s
+    display_board(board)
 
     play_pieces(board, choose)
 
+    display_board(board)
     display_result(board)
-    score_board(board, user_score, computer_score)
+
+    add(board, user_score, computer_score)
+    display_score(user_score, computer_score)
     break if user_score == '3' || computer_score == '3'
     board = board_initializer
   end
