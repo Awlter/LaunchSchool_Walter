@@ -72,19 +72,24 @@
 # 1.upto(99) {|i| puts i if i.odd?}
 
 # # 8
-def prompt(msg)
-  puts ">> #{msg}"
-end
+# def prompt(msg)
+#   puts ">> #{msg}"
+# end
 
-prompt "Please enter an integer greater than 0:"
-number = gets.chomp.to_i
-prompt "Enter 's' to compute the sum, 'p' to computer the product"
-operator = gets.chomp
+# prompt "Please enter an integer greater than 0:"
+# number = gets.chomp.to_i
+# prompt "Enter 's' to compute the sum, 'p' to computer the product"
+# operator = gets.chomp
 
-if operator == 's'
-  sum = (1..number).to_a.inject(:+)
-  puts "The sum of the integers between 1 and #{number} is #{sum}."
-elsif operator == 'p'
-  product = (1..number).to_a.inject(:*)
-  puts "The product of the integers between 1 and #{number} is #{product}."
-end
+# if operator == 's'
+#   sum = (1..number).to_a.inject(:+)
+#   puts "The sum of the integers between 1 and #{number} is #{sum}."
+# elsif operator == 'p'
+#   product = (1..number).to_a.inject(:*)
+#   puts "The product of the integers between 1 and #{number} is #{product}."
+# end
+
+# solution 
+
+def compute_sum(number)
+  1.upto(number) {|i| total}
