@@ -48,5 +48,6 @@
 # p palindrome?('madam') == true
 
 # # 10
-def palindromic_number?(number)
-  number 
+# def palindromic_number?(number)
+#   number 
+
