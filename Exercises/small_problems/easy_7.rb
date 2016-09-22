@@ -183,9 +183,9 @@ require 'pry'
 # p multiply_all_pairs([2, 4], [4, 3, 1, 2]) == [2, 4, 4, 6, 8, 8, 12, 16]
 
 # # 10
-def penultimate(string)
-  string.split.last(2).first
-end
+# def penultimate(string)
+#   string.split.last(2).first
+# end
 
-p penultimate('last word') == 'last'
-p penultimate('Launch School is great!') == 'is'
+# p penultimate('last word') == 'last'
+# p penultimate('Launch School is great!') == 'is'

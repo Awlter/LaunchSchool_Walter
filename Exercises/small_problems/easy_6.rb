@@ -152,10 +152,10 @@
 # p include?([], nil) == false
 
 # # 10
-def triangle(line)
-  (0..line).each do |ele|
-    puts ' '*(line - ele) + '*'*ele
-  end
-end
+# def triangle(line)
+#   (0..line).each do |ele|
+#     puts ' '*(line - ele) + '*'*ele
+#   end
+# end
 
-triangle(9)
+# triangle(9)
