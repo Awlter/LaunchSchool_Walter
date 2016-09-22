@@ -148,21 +148,21 @@ end
 # p reversed_number(1) == 1
 
 # # 10
-def center_of(string)
-  length = string.length
-  center = length / 2
-  if length.odd?
-    string[center]
-  else
-    string[center-1..center]
-  end
-end
+# def center_of(string)
+#   length = string.length
+#   center = length / 2
+#   if length.odd?
+#     string[center]
+#   else
+#     string[center-1..center]
+#   end
+# end
 
-p center_of('I love ruby') == 'e'
-p center_of('Launch School') == ' '
-p center_of('Launch') == 'un'
-p center_of('Launchschool') == 'hs'
-p center_of('x') == 'x'
+# p center_of('I love ruby') == 'e'
+# p center_of('Launch School') == ' '
+# p center_of('Launch') == 'un'
+# p center_of('Launchschool') == 'hs'
+# p center_of('x') == 'x'
 
 
 
