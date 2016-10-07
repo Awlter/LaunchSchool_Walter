@@ -1684,28 +1684,267 @@ require 'pry'
 # p array == %w(Alice Bonnie Kim Pete Rachel Sue Tyler)
 
 #
-def sum_square_difference(int)
-  sum_square = (1..int).to_a.inject(:+) ** 2
+# def sum_square_difference(int)
+#   sum_square = (1..int).to_a.inject(:+) ** 2
 
-  square_sum = (1..int).to_a.map {|i| i ** 2}.inject(:+)
+#   square_sum = (1..int).to_a.map {|i| i ** 2}.inject(:+)
 
-  sum_square - square_sum
+#   sum_square - square_sum
+# end
+
+# p sum_square_difference(3)
+#    # -> (1 + 2 + 3)**2 - (1**2 + 2**2 + 3**2)
+# p sum_square_difference(10) == 2640
+# p sum_square_difference(1) == 0
+# p sum_square_difference(100) == 25164150
+# ADJECTIVES = %w(quick lazy sleepy ugly)
+# NOUNS = %w(fox dog cat elephant)
+# VERBS = %w(jumps lifts bites licks)
+# ADVERBS = %w(easily lazily noisily excitedly)
+
+# file = File.readlines("simple_file.txt")
+
+# file.each do |line|
+#   puts format(line, {noun: NOUNS.sample, verb: VERBS.sample, adjective: ADJECTIVES.sample, adverb: ADVERBS.sample })
+# end
+
+# def star(n)
+#   result = "#{'*' * n}\n"
+
+#   (n / 2).times do |counter|
+#     line = '*'
+#     line.prepend('*' + (' ' * counter))
+#     line << (' ' * counter) + '*'
+#     line = "#{line.center(n)}\n"
+
+#     result.prepend(line)
+#     result << line
+#   end
+
+#   puts result
+# end
+
+# star(7)
+# def transpose!(matrix)
+#   matrix.each_with_index do |row, collumn_index|
+#     ((collumn_index + 1)..(matrix.size - 1)).each do |row_index|
+#       row[row_index], matrix[row_index][collumn_index] = matrix[row_index][collumn_index], row[row_index]
+#     end
+#   end
+# end
+
+# matrix = [
+#   [1, 5, 8],
+#   [4, 7, 2],
+#   [3, 9, 6]
+# ]
+
+# new_matrix = transpose(matrix)
+
+# p new_matrix #== [[1, 4, 3], [5, 7, 9], [8, 2, 6]]
+# p matrix
+
+# def transpose(matrix)
+#   (0...matrix[0].size).map do |collumn_index|
+#     matrix.map do |row|
+#       row[collumn_index]
+#     end
+#   end
+# end
+
+# p transpose([[1, 2, 3, 4]]) #== [[1], [2], [3], [4]]
+# p transpose([[1], [2], [3], [4]])# == [[1, 2, 3, 4]]
+# p transpose([[1, 2, 3, 4, 5], [4, 3, 2, 1, 0], [3, 7, 8, 6, 2]]) ==
+#   [[1, 4, 3], [2, 3, 7], [3, 2, 8], [4, 1, 6], [5, 0, 2]]
+# p transpose([[1]]) == [[1]]
+
+# def rotate90(matrix)
+#   result = Array.new(matrix.first.size) { Array.new }
+
+#   0.upto(result.size-1) do |row_index|
+#     result[row_index] = (0...matrix.size).map { |collumn_index| matrix[collumn_index][row_index] }.reverse
+#   end
+
+#   result
+    
+# end
+
+# def rotate90(matrix)
+#   row_number = matrix.first.size
+#   result = Array.new(row_number) { Array.new }
+
+#   collumn_index = 0
+#   matrix.reverse_each do |collumn|
+#     collumn.each_with_index do |element, row_index|
+#       result[row_index][collumn_index] = element
+#     end
+#     collumn_index += 1
+#   end
+
+#   result
+# end
+
+# matrix1 = [
+#   [1, 5, 8],
+#   [4, 7, 2],
+#   [3, 9, 6]
+# ]
+
+# matrix2 = [
+#   [3, 7, 4, 2],
+#   [5, 1, 0, 8]
+# ]
+
+# new_matrix1 = rotate90(matrix1)
+# new_matrix2 = rotate90(matrix2)
+# new_matrix3 = rotate90(rotate90(rotate90(rotate90(matrix2))))
+
+# p new_matrix1 == [[3, 4, 1], [9, 7, 5], [6, 2, 8]]
+# p new_matrix2 == [[5, 3], [1, 7], [0, 4], [8, 2]]
+# p new_matrix3 == matrix2
+# -> [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
+
+# p permutations([1, 2, 3, 4])
+# -> [[1, 2, 3, 4], [1, 2, 4, 3], [1, 3, 2, 4],
+#     [1, 3, 4, 2], [1, 4, 2, 3], [1, 4, 3, 2],
+#     [2, 1, 3, 4], [2, 1, 4, 3], [2, 3, 1, 4],
+#     [2, 3, 4, 1], [2, 4, 1, 3], [2, 4, 3, 1],
+#     [3, 1, 2, 4], [3, 1, 4, 2], [3, 2, 1, 4],
+#     [3, 2, 4, 1], [3, 4, 1, 2], [3, 4, 2, 1],
+#     [4, 1, 2, 3], [4, 1, 3, 2], [4, 2, 1, 3],
+#     [4, 2, 3, 1], [4, 3, 1, 2], [4, 3, 2, 1]]
+
+# def permutations(array)
+#   return [array] if array.size == 1
+
+#   result = []
+
+#   array.each_with_index do |num, indx|
+#     permutations(array[0...indx] + array[indx + 1..-1]).each do |sub_array|
+#       result << [num] + sub_array
+#     end
+#   end
+
+#   result
+# end
+
+# p permutations([1, 2, 3, 4])
+
+# def my_method(array)
+#   if array.empty?
+#     []
+#   elsif array.size > 1
+#     array.map do |value|
+#       value * value
+#     end
+#   else
+#     [7 * array.first]
+#   end
+# end
+
+# p my_method([])
+# p my_method([3])
+# p my_method([3, 4])
+# p my_method([5, 6, 7])
+
+# def merge(array_1,array_2)
+#   result = []
+
+#   loop do
+#     if array_1.empty? && !array_2.empty?
+#       result << array_2.shift
+#     elsif array_2.empty? && !array_1.empty?
+#       result << array_1.shift
+#     elsif array_1[0] > array_2[0]
+#       result << array_2.shift
+#     else
+#       result << array_1.shift
+#     end
+#     break if array_1 == array_2
+#   end
+
+#   result
+# end
+
+def merge(arr1, arr2)
+  result = []
+
+  i = 0
+  arr1.each do |num1|
+    while arr2[i] != nil && arr2[i] <= num1
+      result << arr2[i]
+      i += 1 
+    end
+
+    result << num1
+  end
+
+  result.concat(arr2[i..-1])
 end
 
-p sum_square_difference(3)
-   # -> (1 + 2 + 3)**2 - (1**2 + 2**2 + 3**2)
-p sum_square_difference(10) == 2640
-p sum_square_difference(1) == 0
-p sum_square_difference(100) == 25164150
+# p merge([1, 5, 9], [2, 6, 8]) #== [1, 2, 5, 6, 8, 9]
+# p merge([1, 1, 3], [2, 2]) #== [1, 1, 2, 2, 3]
+# p merge([1], [1, 4, 5]) #== [1, 4, 5]
+# p merge([1, 4, 5], []) #== [1, 4, 5]
+
+# [9, 5, 7, 1] ->
+# [[9, 5], [7, 1]] ->
+# [[[9], [5]], [[7], [1]]]
+# We then work our way back to a flat array by merging each pair of nested sub-arrays:
+
+# [[[9], [5]], [[7], [1]]] ->
+# [[5, 9], [1, 7]] ->
+# [1, 5, 7, 9]
 
 
+# merge_sort([9, 5, 7, 1]) == [1, 5, 7, 9]
+# merge_sort([5, 3]) == [3, 5]
+# merge_sort(%w(Sue Pete Alice Tyler Rachel Kim Bonnie)) == %w(Alice Bonnie Kim Pete Rachel Sue Tyler)
+# merge_sort([7, 3, 9, 15, 23, 1, 6, 51, 22, 37, 54, 43, 5, 25, 35, 18, 46]) == [1, 3, 5, 6, 7, 9, 15, 18, 22, 23, 25, 35, 37, 43, 46, 51, 54]
 
+# def merge_sort(array)
+#   split_result = split_sort(array)
+  
+#   split_result
+# end
 
+# def merge_sort(array)
+#   length = array.size
+#   return array if length < 2
 
+#   half_index = length / 2
 
+#   first_half = array[0...half_index]
+#   second_half = array[half_index..-1]
 
+#   result = [merge_sort(first_half), merge_sort(second_half)]
 
+#   merge(result.first, result.last)
+# end
 
+# def merge_sort(array)
+#   return array if array.size == 1
+
+#   sub_array_1 = array[0...array.size / 2]
+#   sub_array_2 = array[array.size / 2...array.size]
+
+#   sub_array_1 = merge_sort(sub_array_1)
+#   sub_array_2 = merge_sort(sub_array_2)
+
+#   merge(sub_array_1, sub_array_2)
+# end
+
+# p merge_sort([6, 2, 7, 1, 4]) #== [1, 2, 4, 6, 7]
+
+# elect the element out of the array if its index is a fibonacci number
+
+def fibonacci(integer)
+  return 1 if integer <= 2
+
+  fibonacci(integer - 1) + fibonacci(integer - 2)
+end
+
+p fibonacci(21)
 
 
 
