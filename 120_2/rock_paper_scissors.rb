@@ -15,58 +15,46 @@ require 'pry'
 class Player
   attr_accessor :move, :name
 
-  def initialize(player_type = :human)
-    @player_type = player_type
-    @move = nil
+  def initialize
     set_name
-  end
-
-  def set_name
-    if human?
-      answer = ''
-      loop do
-        puts "Choose a name for yourself."
-        answer = gets.chomp
-        break unless answer.empty?
-        puts 'Sorry, must input a valid value.'
-      end
-      self.name = answer
-    else
-      self.name = ['Sunny', 'Telebaby 5', 'AI 11'].sample
-    end
-  end
-
-  def choose
-    if human?
-      choice = nil
-      loop do
-        puts "Please make a choice rock, paper, or scissors"
-        choice = gets.chomp.to_s
-        break if ['rock', 'paper', 'scissors'].include? choice
-        puts 'Wrong input'
-      end
-      self.move = choice
-    else
-      self.move = ['rock', 'paper', 'scissors'].sample
-    end
-  end
-
-  def human?
-    @player_type == :human
   end
 end
 
-class Move
-  def initialize
+class Human < Player
+  def set_name
+    answer = ''
+    loop do
+      puts "Choose a name for yourself."
+      answer = gets.chomp
+      break unless answer.empty?
+      puts 'Sorry, must input a valid value.'
+    end
+    self.name = answer
+  end
 
+  def choose
+    choice = nil
+    loop do
+      puts "Please make a choice rock, paper, or scissors"
+      choice = gets.chomp.to_s
+      break if ['rock', 'paper', 'scissors'].include? choice
+      puts 'Wrong input'
+    end
+    self.move = choice
+  end
+end
+
+class Computer < Player
+  def set_name
+    self.name = ['Sunny', 'Telebaby 5', 'AI 11'].sample
+  end
+
+  def choose
+    self.move = ['rock', 'paper', 'scissors'].sample
   end
 end
 
 class Rule
-  def initialize
-
-  end
-
   def self.wins?(human, computer)
     case human
     when 'rock' then ['scissors', 'lizard'].include? computer
@@ -78,15 +66,12 @@ class Rule
   end
 end
 
-def compare(move1, move2)
-end
-
 class RPSGame
   attr_accessor :human, :computer
 
   def initialize
-    @human = Player.new
-    @computer = Player.new(:computer)
+    @human = Human.new
+    @computer = Computer.new
   end
 
   def display_welcome_message
