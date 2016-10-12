@@ -22,7 +22,7 @@ class Human < Player
     answer = nil
     loop do
       puts "Please input your name:"
-      answer = gets.chomp
+      answer = gets.chomp.capitalize
       break unless answer.empty?
       puts "Your name should not be empty."
     end
@@ -76,32 +76,57 @@ class Move
   end
 end
 
-class Rule
+class Score
+  attr_accessor :human, :computer, :winner
+
+  def initialize
+    @human = 0
+    @computer = 0
+    @winner = nil
+  end
 end
 
 class PRSGame
-  attr_accessor :human, :computer
+  attr_accessor :human, :computer, :score
 
   def initialize
     @human = Human.new
     @computer = Computer.new
+    @score = Score.new
   end
 
   def display_welcome_message
     puts 'Welcome'
   end
 
-  def display_result
+  def display_choices
     puts "#{human.name} chose #{human.move}."
     puts "#{computer.name}'s choice is #{computer.move}."
+  end
 
+  def detect_winner
     if human.move > computer.move
-      puts "#{human.name} won!"
+      score.winner = :human
     elsif human.move < computer.move
-      puts "#{computer.name} won!"
-    else
-      puts "It's a tie!"
+      score.winner = :computer
     end
+  end
+
+  def add_score
+    score.human += 1 if score.winner == :human
+    score.computer += 1 if score.winner == :computer
+  end
+
+  def display_winner
+    case score.winner
+    when :human    then puts "#{human.name} won!"
+    when :computer then puts "#{computer.name} won!"
+    else                puts "It's a tie"
+    end
+  end
+
+  def display_score
+    puts "#{score.human} | #{score.computer}"
   end
 
   def display_goodbye_message
@@ -126,7 +151,11 @@ class PRSGame
     loop do
       human.choose
       computer.choose
-      display_result
+      display_choices
+      detect_winner
+      add_score
+      display_winner
+      display_score
       break unless play_again?
     end
     display_goodbye_message
