@@ -1,3 +1,5 @@
+require 'pry'
+
 class Player
   attr_accessor :move, :name
 
@@ -10,7 +12,7 @@ class Human < Player
   def choose
     answer = nil
     loop do
-      puts "Please choose, rock, paper or scissors:"
+      puts "Please choose: 'rock', 'paper', 'scissors', 'spock', or 'lizard'"
       answer = gets.chomp
       break if Move::VALUES.include? answer
       puts "Wrong choice"
@@ -36,39 +38,50 @@ class Computer < Player
   end
 
   def set_name
-    self.name = ['Alpha', 'Bata', 'Cigma', 'Delta', 'Ebxilong'].sample
+    self.name = ['Alpha', 'Beta', 'Gamma', 'Delte', 'Epsilon'].sample
   end
 end
 
 class Move
-  VALUES = ['rock', 'paper', 'scissors'].freeze
+  attr_accessor :value
+
+  VALUES = ['rock', 'paper', 'scissors', 'spock', 'lizard'].freeze
+
+  WINNING_CONDITION = {
+    'rock' => %w(scissors lizard),
+    'paper' => %w(rock spock),
+    'scissors' => %w(paper lizard),
+    'spock' => %w(rock scissors),
+    'lizard' => %w(paper spock)
+  }.freeze
+
+  LOSING_CONDITION = {
+    'rock' => %w(paper spock),
+    'paper' => %w(scissors lizard),
+    'scissors' => %w(rock spock),
+    'spock' => %w(paper lizard),
+    'lizard' => %w(scissors rock)
+  }.freeze
+
+  @@history = []
 
   def initialize(value)
     @value = value
+    @@history << value
   end
 
-  def rock?
-    @value == 'rock'
-  end
-
-  def paper?
-    @value == 'paper'
-  end
-
-  def scissors?
-    @value == 'scissors'
+  def self.history_human
+    result = []
+    @@history.each_with_index { |move, index| result << move if index.even? }
+    result
   end
 
   def >(other_object)
-    (rock? && other_object.scissors?) ||
-      (paper? && other_object.rock?) ||
-      (scissors? && other_object.paper?)
+    WINNING_CONDITION[value].include?(other_object.value)
   end
 
   def <(other_object)
-    (paper? && other_object.scissors?) ||
-      (scissors? && other_object.rock?) ||
-      (rock? && other_object.paper?)
+    LOSING_CONDITION[value].include?(other_object.value)
   end
 
   def to_s
@@ -109,6 +122,8 @@ class PRSGame
       score.winner = :human
     elsif human.move < computer.move
       score.winner = :computer
+    else
+      score.winner = :tie
     end
   end
 
@@ -127,9 +142,12 @@ class PRSGame
 
   def display_score
     puts "#{score.human} | #{score.computer}"
+    p Move.history_human
   end
 
   def display_goodbye_message
+    winner = score.human == 3 ? human.name : computer.name
+    puts "The final winner is #{winner}"
     puts 'Thanks for playing. Goodbye.'
   end
 
@@ -156,6 +174,7 @@ class PRSGame
       add_score
       display_winner
       display_score
+      break if score.human == 3 || score.computer == 3
       break unless play_again?
     end
     display_goodbye_message
