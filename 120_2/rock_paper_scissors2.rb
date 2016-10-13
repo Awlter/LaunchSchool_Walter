@@ -89,6 +89,10 @@ class Move
   end
 end
 
+class AI
+  def initialize
+    
+
 class Score
   attr_accessor :human, :computer, :winner
 
@@ -146,7 +150,7 @@ class PRSGame
   end
 
   def display_goodbye_message
-    winner = score.human == 3 ? human.name : computer.name
+    winner = (score.human == 10 ? human.name : computer.name)
     puts "The final winner is #{winner}"
     puts 'Thanks for playing. Goodbye.'
   end
@@ -174,7 +178,7 @@ class PRSGame
       add_score
       display_winner
       display_score
-      break if score.human == 3 || score.computer == 3
+      break if score.human == 10 || score.computer == 10
       break unless play_again?
     end
     display_goodbye_message
