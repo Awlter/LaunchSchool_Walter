@@ -468,53 +468,53 @@ DIGIT_HASH = {
 #   end
 # end
 
-class Card
-  attr_reader :rank, :suit
-  include Comparable
+# class Card
+#   attr_reader :rank, :suit
+#   include Comparable
 
-  VALUES = { 'Jack' => 11, 'Queen' => 12, 'King' => 13, 'Ace' => 14 }
+#   VALUES = { 'Jack' => 11, 'Queen' => 12, 'King' => 13, 'Ace' => 14 }
 
-  def initialize(rank, suit)
-    @rank = rank
-    @suit = suit
-  end
+#   def initialize(rank, suit)
+#     @rank = rank
+#     @suit = suit
+#   end
 
-  def value
-    VALUES.fetch(@rank, @rank)
-  end
+#   def value
+#     VALUES.fetch(@rank, @rank)
+#   end
 
-  def <=>(other)
-    value <=> other.value
-  end
+#   def <=>(other)
+#     value <=> other.value
+#   end
 
-  def to_s
-    "#{rank} of #{suit}"
-  end
-end
+#   def to_s
+#     "#{rank} of #{suit}"
+#   end
+# end
 
-class Deck
-  RANKS = ((2..10).to_a + %w(Jack Queen King Ace)).freeze
-  SUITS = %w(Hearts Clubs Diamonds Spades).freeze
+# class Deck
+#   RANKS = ((2..10).to_a + %w(Jack Queen King Ace)).freeze
+#   SUITS = %w(Hearts Clubs Diamonds Spades).freeze
 
-  def initialize
-    reset
-  end
+#   def initialize
+#     reset
+#   end
 
-  def draw
-    reset if @deck.empty?
-    @deck.pop
-  end
+#   def draw
+#     reset if @deck.empty?
+#     @deck.pop
+#   end
 
-  def reset
-    @deck = []
-    RANKS.each do |rank|
-      SUITS.each do |suit|
-        @deck << Card.new(rank, suit)
-      end
-    end
-    @deck.shuffle!
-  end
-end
+#   def reset
+#     @deck = []
+#     RANKS.each do |rank|
+#       SUITS.each do |suit|
+#         @deck << Card.new(rank, suit)
+#       end
+#     end
+#     @deck.shuffle!
+#   end
+# end
 
 # class PokerHand
 #   def initialize(deck)
@@ -1065,13 +1065,13 @@ def permutations(array)
   result
 end
 
-p permutations([2])
-# -> [[2]]
+# p permutations([2])
+# # -> [[2]]
 
-p permutations([1, 2])
+# p permutations([1, 2])
 # -> [[1, 2], [2, 1]]
 
-p permutations([1, 2, 3])
+# p permutations([1, 2, 3])
 # # -> [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
 
 # p permutations([1, 2, 3, 4])
@@ -1084,7 +1084,53 @@ p permutations([1, 2, 3])
 #     [4, 1, 2, 3], [4, 1, 3, 2], [4, 2, 1, 3],
 #     [4, 2, 3, 1], [4, 3, 1, 2], [4, 3, 2, 1]]
 
+# def merge(arr1, arr2)
+#   result = []
 
+#   indx1 = 0
+#   indx2 = 0
+
+#   loop do
+#     if arr1.empty?
+#       result = arr2
+#       break
+#     elsif arr2.empty?
+#       result = arr1
+#       break
+#     elsif arr2[indx2].nil? || arr1[indx1] <= arr2[indx2]
+#       result << arr1[indx1]
+#       indx1 += 1
+#     elsif arr1[indx1].nil? || arr2[indx2] < arr1[indx1]
+#       result << arr2[indx2]
+#       indx2 += 1
+#     end
+#     break if arr1[indx1].nil? && arr2[indx2].nil?
+#   end
+
+#   result
+# end
+
+# def merge(arr1, arr2)
+#   index2 = 0
+#   result = []
+
+#   arr1.each do |value|
+#     while arr2[index2] && arr2[index2] <= value
+#       result << arr2[index2]
+#       index2 += 1
+#     end
+#     result << value
+#   end
+
+#   result == [] ? arr2 : result
+# end
+
+
+
+p merge([1, 5, 9], [2, 6, 8]) == [1, 2, 5, 6, 8, 9]
+p merge([1, 1, 3], [2, 2]) == [1, 1, 2, 2, 3]
+p merge([], [1, 4, 5]) == [1, 4, 5]
+p merge([1, 4, 5], []) == [1, 4, 5]
 
 
 
