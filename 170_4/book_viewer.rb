@@ -2,6 +2,7 @@ require 'pry'
 require "sinatra"
 require "sinatra/reloader"
 require "tilt/erubis"
+require 'yaml'
 
 before do
   @contents = File.readlines("data/toc.txt")  
