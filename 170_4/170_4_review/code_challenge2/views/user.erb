@@ -1,0 +1,6 @@
+<p><%= @user[:email] %></p>
+<p><%= @user[:interests].join(', ') %></p>
+
+<% @other_users.each do |name, _| %>
+  <p><a href="/<%= name %>"><%= name %></a></p>
+<% end %>
