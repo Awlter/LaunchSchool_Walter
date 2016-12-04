@@ -229,44 +229,220 @@
 # end
 
 #
-def bubble_sort!(array)
-  return array.sort! unless block_given?
-  loop do
-    swapped = false
-    1.upto(array.size - 1) do |indx|
-      next if yield(array[indx - 1], array[indx])
-      array[indx - 1], array[indx] = array[indx], array[indx -1]
-      swapped = true
-    end
+# def bubble_sort!(array)
+#   return array.sort! unless block_given?
+#   loop do
+#     swapped = false
+#     1.upto(array.size - 1) do |indx|
+#       next if yield(array[indx - 1], array[indx])
+#       array[indx - 1], array[indx] = array[indx], array[indx -1]
+#       swapped = true
+#     end
 
-    break unless swapped
+#     break unless swapped
+#   end
+#   nil
+# end
+
+# array = [5, 3]
+# bubble_sort!(array)
+# p array == [3, 5]
+
+# array = [5, 3, 7]
+# bubble_sort!(array) { |first, second| first >= second }
+# p array == [7, 5, 3]
+
+# array = [6, 2, 7, 1, 4]
+# bubble_sort!(array)
+# p array == [1, 2, 4, 6, 7]
+
+# array = [6, 12, 27, 22, 14]
+# bubble_sort!(array) { |first, second| (first % 7) <= (second % 7) }
+# p array == [14, 22, 12, 6, 27]
+
+# array = %w(sue Pete alice Tyler rachel Kim bonnie)
+# bubble_sort!(array)
+# p array == %w(Kim Pete Tyler alice bonnie rachel sue)
+
+# array = %w(sue Pete alice Tyler rachel Kim bonnie)
+# bubble_sort!(array) { |first, second| first.downcase <= second.downcase }
+# p array == %w(alice bonnie Kim Pete rachel sue Tyler)
+
+# Listening Device
+
+# class Device
+#   def initialize
+#     @recordings = []
+#   end
+
+#   def listen
+#     if block_given?
+#       recording = yield
+#       record(recording)
+#     end
+#   end
+
+#   def record(recording)
+#     @recordings << recording
+#   end
+
+#   def play
+#     "Out puts \"#{@recordings.join(', ')}\"!"
+#   end
+# end
+
+# listener = Device.new
+# listener.listen { "Hello World!" }
+# listener.listen
+# puts listener.play # Outputs "Hello World!"
+
+# Text Analyzer
+
+# class TextAnalyzer
+#   def process
+#     File.open("sample.txt", 'r') do |file|
+#       yield(file.read)
+#     end
+#   end
+# end
+
+# analyzer = TextAnalyzer.new
+# analyzer.process { |text| puts "#{text.split("\n\n").count} paragraphs" }
+# analyzer.process { |text| puts "#{text.split("\n").count} lines" }
+# analyzer.process { |text| puts "#{text.split(' ').count} words" }
+
+# Passing Parameters 1
+
+# items = ['apples', 'corn', 'cabbage', 'wheat']
+
+# def gather(items)
+#   yield(items.join(', '))
+# end
+
+# gather(items) do |joined|
+#   puts "Let's start gathering food."
+#   puts joined
+#   puts "Let's start gathering food."
+# end
+
+# Passing Parameters 2
+
+# birds = %w(raven finch hawk eagle)
+
+# def prey?(birds)
+#   yield birds
+# end
+
+# prey?(birds) do |_, _, *items|
+#   p items
+# end
+
+# Passing Parameters 3
+
+# items = ['apples', 'corn', 'cabbage', 'wheat']
+
+# def gather(items)
+#   puts "Let's start gathering food."
+#   yield(items)
+#   puts "We've finished gathering!"
+# end
+
+# # 1
+# gather(items) do |*produce, wheat|
+#   puts produce.join(', ')
+#   puts wheat
+# end
+
+# # 2
+# gather(items) do |apples, *vegetables, wheat|
+#   puts apples
+#   puts vegetables.join(', ')
+#   puts wheat
+# end
+
+# # 3
+# gather(items) do |apples, *assorted|
+#   puts apples
+#   puts assorted.join(', ')
+# end
+
+# # 4
+# gather(items) do |apples, corn, cabbage, wheat|
+#   puts "#{apples}, #{corn}, #{cabbage}, and #{wheat}"
+# end
+
+# my_proc = proc { |thing| puts "This is a #{thing}." }
+# puts my_proc
+# puts my_proc.class
+# my_proc.call
+# my_proc.call('cat')
+
+# my_lambda = lambda { |thing| puts "This is a #{thing}" }
+# my_second_lambda = -> (thing) { puts "This is a #{thing}" }
+# puts my_lambda
+# puts my_second_lambda
+# puts my_lambda.class
+# my_lambda.call('dog')
+# my_lambda.call('coooool')
+# my_third_lambda = Lambda.new { |thing| puts "This is a #{thing}" }
+
+# def block_method_1(animal)
+#   yield
+# end
+
+# def convert_to_base_8(n)
+#   n.to_s.to_i # replace these two method calls
+# end
+
+# # The correct type of argument must be used below
+# base8_proc = method(:convert_to_base_8).to_proc
+
+# # We'll need a Proc object to make this code work. Replace `a_proc`
+# # with the correct object
+# p [8,10,12,14,16,33].map(&base8_proc)
+
+# def convert_to_base_8(n)
+#   n.to_s(8).to_i
+# end
+
+# base8_proc = method("convert_to_base_8").to_proc
+
+# p [8,10,12,14,16,33].map(&base8_proc)
+
+# fatorials = Enumerator.new do |y|
+#   y << 1
+#   (1..Float::INFINITY).each do |index|
+#     y << (1..index).to_a.reduce(:*)
+#   end
+# end
+
+# p fatorials.take(10)
+
+fatorial = Enumerator.new do |yielder|
+  accumulator = 1
+  number = 0
+  loop do
+    accumulator = number.zero? ? 1 : accumulator * number
+    yielder << accumulator
+    number += 1
   end
-  nil
 end
 
-array = [5, 3]
-bubble_sort!(array)
-p array == [3, 5]
+7.times { p fatorial.next }
 
-array = [5, 3, 7]
-bubble_sort!(array) { |first, second| first >= second }
-p array == [7, 5, 3]
+fatorial.each_with_index do |num, index|
+  puts "#{index}: #{num}"
+  break if index == 6
+end
 
-array = [6, 2, 7, 1, 4]
-bubble_sort!(array)
-p array == [1, 2, 4, 6, 7]
 
-array = [6, 12, 27, 22, 14]
-bubble_sort!(array) { |first, second| (first % 7) <= (second % 7) }
-p array == [14, 22, 12, 6, 27]
 
-array = %w(sue Pete alice Tyler rachel Kim bonnie)
-bubble_sort!(array)
-p array == %w(Kim Pete Tyler alice bonnie rachel sue)
 
-array = %w(sue Pete alice Tyler rachel Kim bonnie)
-bubble_sort!(array) { |first, second| first.downcase <= second.downcase }
-p array == %w(alice bonnie Kim Pete rachel sue Tyler)
+
+
+
+
+
 
 
 

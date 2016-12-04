@@ -168,29 +168,131 @@ require 'pry'
 #   nil
 # end
 
-def each_cons(array, n)
-  (0..array.size - n).each { |i| yield(*array.slice(i, n))}
-  nil
-end
+# def each_cons(array, n)
+#   (0..array.size - n).each { |i| yield(*array.slice(i, n))}
+#   nil
+# end
 
+
+# hash = {}
+# each_cons([1, 3, 6, 10], 1) do |value|
+#   hash[value] = true
+# end
+# p hash == { 1 => true, 3 => true, 6 => true, 10 => true }
+
+# hash = {}
+# each_cons([1, 3, 6, 10], 2) do |value1, value2|
+#   hash[value1] = value2
+# end
+# p hash == { 1 => 3, 3 => 6, 6 => 10 }
+
+# hash = {}
+# each_cons([1, 3, 6, 10], 3) do |value1, *values|
+#   hash[value1] = values
+# end
+# p hash == { 1 => [3, 6], 3 => [6, 10] }
+
+# hash = {}
+# each_cons([1, 3, 6, 10], 4) do |value1, *values|
+#   hash[value1] = values
+# end
+# p hash == { 1 => [3, 6, 10] }
+
+# hash = {}
+# each_cons([1, 3, 6, 10], 5) do |value1, *values|
+#   hash[value1] = values
+# end
+# p hash == {}
+
+# review no.1
+
+# max_by
+
+# def max_by(array)
+#   return nil if array.empty?
+
+#   result = array.first
+#   array.each do |num|
+#     result = num if yield(num) > yield(result)
+#   end
+
+#   result
+# end
+
+# p max_by([1, 5, 3]) { |value| value + 2 } == 5
+# p max_by([1, 5, 3]) { |value| 9 - value } == 1
+# p max_by([1, 5, 3]) { |value| (96 - value).chr } == 1
+# p max_by([[1, 2], [3, 4, 5], [6]]) { |value| value.size } == [3, 4, 5]
+# p max_by([-7]) { |value| value * 3 } == -7
+# p max_by([]) { |value| value + 5 } == nil
+
+# each_cons (part_1)
+
+# def each_cons(array)
+#   array[0..-2].each_with_index do |number, index|
+#     yield(number, array[index + 1])
+#   end
+
+#   nil
+# end
+
+# hash = {}
+# result = each_cons([1, 3, 6, 10]) do |value1, value2|
+#   hash[value1] = value2
+# end
+
+# p result == nil
+# p hash == { 1 => 3, 3 => 6, 6 => 10 }
+
+# hash = {}
+# each_cons([]) do |value1, value2|
+#   hash[value1] = value2
+# end
+# p hash == {}
+
+# hash = {}
+# each_cons(['a', 'b']) do |value1, value2|
+#   hash[value1] = value2
+# end
+# p hash == {'a' => 'b'}
+
+# each_cons (part_2)
+
+# def each_cons(array, n)
+#   i = n
+
+#   while i <= array.size
+#     yield(array[i-n...i])
+#     i += 1
+#   end
+
+#   nil
+# end
+
+def each_cons(array, n)
+  array.each_index do |index|
+    break if index + n - 1 >= array.size
+    yield(array[index..(index + n - 1)])
+  end
+end
 
 hash = {}
-each_cons([1, 3, 6, 10], 1) do |value|
+each_cons([1, 3, 6, 10], 2) do |value|
   hash[value] = true
 end
-p hash == { 1 => true, 3 => true, 6 => true, 10 => true }
+p hash# == { 1 => true, 3 => true, 6 => true, 10 => true }
 
 hash = {}
 each_cons([1, 3, 6, 10], 2) do |value1, value2|
   hash[value1] = value2
 end
-p hash == { 1 => 3, 3 => 6, 6 => 10 }
+p hash# == { 1 => 3, 3 => 6, 6 => 10 }
 
 hash = {}
 each_cons([1, 3, 6, 10], 3) do |value1, *values|
   hash[value1] = values
 end
-p hash == { 1 => [3, 6], 3 => [6, 10] }
+p hash# == { 1 => [3, 6], 3 => [6, 10] }
 
 hash = {}
 each_cons([1, 3, 6, 10], 4) do |value1, *values|
@@ -203,11 +305,6 @@ each_cons([1, 3, 6, 10], 5) do |value1, *values|
   hash[value1] = values
 end
 p hash == {}
-
-
-
-
-
 
 
 
