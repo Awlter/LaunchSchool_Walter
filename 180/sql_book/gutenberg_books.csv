@@ -14,3 +14,8 @@ A Treatise on Gunshot Wounds,Thomas Longmore,1862-01-01
 The Sanitary Evolution of London,Henry Lorenzo Jephson,1907-01-01
 The Imprudence of Prue,Sophie Fisher,1911-01-01
 The Forest Schoolmaster,Peter Rosegger,1900-01-01
+
+VALUES('American Robin', 25.5, 36.0, 'Turdidae', f),
+VALUES('Greater Koa Finch', 19.0, 24.0, 'Fringillidae', true),
+VALUES('Carolina Parakeet', 33.0, 55.8, 'Psittacidae', true),
+VALUES('Common Kestrel', 35.5, 73.5, 'Falconidae', false)
