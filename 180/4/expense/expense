@@ -1,15 +1,38 @@
 #! /usr/bin/env ruby
 
 require 'pg'
+require 'io/console'
 
 class ExpenseData
   def initialize
     @connection = PG.connect(dbname: "expenses")
+    setup_schema
+  end
+
+  def setup_schema
+    sql = <<~SQL
+    SELECT COUNT(*) FROM information_schema.tables 
+    WHERE table_schema = 'public' AND table_name = 'expenses';
+    SQL
+
+    result = @connection.exec(sql)
+
+    if result[0]["count"] == "0"
+      @connection.exec <<~SQL
+        CREATE TABLE expenses (
+          id serial PRIMARY KEY,
+          amount numeric(6,2) NOT NULL CHECK (amount >= 0.01),
+          memo text NOT NULL,
+          created_on date NOT NULL
+          )
+      SQL
+    end
   end
 
   def list_expense
     result = @connection.exec("SELECT * FROM expenses;")
-    list(result)
+    display_count(result)
+    display_expenses(result) if result.ntuples > 0
   end
 
   def add_expense(amount, memo)
@@ -21,7 +44,9 @@ class ExpenseData
   def search_expenses(item)
     sql = "SELECT * FROM expenses WHERE memo ILIKE $1;"
     result = @connection.exec_params(sql, ["%#{item}%"])
-    list(result)
+
+    display_count(result)
+    display_expenses(result) if result.ntuples > 0
   end
 
   def delete_expenses(id)
@@ -38,21 +63,42 @@ class ExpenseData
       puts "There is no expense with the id '#{id}'."
     else
       puts "The following expense has been deleted:"
-      list(result)
+      display_expenses(result)
     end
+  end
+
+  def clear_expenses
+    sql = "DELETE FROM expenses;"
+    @connection.exec(sql)
+    puts "All expenses have been deleted."
   end
 
   private
 
-  def list(result)
+  def display_count(result)
+    n = result.ntuples
+    if  n.zero?
+      puts "There are no expenses."
+    else
+      puts "There are #{n} expense#{'s' if n != 1}."
+    end
+  end
+
+  def display_expenses(result)
     result.each do |tuple|
-      column = [ tuple['id'].rjust(3),
+      column = [ tuple['id'].rjust(2),
                  tuple['created_on'].rjust(10),
-                 tuple['amount'].rjust(12),
+                 tuple['amount'].rjust(10),
                  tuple['memo']]
 
       puts column.join(' | ')
     end
+
+
+    total = result.field_values("amount").map(&:to_f).inject(:+)
+
+    puts "-" * 50
+    puts "Total #{total.to_s.rjust(22)}"
   end
 end
 
@@ -68,25 +114,32 @@ class CLI
     when 'add'
       amount = argv[1]
       memo = argv[2]
-      if amount.nil? || memo.nil?
-        puts 'You must provide an amount and memo.'
-        return
-      end
+  
+      abort 'You must provide an amount and memo.' if amount.nil? || memo.nil?
+
       @expensedata.add_expense(amount, memo)
     when 'search'
       item = argv[1]
-      if item.nil?
-        puts "You must provide a search item."
-        return
-      end
+      
+      abort "You must provide a search item." if item.nil?
+
       @expensedata.search_expenses(item)
     when 'delete'
       id = argv[1]
-      if id.nil?
-        puts "You must provide a id."
-        return
-      end
+      
+      abort "You must provide a id." if id.nil?
+
       @expensedata.delete_expenses(id)
+    when 'clear'
+      puts "This will remove all expenses. Are you sure? (y/n)"
+      answer = nil
+      loop do
+        answer = $stdin.getch.to_s.downcase
+        break if %(y n).include? answer
+        puts "You must press 'y' or 'n'."
+      end
+
+      @expensedata.clear_expenses if answer == 'y'
     else
       display_help
     end

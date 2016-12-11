@@ -82,20 +82,12 @@ ALTER TABLE ONLY expenses ALTER COLUMN id SET DEFAULT nextval('expenses_id_seq':
 --
 
 COPY expenses (id, amount, memo, created_on) FROM stdin;
-1	14.56	Pencils	2016-12-10
-2	3.29	Coffee	2016-12-10
-3	49.99	Text Editor	2016-12-10
-4	3.59	More Coffee	2016-12-10
-5	43.23	Gas for Karen's Car	2016-12-10
 \.
 
 
 --
 -- Name: expenses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: wangxuefei
 --
-
-SELECT pg_catalog.setval('expenses_id_seq', 5, true);
-
 
 --
 -- Name: expenses expenses_pkey; Type: CONSTRAINT; Schema: public; Owner: wangxuefei
