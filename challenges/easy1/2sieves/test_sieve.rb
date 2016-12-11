@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'sieves'
+require_relative 're_sieves'
 
 class SieveTest < Minitest::Test
   def test_a_few_primes
