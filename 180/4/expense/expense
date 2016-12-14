@@ -85,20 +85,21 @@ class ExpenseData
   end
 
   def display_expenses(result)
-    result.each do |tuple|
-      column = [ tuple['id'].rjust(2),
-                 tuple['created_on'].rjust(10),
-                 tuple['amount'].rjust(10),
-                 tuple['memo']]
+    # result.each do |tuple|
+    #   column = [ tuple['id'].rjust(2),
+    #              tuple['created_on'].rjust(10),
+    #              tuple['amount'].rjust(10),
+    #              tuple['memo']]
 
-      puts column.join(' | ')
-    end
+    #   puts column.join(' | ')
+    # end
 
 
-    total = result.field_values("amount").map(&:to_f).inject(:+)
+    # total = result.field_values("amount").map(&:to_f).inject(:+)
 
-    puts "-" * 50
-    puts "Total #{total.to_s.rjust(22)}"
+    # puts "-" * 50
+    # puts "Total #{total.to_s.rjust(22)}"
+    p result.to_a
   end
 end
 
