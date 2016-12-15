@@ -18,7 +18,7 @@ class Octal
   end
 
   def to_decimal
-    return 0 if @octal.chars.any? { |digit| digit.ord > 55 || digit.ord < 48 }
+    return 0 if @octal.chars.any? { |digit| digit.match(/[^0-7]/) }
 
     result = 0
     @octal.chars.reverse.each_with_index do |digit, e|
