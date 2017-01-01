@@ -3,7 +3,7 @@ require_relative 'sum_of_multiples'
 
 class SumTest < Minitest::Test
   def test_sum_to_1
-    assert_equal 0, SumOfMultiples.to(1)
+    assert_equal 0, SumOfMultiples.to(2)
   end
 
   def test_sum_to_3

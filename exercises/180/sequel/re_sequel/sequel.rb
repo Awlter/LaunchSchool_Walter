@@ -1,4 +1,5 @@
 require 'sequel'
+require 'io/console'
 
 def create_database
   system("dropdb", "--if-exists", "billing2")
@@ -70,13 +71,11 @@ def insert_customers_services
   insert_customer_service_row(6, 7)
 end
 
-DB = Sequel.connect("postgres://localhost/billing2")
-
-create_database
-create_tables
-insert_data
-create_join_table
-insert_customers_services
+# create_database
+# create_tables
+# insert_data
+# create_join_table
+# insert_customers_services
 
 # Retrieve data of customers who have at least subscribed one services
 # result = DB[:customers].select{customers.*}.distinct.join(:customers_services, customer_id: :id).order(:id)
@@ -132,24 +131,80 @@ insert_customers_services
 #                       .having{count(:customer_id) >= 3}
 
 
-result = DB[:customers].join(:customers_services, customer_id: :id)
-                       .join(:services, id: :customers_services__service_id)
-                       .select{sum(price).cast(:money)}
-                       .each {|row| puts row[:sum]}
+# result = DB[:customers].join(:customers_services, customer_id: :id)
+#                        .join(:services, id: :customers_services__service_id)
+#                        .select{sum(price).cast(:money)}
+#                        .each {|row| puts row[:sum]}
 
+# result = DB[:customers].join(:customers_services, customer_id: :id)
+#                        .join(:services, id: :customers_services__service_id).
+#                        group(:customers__name).
+#                        order(:customers__name).
+#                        select do
+#                         subscription = concat('  ', services__description, ' ', services__price.cast(:money))
+#                         subscriptions = string_agg(subscription, "\n").order(lower(subscription))
+#                         [customers__name, subscriptions.as(:subscriptions)]
+#                        end.
+#                        each do |row|
+#                         puts row[:name]
+#                         puts row[:subscriptions]
+#                       end
 
+# puts result.sql
 
+# t1 = Time.now
+# DB[:customers].join(:customers_services, customer_id: :id)
+#               .join(:services, id: :service_id)
+#               .order(:name)
+#               .group(:name)
+#               .select do
+#                 service_info = concat('  ', description, ' ', price.cast(:money))
+#                 service_infos = string_agg(service_info, "\n").order(service_info)
+#                 [name, service_infos.as(services)]
+#               end
+#               .each do |subscription|
+#                 puts subscription[:name]
+#                 puts subscription[:services]
+#               end
+# t2 = Time.now
+# puts t2 - t1
 
+# t3 = Time.now
+# services_by_customer = 
+#   DB[:customers].join(:customers_services, customer_id: :id)
+#                 .join(:services, id: :service_id)
+#                 .select {[name, description, price]}
+#                 .order(:name, :description)
 
+# services_by_name = services_by_customer.all.group_by {|row| row[:name]}
+# services_by_name.each do |name, service_info|
+#   puts name
+#   service_info.each do |info|
+#     price = format('$%.2f', info[:price])
+#     puts "  #{info[:description]} #{price}"
+#   end
+# end
+# t4 = Time.now
+# puts t4 - t3
+# $ ruby average_values.rb
+# What database do you want to use? billing2
+# What table do you want to access? services
+# id: 4.500000
+# price: 197.106250
 
+# $ ruby average_values.rb
+# What database do you want to use? billing2
+# What table do you want to access? customers_services
+# customer_id: 3.687500
+# id: 8.500000
+# service_id: 3.062500
 
-
-
-
-
-
-
-
+print "What database do you want to use? "
+database = gets.chomp
+DB = Sequel.connect("postgres://localhost/#{database}")
+print "What table do you want to access? "
+table = gets.chomp
+DB[table.to_sym].
 
 
 

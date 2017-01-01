@@ -1,3 +1,19 @@
+class SumOfMultiples
+  def initialize(*base_numbers)
+    @base_numbers = base_numbers
+  end
+
+  def self.to(limit_number)
+    SumOfMultiples.new(3, 5).to(limit_number)
+  end
+
+  def to(limit_number)
+    (0...limit_number).select do |num|
+      @base_numbers.any? { |base_number| num % base_number == 0}
+    end.reduce(:+)
+  end
+end
+
 # version 1
 # class SumOfMultiples
 #   attr_reader :numbers

@@ -1,3 +1,22 @@
+class SumOfMultiples
+  attr_accessor :base_numbers
+
+  def initialize(*base_numbers)
+    @base_numbers = base_numbers
+  end
+
+  def self.to(limit_number)
+    (1...limit_number).select { |num| num % 3 == 0 || num % 5 == 0}.reduce(:+)
+  end
+
+  def to(limit_number)
+    (1...limit_number).select do |num|
+      base_numbers.any? { |base_number| num % base_number == 0}
+    end.reduce(:+)
+  end
+end
+
+
 # - input 
 #   - integer
 #   - two kinds of numbers
@@ -12,16 +31,4 @@
 #   - if any multiples from base numbers are the same, avoid duplication
 #   - the sum does not include the limit number
 
-class Sum
-  attr_accessor :base_numbers
-  def initialize(*base_numbers=3)
-    @base_numbers = base_numbers
-  end
-
-  def self.to(number)
-    p @base_numbers
-  end
-
-end
-p Sum.new(4).base_numbers
 
