@@ -1,0 +1,294 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: normal 16px Helvetica, Arial, sans-serif;
+  color: #545459;
+  background: #fff;
+}
+
+.cf:before, .cf:after {
+  content: "";
+  display: block;
+}
+
+.cf:after {
+  clear: both;
+}
+
+.container {
+      border: 2px solid #999;
+      width: 1000px;
+      padding: 20px;
+      margin: 0 auto;
+    }
+
+/**** Inline ****/
+section h1, section h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ce4a4a;
+  margin: 20px 0;
+}
+
+section p {
+  line-height: 35px;
+  margin-bottom: 25px;
+}
+
+section .border {
+  width: 650px;
+  border: 2px dashed #999;
+  margin: 45px;
+  padding: 30px;
+}
+
+section p.bold {
+  font-weight: bold;
+}
+
+section a {
+  text-decoration: none;
+  color: #333;
+}
+
+section .inline-margin a {
+  margin: 30px;
+}
+
+section .inline-padding a {
+  padding: 30px;
+  color: #fff;
+  background: green;
+}
+
+section .floating-margin a {
+  display: inline-block;
+  margin: 15px;
+}
+
+section .inline-float a {
+  text-align: center;
+  float: left;
+  width: 120px;
+  padding: 25px;
+  margin: 15px;
+  background: green;
+  color: #fff;
+  border: 3px solid darkgreen;
+}
+
+/**** Block elements ****/
+.wrapper {
+  margin: 0 0 30px 0;
+}
+
+.block .box-1 {
+  background: dodgerblue;
+  color: #fff;
+}
+
+.block .box-2 {
+  background: green;
+  color: #fff;
+  height: 60px;
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid green;
+}
+
+.block .box-3 {
+  background: tomato;
+  color: #fff;
+  width: 90px;
+}
+
+.fl-1 {
+  background: dodgerblue;
+  color: #fff;
+  border: 1px solid red;
+  float: left;
+}
+
+.fl-2 {
+  background: tomato;
+  color: #fff;
+  border: 1px solid red;
+  float: right;
+}
+
+.fl-3 {
+  background: dodgerblue;
+  color: #fff;
+  width: 400px;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  float: left;
+}
+
+.fl-4 {
+  background: tomato;
+  color: #fff;
+  width: 500px;
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  float: right;
+}
+
+.bl-a a {
+  display: block;
+  background: dodgerblue;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+
+}
+
+.il-bl .nav {
+  text-align: center;
+}
+
+.il-bl .nav a {
+  display: inline-block;
+  background: dodgerblue;
+  color: #fff;
+  width: 180px;
+  height: 60px;
+  padding: 20px 30px;
+  margin: 20px 8px;
+  border: 1px solid #1b95e0;
+}
+
+.il-bl::after {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 30px;
+  border-bottom: 2px dashed #545459;
+}
+
+/*** Floats and Positioning ***/
+
+.pos-fl h1 {
+  text-align: center;
+  margin: 30px 0 25px 0;
+}
+
+.fb-1, .fb-2, .fb-3 {
+  color: #fff;
+  margin: 0;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+
+.fb-1 {
+  float: left;
+  background: tomato;
+  width: 450px;
+}
+
+.fb-2 {
+  float: left;
+  background: dodgerblue;
+  width: 505px;
+}
+
+.fb-3 {
+  background: seagreen;
+  clear: both;
+  width: 955px;
+  height: 50px;
+  line-height: 50px;
+  font-weight: bold;
+}
+
+.float-container {
+  width: 100px;
+  letter-spacing: 1px;
+  margin: 40px 100px;
+  line-height: 1.2em;
+}
+
+/*** Positioning ***/
+ul {
+  margin: 0 0 45px 40px;
+}
+.pos ul li {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.fixed {
+  text-align: center;
+  background: dodgerblue;
+  color: #fff;
+  width: 225px;
+  padding: 25px 35px;
+  border-radius: 10px;
+  position: fixed;
+  left: 35px;
+  bottom: 50px;
+}
+
+/*** Position Relative ***/
+.relative-position {
+  width: 325px;
+  text-align: center;
+  color: #fff;
+  background: tomato;
+  padding: 25px 35px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  position: relative;
+  bottom: -45px;
+  right: 90px;
+}
+
+/*** Absolute ***/
+.absolute {
+  position: relative;
+}
+
+.abs-1 {
+  width: 200px;
+  text-align: center;
+  color: #fff;
+  background: green;
+  padding: 25px 35px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+
+/** Positioning 2 **/
+
+.container1 {
+  position: relative;
+}
+nav {
+  position: absolute;
+  left: 0px;
+  width: 200px;
+}
+section {
+  /* position is static by default */
+  margin-left: 200px;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 70px;
+  background-color: white;
+  width: 100%;
+}
+body {
+  margin-bottom: 120px;
+}
