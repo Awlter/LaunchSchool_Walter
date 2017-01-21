@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'word_count'
+require_relative 're_word_count'
 
 # Test data version:
 

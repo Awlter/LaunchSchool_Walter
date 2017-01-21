@@ -1,0 +1,89 @@
+@import url("reset.css");
+
+body {
+  background: #ffd505;
+  font: normal 16px Helvetica, Arial, sans-serif;
+}
+
+header, main {
+  width: 900px;
+  margin: 0 auto 30px auto;
+}
+
+header {
+  padding: 30px 0;
+  background: #047ec1;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+
+header h1 {
+  padding: 0 25px;
+  font-size: 2.3em;
+  color: #fff;
+}
+
+main {
+  background: #f0eaee;
+  padding: 25px;
+  box-sizing: border-box;
+}
+
+main h2 {
+  font-size: 2em;
+  padding: 0 0 25px 0;
+}
+
+main:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+li {
+  float: left;
+  width: 23.5%;
+  margin:0 0 2% 2%;
+  padding: 15px;
+  background: #fff; 
+  box-sizing: border-box;
+}
+
+li:nth-of-type(4n+1) {
+  margin-left: 0;
+}
+
+figure {
+  height: 170px;
+  width: 100%;
+}
+
+img {
+  display: block;
+  height: 140px;
+  width: auto;
+  margin: 0 auto;
+}
+
+input[type="checkbox"] { display: none; }
+input:checked + figure img {
+  position: absolute;
+  width: 400px;
+  height: auto;
+  z-index: 2;
+  top: 100px;
+  left: 50%;
+  margin: 0 0 0 -200px;
+}
+
+input:checked + figure:before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: "";
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.4);
+}
+
