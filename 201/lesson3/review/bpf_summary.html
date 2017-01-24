@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Summary</title>
+  <style type="text/css">
+    body {
+      display: block;
+      margin: 8px;
+    }
+
+    p {
+      line-height: 35px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+
+    .border {
+      border: 2px dashed #cecece;
+      width: 70%;
+      margin: 40px;
+      padding: 30px;
+    }
+
+    .margin a {
+      margin: 30px;
+    }
+
+    .padding a {
+      padding: 30px;
+      background: green;
+
+    }
+
+    .float a {
+      float: left;
+    }
+
+    .float:after {
+      display: block;
+      content: "";
+      clear: both;  
+    }
+
+    #lesson * {
+      box-sizing: border-box;
+    }
+
+    #lesson {
+      width: 1000px;
+      margin: 10px auto;
+      padding: 20px 20px;
+      border: 1px solid black;
+    }
+
+    #block div.box-1 {
+      background: dodgerblue;
+    }
+
+    #block div.box-2 {
+      background: green;
+      height: 60px;
+      padding: 20px;
+      margin: 20px;
+    }
+
+    #block div.box-3 {
+      background: tomato;
+      width: 90px;
+    }
+
+    #block div.fl-1 {
+      float: left;
+      background: dodgerblue;
+      border: 1px solid tomato;
+    }
+
+    #block div.fl-2 {
+      float: right;
+      background: tomato;
+      border: 1px solid tomato;
+    }
+
+    #block div.fl-3,
+    div.fl-4 {
+      width: 400px;
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+    }
+
+    #block div.fl-3 {
+      float: left;
+      background: dodgerblue;
+    }
+
+    #block div.fl-4 {
+      float: right;
+      background: tomato;
+    }
+
+    #block .wrapper:after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+
+    .bl-a a {
+      display: block;
+      background: dodgerblue;
+      margin-bottom: 20px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+    }
+
+    #in-block .bl-a {
+      text-align: center;
+    }
+
+    #in-block .bl-a a {
+      display: inline-block;
+      width: 20%;
+      margin: 0 10px 20px 10px;
+    }
+
+    #in-block {
+      border-bottom: 2px dashed #cecece;
+    }
+
+    .fl-po .flbx-1, .flbx-2 {
+      width: 450px;
+      height: 100px;
+      line-height: 100px;
+      float: left;
+    }
+
+    .flbx-1 {
+      background: dodgerblue;
+    }
+
+    .flbx-2 {
+      background: tomato;
+    }
+
+    .flbx-3 {
+      clear: both;
+      width: 900px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background: darkgreen;
+    }
+  </style>
+</head>
+<body>
+  <div id="lesson">
+    <section>
+      <h1>Inline Elements</h1>
+      <p>Inline elements occupies only the space of the content. It does not take width and height values.</p>
+      <p class="bold">Example: </p>
+      <p>Anchor tags are normally inline elements, you see they only take up the width of their content and not the whole width of the page then the next anchor tags follow right after it.</p>
+      <div class="border">
+        <a href="#">Home</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Contact</a>
+      </div>
+      <p class="bold">What happens if we set a margin property on an inline level element?</p>
+      <p>Inline elements will only take left and right margin values.</p>
+      <div class="border margin">
+        <a href="#">Home</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Contact</a>
+      </div>
+      <p>In the example I put a margin of 30px on all sides, as you can see if you check the anchor tag in the developer tools only the left and right side of the contents are affected by the margin.</p>
+      <div class="border padding">
+        <a href="#">Home</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Contact</a>
+      </div>
+      <p>Inline elements accept padding values on all sides.</p> 
+      <p class="bold">Floating Inline Elements</p>
+      <div class="border padding margin float">
+        <a href="#">Home</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Contact</a>
+      </div>
+      <p>Floating inline elements will change its display value to a block level element and subject to all block level characteristics. Which means it can take margin and padding values, height and width values as well.</p>
+    </section>
+
+    <section id="block">
+      <h1>Block Elements</h1>
+      <p>Block level elements take up the entire width of the page and always start in a new line.It can have margin/s and padding/s. If no width is set it will expand naturally to fill its parent container. If no height is set, it will expand to fit its content.</p>
+      <p class="bold">Example: (Div elements are naturally block level elements)</p>
+      <div class="box-1">This is a div with no width and height set.</div>
+      <div class="box-2">This a div with no width but with a height of 60px, with a padding and margin of 20px around it.</div>
+      <div class="box-3">This a div with a width of 90px and no height set.</div>
+      <p>In the first example, the div fills the entire width, and uses just enough height to fill its content. In the second box, we didn't set a width, but it still filled the entire width (counting the padding and margin); it also uses 60px of height plus the margin and padding. For the third box, we set the width to 90px, and as expected, it took just enough height to fill its content. The text was squished because of the reduced width, so the browser expanded the height to accommodate the content.</p>
+      <p class="bold">Floating Block Elements</p>
+      <p class="bold">Floating block elements with no width and height set.</p>
+      <div class="wrapper">
+        <div class="fl-1">Box - 1 - Floated Left</div>
+        <div class="fl-2">Box - 2 - Floated Right</div>
+      </div>
+      <p>It floated our elements to the left and right on the same block. It shrunk to the widest element within each div, in our case the texts inside, since we didn't set a specific width for each</p>
+      <p class="bold">Floating block elements with width and height set.</p>
+      <div class="wrapper">
+        <div class="fl-3">Box - 1 - Floated Left</div>
+        <div class="fl-4">Box - 2 - Floated Right</div>
+      </div>
+      <p class="bold">Can we change an inline element into a block element?</p>
+      <p>Let's use the anchor tag as an example.</p>
+      <div class="bl-a" >
+        <a href="#">Home</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Contact</a>
+      </div>
+      <p>Yes, we can change display values from a block element to inline element and vice versa.Display values can be overwritten by another display value.</p>
+    </section>
+
+    <section id="in-block">
+      <h1>Inline-Block Elements</h1>
+      <p>Inline-block elements are inline elements that can take block elements properties, such as width and height. It acts similarly to a float minus the clear property.</p>
+      <p class="bold">Example: Let's use inline-block to create a navigation.</p>
+      <div class="bl-a" >
+        <a href="#">Home</a>
+        <a href="#">Portfolio</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+      <p>Home Portfolio About Contact
+We achieved the same results as to when we float the anchor elements to give them the block elements' properties. It's you get two elements in just one, you get to have the properties of inline elements and at the same time get the properties of block elements.</p>
+    </section>
+
+    <section class="fl-po">
+      <h1>Floats and Positioning Elements</h1>
+      <h2>Floats</h2>
+      <p>A floated element is taken out of the normal flow then shifted left or right.When you float a content it becomes a block-level element.</p>
+      <p class="bold">Example</p>
+      <div class="flbx-1">Box-1</div>
+      <div class="flbx-2">Box-2</div>
+      <div class="flbx-3">Box-3</div>      
+      <p>Elements following a floated element will wrap around the floated element, we do not want this to happen, so I applied the 'clear: both' property to the third div, there are 2 other properties for clear, that's the left and the right. I chose to clear both, just to be sure.</p>
+      <p>There are other methods to clear floats, one of these methods is the clearfix method:</p>
+      <pre>
+        elementName::after {
+          content: " ";
+          display:block;
+          clear: both;
+        }
+      </pre>
+    </section>
+  </main>
+</body>
+</html>

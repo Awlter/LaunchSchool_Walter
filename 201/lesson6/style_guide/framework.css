@@ -106,3 +106,7 @@ h4 {
 .two_third {
   width: 66%;
 }
+
+q {
+  font-style: italic;
+}

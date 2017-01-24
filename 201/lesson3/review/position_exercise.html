@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    #positioned {
+      position: absolute;
+      left: 50%;
+      top: 10px;
+      width: 400px;
+      padding:  30px 15px;
+      margin-left: -200px;
+      background: #ffffcc;
+
+    }
+
+    #dark {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, .6);
+      z-index: -4;
+    }
+
+    #lefter {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: 20px;
+      height: 20px;
+      background: #fcfc99;
+    }
+  </style>
+</head>
+<body>
+  <div id="positioned">
+    <div id="lefter"></div>
+    I am positioned!
+  </div>
+
+  <div id="dark"></div>
+
+  <article>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempus erat at erat venenatis, ut elementum nulla euismod. Vivamus a mollis lectus. Quisque ac imperdiet ligula. Ut non tortor vel mi ultrices mollis a sit amet lectus. Nullam sit amet orci sed tortor convallis lobortis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Etiam rutrum ipsum id nibh lobortis, eget semper mi elementum. Maecenas sit amet ultricies enim, nec consectetur neque. Nunc in pretium tortor, vitae dictum eros.</p>
+
+    <p>Maecenas et tempus enim, eu ornare felis. Aenean tempor ullamcorper tortor ac consequat. Nulla vitae pretium purus, eget tincidunt sapien. Aenean venenatis felis lacus, et gravida nibh tincidunt et. Maecenas posuere maximus diam, iaculis porta orci bibendum nec. Donec lobortis interdum eros, consectetur fringilla enim hendrerit non. Vestibulum bibendum eu dolor at fermentum. Etiam egestas libero sed sapien lacinia auctor. Donec molestie urna a dolor dignissim, eget ultricies libero egestas. Integer ac dui neque. Sed id dolor euismod elit bibendum pulvinar. Suspendisse nisi lacus, sagittis eu libero vitae, sagittis viverra turpis.</p>    
+  </article>
+</body>
+</html>
