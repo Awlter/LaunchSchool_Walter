@@ -1,0 +1,134 @@
+@import url("reset.css");
+
+body {
+  font: normal 14px Helvetica, Arial, sans-serif;
+}
+
+main {
+  width: 600px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: normal;
+  margin: 5px 0 25px 0;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+form {
+  background: #ececec;
+  padding: 25px 30px;
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  font-size: 16px;
+  color: #666766;
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+textarea {
+  font-size: normal 14px Helvetica, Arial, sans-serif;
+  height: 40px;
+  width: 100%;
+  padding: 5px 8px;
+  border: 1px solid #2e67b2;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+dt {
+  margin-bottom: 10px;
+}
+
+dd {
+  margin-bottom: 25px;
+}
+
+dl.partial {
+  display: inline-block;
+  padding-right: 23px;
+  box-sizing: border-box;
+}
+
+dl.third {
+  width: 33.3%;
+}
+
+dl.third:nth-of-type(3) {
+  padding-right: 0;
+}
+
+dl.half {
+  width: 50%;
+}
+
+dl.half:last-of-type {
+  padding-right: 0;
+}
+
+input[name*=name] {
+  width: 49%;
+}
+
+input[name=second_name] {
+  margin-left: 2%;
+}
+
+textarea {
+  height: auto;
+  resize: vertical;
+}
+
+label.checkbox {
+  font-weight: normal;
+  padding: 0 0 20px 20px;
+  position: relative;
+}
+
+label.checkbox input {
+  position: absolute;
+  left: 0;
+  top: 3px;
+}
+
+input[type=submit] {
+  display: block;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background: #2e67b2;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background: #6095cb;
+}
+
+input[type=submit]:focus {
+  border: 2px solid black;
+}
+
+ul li:before,
+ul li:after {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 5px;
+  content: "";
+  border: 2px solid #333333;
+  border-radius: 100%;
+  background: #0066cc;
+}

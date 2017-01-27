@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Form</title>
+  <style type="text/css">
+    @import url("reset.css");
+
+    form {
+      width: 600px;
+      margin: 0 auto;
+    }
+
+    
+  </style>
+</head>
+<body>
+  <form action="#" method="post">
+    <dl class="half">
+      <dt>
+        <label for="first-name">First Name</label>
+      </dt>
+      <dd>
+        <input type="text" name="first-name" id="first-name" />
+      </dd>
+    </dl><!--
+    --><dl class="half">
+      <dt>
+        <label for="last-name">Last Name</label>
+      </dt>
+      <dd>
+        <input type="text" name="last-name" id="last-name">
+      </dd>
+    </dl><!--
+    --><dl>
+      <dt>
+        <label for="email">Email Address</label>
+      </dt>
+      <dd>
+        <input type="email" name="email" id="email" placeholder="XXX@XX.com" />
+      </dd>
+    </dl><!--
+    --><dl>
+      <dt>
+        <label for="city">City</label>
+      </dt>
+      <dd>
+        <input type="text" name="city" id="city" />
+      </dd>
+    </dl><!--
+    --><dl>
+      <dt>
+        <label for="state">State</label>
+      </dt>
+      <dd>
+        <select name="state" id="state">
+          <option>AL</option>
+          <option>LA</option>
+        </select>
+      </dd>
+    </dl><!--
+    --><dl>
+      <dt>
+        <label for="zipcode">Zipcode</label>
+      </dt>
+      <dd>
+        <input type="number" name="zipcode" id="zipcode" minlength="5" max="5">
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <p>Which of these colors do you most prefer?</p>
+      </dt>
+      <dd>
+        <label>
+          <input type="radio" name="color" value="red" checked />
+          Red
+        </label>
+      </dd>
+      <dd>
+        <label>
+          <input type="radio" name="color" value="blue" />
+          Blue
+        </label>
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+        <p>What web technologies do you want to hear more about?</p>
+      </dt>
+      <dd>
+        <label>
+          <input type="checkbox" name="html" checked>
+          HTML
+        </label>
+      </dd>
+      <dd>
+        <label>
+          <input type="checkbox" name="css">
+          CSS
+        </label>
+      </dd>
+    </dl>
+
+    <input type="submit" value="Send">
+  </form>
+</body>
+</html>
