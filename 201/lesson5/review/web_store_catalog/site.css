@@ -1,0 +1,85 @@
+@import url("reset.css");
+
+body {
+  background: #ffd505;
+  font: normal 14px Helvetica, Arial, sans-serif;
+}
+
+header {
+  width: 900px;
+  margin: 0 auto 30px auto;
+  padding: 35px 30px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background: #047ec1;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 32px;
+  color: #fff;
+}
+
+main {
+  width: 900px;
+  margin: 0 auto;
+  padding: 30px 25px;
+  background: #ececec;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+h2 {
+  font-size: 26px;
+  margin-bottom: 25px;
+}
+
+li {
+  float: left;
+  width: 23.5%;
+  padding: 15px;
+  margin-left: 2%;
+  margin-bottom: 2%;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+li:nth-of-type(4n+1) {
+  margin-left: 0;
+}
+
+figure {
+  height: 140px;
+  margin-bottom: 10px;
+}
+
+img {
+  display: block;
+  height: 140px;
+  width: auto;
+  margin: 0 auto;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+input:checked + img {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  margin-left: -100px;
+  width: 200px;
+  height: auto;
+}
+
+input:checked:before {
+  position: fixed;
+  content: "";
+  background: rgba(0, 0, 0, 0.4);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
