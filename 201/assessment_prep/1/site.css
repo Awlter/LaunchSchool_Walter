@@ -1,0 +1,243 @@
+@import url("reset.css");
+
+body {
+  font: 300 14px 'Source Sans Pro', sans-serif;
+  color: #20201f;
+}
+
+h1 {
+  font-size: 36px;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: 120px;
+}
+
+a {
+  color: #3580c2;
+  text-decoration: none;
+}
+
+div.clearfix:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.text-centered {
+  text-align: center;
+}
+
+.text-lead {
+  font-size: 30px;
+}
+
+.img img {
+  width: 120px;
+}
+
+a.twitter {
+  color: #969696;
+  font-weight: 300;
+}
+
+header {
+  height: 465px;
+  background:
+    linear-gradient(
+      rgba(15, 50, 80, 0.8), 
+      rgba(50, 120, 180, 0.7)
+    ),
+    url("images/bg1080x2.jpg") 0 50% no-repeat; 
+  background-size: cover;
+
+}
+
+nav {
+  height: 80px;
+  width: 960px;
+  margin: 0 auto;
+}
+
+nav img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+nav ul {
+  display: inline-block;
+  line-height: 80px;
+  vertical-align: middle;
+  padding-left: 15px;
+}
+
+nav ul li {
+  display: inline-block;
+  padding: 0 15px;
+  font-size: 1.1em;
+  cursor: pointer;
+  vertical-align: middle;
+  font-weight: 300;
+}
+
+nav ul li a {
+  color: #fff;
+  display: inline-block;
+  width: 100%;
+}
+
+.social {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 80px;
+}
+
+.social a {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  text-indent: -9999px;
+}
+
+.social a:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: 26px;
+  left: 24px;
+  background: transparent url("images/social.png") 0 0 no-repeat;
+  background-size: auto 100%;
+}
+
+.social a.facebook:before {
+  background-position: 100% 0;
+}
+
+h1 img {
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: 300
+}
+
+.sign {
+  display: inline-block;
+  vertical-align: -5px;
+  padding: 0 20px;
+  font-size: 1.5em;
+  font-weight: 300;
+}
+
+.yellow {
+  color: yellow;
+}
+
+main {
+  padding-top: 100px;
+}
+
+div.content {
+  width: 980px;
+  margin: 0 auto;  
+}
+
+p.text-lead {
+  width: 570px;
+  margin: 0 auto;
+}
+
+h2 {
+  padding: 90px 0 45px 0;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+  color: #3580c2;
+}
+
+h2 span.left {
+  display: inline-block;
+  vertical-align: middle;
+  border: 40px solid #fff;
+  border-left-color: #cde5ff;
+  border-bottom-color: #f4f9ff;
+  box-sizing: border-box;
+}
+
+h2 span.right {
+  display: inline-block;
+  vertical-align: middle;
+  border: 40px solid #fff;
+  border-top-color: #f6fafc;
+  border-right-color: #ecf3f9;
+  box-sizing: border-box;
+}
+
+.speakers > div {
+  float: left;
+  padding-left: 20px;
+}
+
+.speaker .img {
+  float: left;
+  margin-right: 16px;
+}
+
+.speaker {
+  width: 50%;
+  min-height: 175px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.speaker h3 {
+  font-weight: 600;
+  font-size: 22px;
+  margin-top: -5px;
+  color: #3580c2;
+}
+
+.speaker h4 a {
+  color: #db3127;
+  font-size: 20px;
+}
+
+.mcs {
+  text-align: center;
+}
+
+.mcs .speaker {
+  display: inline-block;
+  float: none;
+  text-align: left;
+}
+
+.workshop {
+  position: relative;
+  padding-left: 142px;
+  margin-bottom: 20px;
+}
+
+.workshop .img {
+  position: absolute;
+  top: 11px;
+  left: 0;
+}
+
+.workshop p {
+  padding: 30px 0 20px 0;
+  font-size: 24px;
+}
+
+.workshop h3 a {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.workshop h4,
+.workshop h4 a {
+  font-size: 24px;
+}

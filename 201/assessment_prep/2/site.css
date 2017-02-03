@@ -1,0 +1,214 @@
+@import url("reset.css");
+
+html {
+  font-family: "Open Sans", Arial, sans-serif;
+}
+
+body {
+  font-size: 13px;
+  color: #444;
+}
+
+.button {
+  display: inline-block;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #fff;
+  padding: 10px 30px;
+  background: #008000;
+}
+
+/* Header */
+
+header {
+  padding-top: 150px;
+  padding-bottom: 50px;
+  margin-top: 55px;
+  text-align: center;
+  background: url("front.jpg") -65px 0 no-repeat;
+}
+
+header nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  line-height: 44px;
+  text-align: center;
+  border-top: 10px solid #f5f5f5;
+  border-bottom: 1px solid #f5f5f5;
+  background: #fff;
+}
+
+header nav ul li {
+  display: inline-block;
+  text-transform: uppercase;
+  padding: 0 25px;
+}
+
+/*header h1 {
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  margin-left: -230px;
+  padding-top: 90px;
+  font-size: 70px;
+  font-weight: 400;
+  background: url("jsconfbr.png") 50% 0 no-repeat;
+  color: #fff;
+}*/
+
+header h1 {
+  padding-top: 85px;
+  font-size: 72px;
+  font-weight: 400;
+  color: #fff;
+  background: url("jsconfbr.png") 50% 0 no-repeat;
+}
+
+header p {
+  font-size: 31px;
+  color: #fff;
+}
+
+/* Main */
+
+.content {
+  text-align: center;
+  padding: 50px 0 70px 0;
+  border-bottom: 1px solid #cecece;
+}
+
+.content h2 {
+  font-size: 48px;
+  font-weight: 300;
+  padding-bottom: 30px;
+}
+
+.content p {
+  font-size: 1.2em;
+  font-weight: 300;
+  padding-bottom: 10px;
+}
+
+/* Speaker */
+
+#speakers ul {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+#speakers li {
+  display: inline-block;
+  padding-bottom: 30px;
+  border: 1px solid #cecece;
+  margin: 5px;
+}
+
+#speakers figure {
+  padding-bottom: 20px;
+}
+
+#speakers h3 {
+  font-size: 1.8em;
+  color: #008000;
+}
+
+/* Schedule */
+
+.img {
+  text-align: right;
+}
+
+.img img {
+  height: 110px;
+}
+
+#schedule table {
+  width: 1000px;
+  margin: 0 auto;
+  font-size: 1.8em;
+  border-collapse: collapse;
+}
+
+#schedule td {
+  padding: 5px 0;
+  border-top: 1px solid #cecece;
+  vertical-align: middle;
+}
+
+#schedule td:nth-of-type(2) {
+  text-align: left;
+  padding: 0 40px;
+}
+
+#schedule td img {
+  vertical-align: middle;
+}
+
+#schedule p {
+  font-size: 1em;
+  font-weight: 400;
+}
+
+#schedule a {
+  font-size: .8em;
+  color: #008000;
+}
+
+/* Location */
+#location div.wrapper {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+#location h4 {
+  font-size: 1.2em;
+  text-align: left;
+}
+
+#location figure {
+  padding: 20px 0;
+  width: 100vh;
+}
+
+/* Footer */
+
+#footer {
+  height: 340px;
+  background: url("people.jpg");
+  background-size: cover;
+  background-position: 0 30%;
+}
+
+#footer {
+  color: #fff;
+}
+
+#footer h1 {
+  text-align: center;
+  font-size: 48px;
+  font-weight: 300;
+  padding: 30px 0;
+}
+
+#footer .banner {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+#footer .banner h2 {
+  margin: 0 auto;
+  font-size: 36px;
+  font-weight: 400;
+  width: 960px;
+  text-align: left;
+}
+
+#footer p {
+  width: 960px;
+  margin: 0 auto;
+}
+
+#footer a {
+
+}

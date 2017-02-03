@@ -1,0 +1,277 @@
+html {
+    font-family: "Open Sans", Arial, sans-serif;
+}
+body {
+    margin: 0;
+    font-size: 13px;
+    color: #444;
+}
+body > div {
+    position: relative;
+}
+a[href] {
+    text-decoration: none;
+    color: #444;
+}
+a[href]:hover {
+    text-decoration: underline;
+}
+a.active {
+    font-weight: bold;
+}
+
+#menu {
+    position: fixed;
+    max-width: 100%;
+    z-index: 1;
+    background: #FFF;
+    border-top: 10px solid #F5F5F5;
+    border-bottom: 1px solid #EEE;
+}
+#menu ul {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 960px;
+    text-align: center;
+}
+#menu li {
+    display: inline-block;
+    margin: 0 25px;
+    list-style: none;
+}
+#menu a {
+    line-height: 44px;
+    text-transform: uppercase;
+    outline: 0;
+}
+#menu a.active {
+    font-weight: bold;
+}
+
+#front {
+    top: 55px;
+    margin-bottom: 55px;
+    height: 428px;
+    text-align: center;
+    background: url(images/front.jpg) center no-repeat;
+}
+#front h1, #front h2 {
+    position: relative;
+    margin: 0;
+    top: 150px;
+    font-weight: normal;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0,0,0,.4),0 0 30px rgba(0,0,0,.075);
+    color: #fff;
+}
+#front h1 {
+    font-size: 72px;
+}
+#front h2 {
+    font-size: 31px;
+    text-transform: uppercase;
+}
+#front .logo {
+    position: relative;
+    top: 150px;
+    width: 80px;
+    height: 80px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.4),0 0 30px rgba(0,0,0,.075);
+}
+
+#team {
+    height: 280px;
+    color: #FFF;
+    background-size: cover !important;
+    background: url(images/people.jpg) no-repeat center 23%;
+    text-shadow: 0 1px 3px rgba(0,0,0,.4),0 0 30px rgba(0,0,0,.075);
+}
+#team.section {
+    margin: 0;
+}
+#team h1 {
+    margin: .618em 0 .618em;
+}
+#team h2 {
+    margin: 0 auto;
+    text-align: left;
+    max-width: 960px;
+    font-size: 31px;
+    text-transform: uppercase;
+}
+
+.dark-background {
+    padding: 10px;
+    background: rgba(0,0,0,0.7);
+}
+
+#map {
+    margin: 30px -30px;
+    height: 500px;
+}
+
+.text-centered {
+    text-align: center;
+}
+
+.button {
+    padding: 10px 30px;
+    color: #FFF !important;
+    background: #008000;
+}
+.button:hover {
+    text-decoration: none !important;
+    background: #006000;
+}
+
+.section {
+    margin: 0 30px;
+    padding-bottom: 60px;
+    border-top: 1px solid #efefef;
+}
+.section h1, .section h2 {
+    margin: 0;
+    font-weight: 100;
+    text-align: center;
+}
+.section h1 {
+    margin: 1.236em 0 .618em;
+    font-size: 48px;
+}
+.section h2 {
+    margin: 30px 0 4px;
+    font-weight: 600;
+    font-size: 24px;
+}
+.section h3 {
+    margin: 30px 0 4px;
+    font-weight: 600;
+    font-size: 18px;
+}
+.section p,
+.section .container {
+    margin: 0 auto 17px;
+    max-width: 960px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 25px;
+}
+.section a[href] {
+    color: #008000;
+    font-weight: bold;
+}
+
+.blocks-container {
+    margin: 0 auto;
+    max-width: 1080px;
+    text-align: center;
+}
+
+.block {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+    width: 280px;
+    height: 378px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+}
+.block p {
+    padding: 0 10px;
+}
+.block-image {
+    display: block;
+    height: 230px;
+    background-position: center;
+    background-size: 100%;
+}
+
+.schedule-grid {
+    margin: 0 auto;
+    max-width: 960px;
+    border-bottom: 1px solid #EFEFEF;
+}
+.schedule-grid td {
+    padding: 10px;
+    border-top: 1px solid #EFEFEF;
+}
+.schedule-hour {
+    font-size: 24px;
+}
+.schedule-grid h2 {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 10px 0 0;
+    text-align: left;
+    font-weight: normal;
+}
+.schedule-grid h3 {
+     margin: 8px 0 0;
+}
+.schedule-grid p {
+    font-size: 12px;
+    line-height: 18px;
+}
+.schedule-tag {
+    display: inline-block;
+    padding: 1px 4px;
+    font-size: 7px;
+    background: #EEE;
+    border: 1px solid #AAA;
+}
+.schedule-photo img {
+    width: 130px;
+}
+
+.gold-sponsor,
+.silver-sponsor,
+.support-sponsor {
+    margin-right: 40px;
+}
+.gold-sponsor img {
+    width: 300px;
+}
+.silver-sponsor img {
+    width: 240px;
+}
+.support-sponsor img {
+    width: 180px;
+}
+
+@media (max-width: 654px) {
+    #menu { display: none; }
+
+    #front { top: 0; margin-bottom: 0; height: 300px; }
+    #front h1, #front h2, #front .logo { top: 90px; }
+    #front h1 { font-size: 40px; }
+    #front h2 { font-size: 20px; }
+
+    .section.speakers { margin: 0; }
+    .section.sponsors { margin: 0 10px; }
+
+    #team h1 { font-size: 35px; }
+
+    .schedule-grid tr {
+        position: relative;
+        display: block;
+        border-top: 1px solid #EFEFEF;
+    }
+    .schedule-grid td {
+        display: block;
+        border: none;
+    }
+    .schedule-hour {
+        padding: 20px !important;
+        text-align: right;
+    }
+    .schedule-photo {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .schedule-photo img {
+        width: 80px;
+    }
+}
