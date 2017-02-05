@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 're_word_count'
+require_relative 'word_count'
 
 # Test data version:
 
@@ -11,8 +11,8 @@ class PhraseTest < Minitest::Test
   end
 
   def test_count_one_of_each
-    phrase = Phrase.new('one of each')
-    counts = { 'one' => 1, 'of' => 1, 'each' => 1 }
+    phrase = Phrase.new('one of e_ach')
+    counts = { 'one' => 1, 'of' => 1, 'e_ach' => 1 }
     assert_equal counts, phrase.word_count
   end
 
