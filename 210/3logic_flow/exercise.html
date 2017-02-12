@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Odd Numbers</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // No.1 Odd Numbers
+
+    // function logOddNumbers(num) {
+    //   for (var i = 1; i <= num; i += 2) {
+    //     console.log(i);
+    //   }
+    // }
+
+    // function logOddNumbers(num) {
+    //   for (var i = 1; i <= num; i++) {
+    //     if (i % 2 === 0) {
+    //       continue;
+    //     }
+    //     console.log(i);
+    //   }
+    // }
+
+    // logOddNumbers(19);
+
+    // No.2 Multiples of 3 and 5
+
+    // function multiplesOfThreeAndFive(min, max) {
+    //   for (var i = min; i <= max; i++) {
+    //     if (i % 3 === 0 && i % 5 === 0) {
+    //       console.log(i.toString() + '!');
+    //     } else if (i % 3 === 0) {
+    //       console.log(i.toString());
+    //     } else if (i % 5 === 0) {
+    //       console.log(i.toString());
+    //     }
+    //   }
+    // }
+
+    // multiplesOfThreeAndFive();
+
+
+    ////// No.3 Print Multiples
+
+    // function logMultiples(number) {
+    //   var multiple = Math.floor(100 / number) * number
+
+    //   while (multiple > 0) {
+    //     if ( multiple % 2 === 1) {
+    //       console.log(multiple);
+    //     }
+
+    //     multiple -= number;
+    //   }
+    // }
+
+    // logMultiples(21);
+
+    ////// No.4 FizzBuzz
+
+    // function fizzBuzz() {
+    //   for (var i = 1; i <= 100; i++) {
+    //     var message = '';
+
+    //     if (i % 3 === 0) {
+    //       message += 'Fizz';
+    //     }
+
+    //     if (i % 5 === 0) {
+    //       message += 'Buzz';
+    //     }
+
+    //     console.log(message || i)
+    //   }
+    // }
+
+    // fizzBuzz()
+
+    //////// No.5 Prime Check
+
+    // function isPrime(number) {
+    //   if (number <= 1 || (number > 2 && number % 2 === 0)) { return false}
+
+    //   for(var i = 2; i < number; i++) {
+    //     if (number % i === 0) {
+    //       return false
+    //     }
+    //   }
+
+    //   return true
+    // }
+
+    // console.log(isPrime(1));
+
+    //////// No.6 XOR
+
+    // function isXor(arg1, arg2) {
+    //   if ((arg1 || arg2) && !(arg1 && arg2)) {
+    //     return true;
+    //   } else {
+    //     return false
+    //   }
+    // }
+
+    // function isXor(arg1, arg2) {
+    //   if (arg1 && !arg2) {
+    //     return true;
+    //   }
+
+    //   if (!arg1 && arg2) {
+    //     return true;
+    //   }
+
+    //   return false;
+    // }
+
+    // function isXor(arg1, arg2) {
+    //   // return !!((value1 && !value2) || (!value1 && value2))
+    //   return !!((arg1 || arg2) && !(arg1 && arg2))
+    // }
+
+    // console.log(isXor(false, 3));
+    // console.log(isXor('a', undefined));
+    // console.log(isXor(null, ''));
+    // console.log(isXor('2', 23));
+
+    //////// No.7 Guessing the password
+
+    // function guessPassword() {
+    //   var password = 'password';
+
+    //   for (var i = 0; i < 3; i++) {
+    //     var answer = prompt('What is the password:');
+
+    //     if (answer === password) {
+    //       return 'You have successfully logged in.';
+    //     }
+    //   }
+
+    //   return 'You have been denied access.';
+    // }
+
+    // console.log(guessPassword());
+
+    // var password = 'password';
+    // var failedAttempts = 0;
+
+    // while (true) {
+    //   var guess = prompt('What is the password:')
+
+    //   if (guess === password) {
+    //     console.log('You have successfully logged in.')
+    //     break
+    //   }
+
+    //   failedAttempts++;
+
+    //   if (failedAttempts === 3) {
+    //     console.log('You have been denied access.')
+    //     break
+    //   }
+    // }
+
+    // do {
+    //   var guess = prompt('What is the password:')
+
+    //   if (guess === password) {
+    //     break;
+    //   }
+
+    //   failedAttempts++;
+    // } while (failedAttempts < 3)
+
+    // if (failedAttempts === 3) {
+    //   console.log('You have been denied access.')
+    // } else {
+    //   console.log('You hs..')
+    // }
+
+    //////// No.8 Student Grade
+
+    // function averageScore() {
+    //   var number = Number(prompt('The number of scores: '))
+    //   var total = 0;
+
+    //   for(var i = 1; i <= number; i++) {
+    //     total += Number(prompt('Enter score ' + i + ':'))
+    //   }
+
+    //   return total / number;
+    // }
+
+    // var average = averageScore();
+
+    // var grade;
+
+    // if (average >= 90) {
+    //   grade = 'A'
+    // } else if (average >= 70) {
+    //   grade = 'B'
+    // } else if (average >= 50) {
+    //   grade = 'C'
+    // } else {
+    //   grade = 'F'
+    // }
+
+    // console.log('Based on the average of you three scores your letter grade is "' + grade + '".');
+
+    //////// No.9 Greatest Common Divisor
+
+    // function gcd(num1, num2) {
+    //   do {
+    //     var remainder = num1 % num2;
+
+    //     num1 = num2;
+    //     num2 = remainder
+    //   } while (num2 !== 0)
+
+    //   console.log(num1)
+    // }
+
+    // gcd(9, 2)
+
+    //////// No.10 Goldbach Numbers
+
+    // function checkGoldbach(n) {
+    //   if (n == 2 || n % 2 === 1) {
+    //     console.log(null);
+    //     return
+    //   }
+
+    //   var num1 = 2;
+    //   var num2;
+
+    //   // for (var i = 2; i <= n / 2; i++) {
+    //   //   num1 = i;
+    //   //   num2 = n - i;
+
+    //   //   if (isPrime(num1) && isPrime(num2)) {
+    //   //     console.log(num1, num2)
+    //   //   }
+    //   // }
+
+    //   do {
+    //     num2 = n - num1;
+
+    //     if (isPrime(num1) && isPrime(num2)) {
+    //       console.log(num1, num2);
+    //     }
+
+    //     num1++;
+    //   } while (num1 < n / 2)
+    // }
+
+    // checkGoldbach(100);
+
+    //////// No.11 Pattern Generation
+    // function getNumers(num) {
+    //   var numbers = '';
+
+    //   for (i = 1; i <= num; i++) {
+    //     numbers += i;
+    //   }
+
+    //   return numbers
+    // }
+
+    // function generatePattern(n) {
+    //   var numNumbers = 1;
+
+    //   while (numNumbers <= n) {
+    //     var asterNumbers = n - numNumbers;
+    //     var numbers = getNumers(numNumbers);
+
+    //     console.log(numbers + '*'.repeat(asterNumbers));
+
+    //     numNumbers++;
+    //   }
+    // }
+
+    ///// v2
+
+    // function generatePattern(n) {
+    //   for (var i = 1; i <= n; i++) {
+    //     var rowCharacters = '';
+
+    //     for (var j = 1; j <= i; j++) {
+    //       rowCharacters += String(j);
+    //     }
+
+    //     /// further exploration
+
+    //     if (i > 9) { 
+    //       rowCharacters += '*'.repeat(2 * (n - i));
+    //     } else {
+    //       rowCharacters += '*'.repeat(n - i + (n - 9))
+    //     }
+
+    //     console.log(rowCharacters)
+    //   }
+    // }
+
+    ///// v2 further exploration
+
+    // function generatePattern(n) {
+    //   var lastRowString = '';
+    //   var width;
+    //   var string;
+
+    //   for (var i = 1; i <= n; i++) {
+    //     lastRowString += String(i);
+    //   }
+
+    //   width = lastRowString.length;
+
+    //   for (var j = 1; j <= n; j++) {
+    //     string = '';
+
+    //     for (var k = 1; k <= j; k++) {
+    //       string += String(k);
+    //     }
+
+    //     string += '*'.repeat(width - string.length);
+    //     console.log(string);
+    //   }
+    // }
+
+    // generatePattern(20)
+
+    //////// No.12 Index of Substring
+
+    // function indexOf(firstString, secondString) {
+    //   var index;
+
+    //   for (var i = 0; i <= firstString.length - secondString.length; i++) {
+    //     var substring = '';
+
+    //     for (var j = 0; j < secondString.length; j++) {
+    //       substring += firstString[i + j];
+    //     }
+
+    //     if (substring === secondString) {
+    //       index = i;
+    //       break;
+    //     }
+    //   }
+
+    //   if (!index) {
+    //     console.log(-1);
+    //   } else {
+    //     console.log(index);
+    //   }
+    // }
+
+    ///// v_2
+
+    // function indexOf(firstString, secondString) {
+    //   var index;
+    //   var m = firstString.length;
+    //   var n = secondString.length;
+
+    //   for (var i = 0; i <= m - n; i++) {
+    //     var substring = '';
+
+    //     for (var j = 0; j < n; j++) {
+    //       substring += firstString[i + j];
+    //     }
+
+    //     if (substring === secondString) {
+    //       return 
+    //     }
+    //   }
+    // }
+
+    ///// v_3
+    // function indexOf(firstString, secondString) {
+    //   var limit = firstString.length - secondString.length;
+    //   var matchCount;
+
+    //   for (var i = 0; i <= limit; i++) {
+    //     matchCount = 0;
+
+    //     for (var j = 0; j < secondString.length; j++) {
+    //       if (firstString[i + j] === secondString[j]) {
+    //         matchCount += 1
+    //       }
+    //     }
+
+    //     if (matchCount === secondString.length) {
+    //       console.log(i);
+    //       return;
+    //     }
+    //   }
+
+    //   console.log(-1)
+    // }
+    // indexOf('Some strings', 's');      // 5
+    // indexOf('Bluq Whqle Whale', 'Whale');    // 5
+    // indexOf('Blue Whale', 'Blute');    // -1
+    // indexOf('Blue Whale', 'leB');
+
+    // indexOf('Some strings', 's');                  // 11
+    // indexOf('Blue Whale, Killer Whale', 'Whale');  // 19
+    // indexOf('Blue Whale, Killer Whale', 'all'); 
+
+    //////// No.13 Trimming Spaces
+
+    // function trim(string) {
+    //   var stripString = '';
+    //   var startIndex;
+    //   var endIndex;
+
+    //   for (var i = 0; i < string.length; i++) {
+    //     if (string[i] != ' ') {
+    //       startIndex = i;
+    //       break;
+    //     }
+    //   }
+
+    //   for (var j = string.length - 1; j >= 0; j--) {
+    //     if (string[j] != ' ') {
+    //       endIndex = j;
+    //       break
+    //     }
+    //   }
+
+    //   for (var k = startIndex; k <= endIndex; k++) {
+    //     stripString += string[k];
+    //   }
+
+    //   console.log(stripString);
+    // }
+
+
+    ///// v_2
+    // function trimLeft(string) {
+    //   var trimmed = '';
+    //   var copyMode = false;
+
+    //   for (var i = 0; i < string.length; i++) {
+    //     if (string[i] != ' ') {
+    //       copyMode = true;
+    //     }
+
+    //     if (copyMode) {
+    //       trimmed += string[i];
+    //     }
+    //   }
+
+    //   return trimmed;
+    // }
+
+    // function trimRight(string) {
+    //   var trimmed = '';
+    //   var copyMode = false;
+
+    //   for (var i = string.length - 1; i >= 0; i--) {
+    //     if (string[i] != ' ') {
+    //       copyMode = true;
+    //     }
+
+    //     if (copyMode) {
+    //       trimmed = string[i] + trimmed;
+    //     }
+    //   }
+
+    //   return trimmed;
+    // }
+
+    // function trim(string) {
+    //   var trimmed = trimLeft(string);
+    //   trimmed = trimRight(trimmed);      
+
+    //   console.log(trimmed);
+    // }
+
+    // trim('  abc  ');  // "abc"
+    // trim('abc   ');   // "abc"
+    // trim(' ab c');    // "ab c"
+    // trim(' a b  c');  // "a b  c"
+    // trim('      ');   // ""
+    // trim('');         // ""
+
+    //////// No.14 Splitting a String
+
+    // function splitString(string, delimiter) {
+    //   if (delimiter == undefined) {
+    //     console.log('ERROR: No delimiter');
+    //     return
+    //   }
+
+    //   var temp = '';
+    //   for (var i = 0; i < string.length; i++) {
+    //     if (string[i] === delimiter) {
+    //       console.log(temp);
+    //       temp = '';
+    //     } else if (delimiter == '') {
+    //       console.log(string[i])
+    //     } else {
+    //       temp += string[i];
+    //     }
+    //   }
+
+    //   if (temp) {
+    //       console.log(temp)
+    //     }
+    // }
+
+    // splitString('abc,123,hello world', ',');
+    // splitString('hello', '');
+    // splitString(';hello;', ';');
+    // splitString('hello', ';');
+
+    //////// No.16 Repeating Strings
+
+    // function repeat(string, times) {
+    //   var repeated = '';
+
+    //   if (times < 0 || isNaN(times)) {
+    //     return undefined;
+    //   }
+
+    //   for (var i = 0; i < times; i++) {
+    //     repeated += string;
+    //   }
+
+    //   return repeated;
+    // }
+
+    // repeat('abc', 1);    // "abc"
+    // repeat('abc', 2);    // "abcabc"
+    // repeat('abc', -1);   // undefined
+    // repeat('abc', 0);    // ""
+    // repeat('abc', 'a');  // undefined
+
+    //////// No.17 Start with
+
+    // function startsWith(string, searchString) {
+    //   if (searchString.length > string) {
+    //     console.log('false');
+    //     return false;
+    //   }
+
+    //   for (var i = 0; i < searchString.length; i++) {
+    //     if (string[i] !== searchString[i]) {
+    //       console.log('false');
+    //       return false;
+    //     }
+    //   }
+
+    //   console.log('true');
+    //   return true;
+    // }
+
+    // var str = 'We put comprehension and mastery above all else';
+    // startsWith(str, 'We');       // true
+    // startsWith(str, 'We put');   // true
+    // startsWith(str, '');         // true
+    // startsWith(str, 'put');      // false
+
+    // var longerString = 'We put comprehension and mastery above all else!';
+    // startsWith(str, longerString);
+
+    //////// No.18 Converting Upper Case to Lower Case
+
+    // function toLowerCase(string) {
+    //   var newString = '';
+    //   var charCode;
+
+    //   for (var i = 0; i < string.length; i++) {
+    //     charCode = string.charCodeAt(i);
+
+    //     if (charCode >= 65 && charCode <= 90) {
+    //       newString += String.fromCharCode(charCode + 32);
+    //     } else {
+    //       newString += string[i];
+    //     }
+    //   }
+
+    //   console.log(newString);
+    // }
+
+    // toLowerCase('ALPHABET');
+    // toLowerCase('123');
+    // toLowerCase('abcDEF');
+
+    //////// No.19 Substring 1
+
+    // function substr(string, start, length) {
+    //   var subString = '';
+
+    //   if (start < 0) {
+    //     start += string.length;
+    //   }
+
+    //   var end = start + length;
+
+    //   for (var i = start; i < end; i++) {
+    //     if (typeof(string[i]) == 'undefined') {
+    //       break;
+    //     }
+    //     subString += string[i];
+    //   }
+
+    //   console.log(subString);
+    // }
+
+    // var string = 'hello world';
+
+    // substr(string, 2, 5);     // "llo "
+    // substr(string, -3, 2);    // "rl"
+    // substr(string, 8, 20);    // "rld"
+    // substr(string, 0, -20);   // ""
+    // substr(string, 0, 0);     // ""
+
+    /////// No.20 Substring 2
+
+    // function substring(string, start, end) {
+    //   var newString = '';
+
+    //   if (start > end) {
+    //     var temp = start;
+    //     start = end;
+    //     end = temp;
+    //   }
+
+    //   if (isNaN(start)) {
+    //     start = 0;
+    //   }
+
+    //   if (typeof(end) == 'undefined') {
+    //     end = string.length;
+    //   }
+      
+    //   for (var i = start; i < end; i++) {
+    //     if (!string[i]) {
+    //       break;
+    //     }
+    //     newString += string[i];
+    //   }
+
+    //   console.log(newString);
+    // }
+
+    // var string = 'hello world';
+
+    // substring(string, 2, 4);    // "ll"
+    // substring(string, 4, 2);    // "ll"
+    // substring(string, 0, -1);   // ""
+    // substring(string, 2);       // "llo world"
+    // substring(string, 'a');     // "hello world"
+    // substring(string, 8, 20);   // "rld"
+
+    /////// Rot 13
+    // function cipher(charCode, min, max) {
+    //   var rotNumber = 13;
+    //   charCode = charCode + rotNumber;
+
+    //   if (charCode > max) {
+    //     charCode = (charCode - max) + (min - 1);
+    //   }
+
+    //   return charCode;
+    // }
+
+    // function rot13(string) {
+    //   var newString = '';
+    //   var charCode;
+
+    //   for (var i = 0; i < string.length; i++) {
+    //     charCode = string.charCodeAt(i);
+
+    //     if (string[i] <= 'z' && string[i] >= 'a') {
+    //       charCode = cipher(charCode, 'a'.charCodeAt(), 'z'.charCodeAt())
+    //     }
+
+    //     if (string[i] <= 'Z' && string[i] >= 'A' ) {
+    //       charCode = cipher(charCode, 'A'.charCodeAt(), 'Z'.charCodeAt())
+    //     }
+
+    //     newString += String.fromCharCode(charCode)
+    //   }
+
+    //   return newString;
+    // }
+
+    ///// Standart Version
+// function rot13(text) {
+//   var transformed = '';
+
+//   for (i = 0; i < text.length; i++) {
+//     transformed += rot13Character(text[i]);
+//   }
+
+//   return transformed;
+// }
+
+// function rot13Character(char) {
+//   var alphabet = 'abcdefghijklmnopqrstuvwxyz';
+//   var upperCase = false;
+//   var initialIndex = alphabet.indexOf(char);
+//   var char, initialIndex, shiftedIndex, transformed;
+
+//   // no match might mean that we are dealing with an uppercase letter
+//   if (initialIndex === -1) {
+//     initialIndex = alphabet.indexOf(char.toLowerCase());
+//     upperCase = true;
+//   }
+
+//   // if there is still no match, it's not a character between a-z.
+//   if (initialIndex === -1) {
+//     return char;
+//   }
+
+//   shiftedIndex = (initialIndex + 13 ) % 26;
+//   transformed = alphabet[shiftedIndex];
+
+//   if (upperCase) {
+//     transformed = transformed.toUpperCase();
+//   }
+
+//   return transformed;
+// }
+
+
+  //// Imitate version 2
+    // function rotate13(char) {
+    //   var alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    //   var uppercase = false;
+    //   var initialIndex = alphabet.indexOf(char);
+    //   var shiftedIndex, transformed;
+
+    //   if (initialIndex === -1) {
+    //     initialIndex = alphabet.indexOf(char.toLowerCase());
+    //     uppercase = true;
+    //   }
+
+    //   if (initialIndex === -1) {
+    //     return char;
+    //   }
+
+    //   shiftedIndex = (initialIndex + 13) % 26;
+    //   transformed = alphabet[shiftedIndex]
+
+    //   if (uppercase) {
+    //     transformed = transformed.toUpperCase()
+    //   }
+
+    //   return transformed;
+    // }
+
+    // function rot13(text) {
+    //   var newString = '';
+
+    //   for (var i = 0; i < text.length; i++) {
+    //     newString += rotate13(text[i]);
+    //   }
+
+    //   return newString;
+    // }
+
+    // console.log(rot13('Teachers open the door, but you must enter by yourself.'));
+
+    // console.log(rot13(rot13('Teachers open the door, but you must enter by yourself.')));
+
+// var alphabet = 'abcdefghijklmnopqrstuvwxyz';
+// var initialIndex = alphabet.indexOf('a');
+// initialIndex = '3'.toLowerCase()
+// console.log(initialIndex);
+
+  </script>
+</body>
+</html>
