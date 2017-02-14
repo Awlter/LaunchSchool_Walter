@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Objects</title>
+</head>
+<body>
+  <script type="text/javascript">
+    ///// No.1
+    // function objectHasProperty(obj, prop) {
+    //   if (obj[prop] === undefined) {
+    //     return false;
+    //   }
+
+    //   return true;
+    // }
+
+    // v_2
+
+    // function objectHasProperty(object, propertyName) {
+    //   var keys = Object.keys(object);
+    //   return keys.indexOf(propertyName) !== -1;
+    // }
+
+    // var pets = {
+    //   cat: 'Simon',
+    //   dog: 'Dwarf',
+    //   mice: null,
+    // }
+
+    // var a = objectHasProperty(pets, 'dog');       // true
+    // var b = objectHasProperty(pets, 'lizard');    // false
+    // var c = objectHasProperty(pets, 'mice');      // true
+
+    ///// No.2 
+    // function incrementProperty(object, propertyName) {
+    //   if (object[propertyName]) {
+    //     return object[propertyName] += 1;
+    //   }
+
+    //   return object[propertyName] = 1;
+    // }
+
+    // var wins = {
+    //   steve: 3,
+    //   susie: 4,
+    // }
+
+    // var a = incrementProperty(wins, 'susie');
+    // console.log(a);
+    // console.log(wins);
+    // var b = incrementProperty(wins, 'lucy');
+    // console.log(b);
+    // console.log(wins);    
+    
+    ///// No.3
+    // function copyProperties(source, destination) {
+    //   var count = 0;
+    //   for (property in source) {
+    //     destination[property] = source[property]
+    //     count++
+    //   }
+
+    //   return count;
+    // }
+
+    // var hal = {
+    //   model: 9000,
+    //   enabled: true,
+    // };
+    // var sal = {};
+    // console.log(copyProperties(hal, sal));
+    // console.log(sal);
+
+    ///// No.4
+    // function wordCount(string) {
+    //   var strings = string.split(' ');
+    //   var counts = {};
+
+    //   for (var i = 0; i < strings.length; i++) {
+    //     if (counts[strings[i]] === undefined) {
+    //       counts[strings[i]] = 1;
+    //     } else {
+    //       counts[strings[i]] += 1;
+    //     }
+    //   }
+
+    //   return counts;
+    // }
+
+    // console.log(wordCount('box car cat bag box'));
+
+    ///////// Working with the Math Object ///////////
+    ////// No.1 converts radians to degrees.
+    // function radianToDegress(radian) {
+    //   return radian / (Math.PI / 180)
+    // }
+
+    // var rad1 = 1.047;
+    // console.log(radianToDegress(rad1))
+
+    ////// No.2 Math.abs
+    // var degrees = -180;
+    // console.log(Math.abs(degrees))
+
+    ////// No.3 
+    // var squreNumber = 16777216;
+    // console.log(Math.sqrt(squreNumber))
+
+    ////// No.4
+    // console.log(Math.pow(16, 6));
+
+    ////// No.5
+    // var a = 50.72;
+    // var b = 49.2;
+    // var c = 49.86;
+
+    // console.log(Math.floor(a));
+    // console.log(Math.ceil(b));
+    // console.log(Math.round(c));
+
+    ////// No.6
+    // function random(min, max) {
+    //   return Math.floor(Math.random() * (max - min + 1)) + min
+    // }
+
+    // console.log(Math.random())
+
+    ////////// Working with Dates //////////
+    ///// No.1
+    // var today = new Date(1996, 5, 31);
+    // console.log(today)
+
+    ///// No.2
+    // function dateSuffix(date) {
+    //   var suffix = 'th';
+    //   var dateString = String(date);
+    //   var digit;
+
+    //   if (dateString.length === 1) {
+    //     digit = dateString;
+    //   } else if (dateString[0] !== '1') {
+    //     digit = dateString[1];
+    //   }
+
+    //   if (digit === '1') {
+    //     suffix = 'st';
+    //   } else if (digit === '2') {
+    //     suffix = 'nd';
+    //   } else if (digit === '3') {
+    //     suffix = 'rd'
+    //   }
+
+    //   return dateString + suffix;
+    // }
+
+    // function formattedMonth(today) {
+    //   var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    //   return months[today.getMonth()];
+    // }
+
+    // function formattedDay(today) {
+    //   var daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    //   return daysOfWeek[today.getDay()];
+    // }
+
+    // function formattedDate(today) {
+    //   var month = formattedMonth(today);
+    //   var day = formattedDay(today);
+    //   var date = today.getDate();
+
+    //   console.log("Today is " + day + ', ' + month + ' ' + dateSuffix(date))
+    // }
+
+    // function addZero(val) {
+    //   return val.length < 2 ? '0' + val : val
+    // }
+
+    // function formatTime(today) {
+    //   var hours = today.getHours().toString();
+    //   var minutes = today.getMinutes().toString();
+
+    //   hours = addZero(hours)
+    //   minutes = addZero(minutes)
+
+    //   return hours + ':' + minutes
+    // }
+
+    // var today = new Date();
+    // var tomorrow = new Date(today.getTime());
+    // tomorrow.setDate(today.getDate() + 1);
+
+    // var nextWeek = new Date(today.getTime());
+    // formattedDate(today);
+
+    // console.log(today.toDateString());
+    // nextWeek.setDate(today.getDate() + 7);
+    // var result = today.toDateString() == nextWeek.toDateString();
+
+    // console.log(formatTime(today));
+
+    //////////// Welcome Stranger ////////////
+    // function greetings(name, info) {
+    //   name = name.join(' ');
+
+    //   return 'Hello, ' + name + '! Nice to have ' + info.title + ' ' + info.occupation + ' around.'
+    // }
+
+    // console.log(greetings(['John', 'Q', 'Doe'], { title: 'Master', occupation: 'Plumber' }));
+
+    /////////// Repeated Characters //////////
+    // function repeatedCharacters(string) {
+    //   var counts = {};
+    //   var countsLarger = {};
+
+    //   for (var i = 0; i < string.length; i++) {
+    //     var char = string[i].toLowerCase();
+    //     if (counts[char] === undefined) {
+    //       counts[char] = 1;
+    //     } else {
+    //       counts[char] += 1;
+    //     }
+    //   }
+
+    //   for (var key in counts) {
+    //     if (counts[key] === 1) {
+    //       delete counts[key];
+    //     }
+    //   }
+
+    //   return counts;
+    // }
+
+    // console.log(repeatedCharacters('Programming'));    // { r: 2, g: 2, m: 2 }
+    // console.log(repeatedCharacters('Combination'));    // { o: 2, i: 2, n: 2 }
+    // console.log(repeatedCharacters('Pet'));            // {}
+    // console.log(repeatedCharacters('Paper'));          // { p: 2 }
+    // console.log(repeatedCharacters('Baseless'));       // { s: 3, e: 2 }
+  </script>
+</body>
+</html>
