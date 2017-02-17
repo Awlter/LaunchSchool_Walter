@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Objects</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // var myObject = {
+    //   a: 'name',
+    //   'b': 'test',
+    //   123: 'c',
+    //   1: 'd'
+    // };
+    // console.log(myObject[1]);
+    // console.log(myObject['a']);
+    // console.log(myObject.a);
+
+    //// No.2 Literal Method
+    // var person = {
+    //   firstName: function() {
+    //     return 'Victor';
+    //   },
+    //   lastName: function() {
+    //     return 'Reyes';
+    //   },
+    // };
+
+    // console.log(person.firstName() + ' ' + person.lastName());
+
+    ////// Mutation 
+    // var array1 = [[1, 2, 3], ['a', 'b', 'c']];
+    // var array2 = [];
+
+    // for (var i = 0; i < array1.length; i++) {
+    //   array2.push(array1[i]);
+    // }
+
+    // for (var i = 0; i < array1.length; i++) {
+    //   array1[i].splice(2, 1);
+    // }
+
+    // console.log(array1);
+    // console.log(array2);
+
+    ////// Dynamic
+
+    // var myObject = {
+    //   prop1: '123',
+    //   prop2: '234',
+    //   'prop 3': '345',
+    // };
+
+    // var prop2 = '456';
+
+    // console.log(prop2);
+
+    ///////
+    // var myObj = {};
+    // myObj[myFunc()] = 'hello, ';
+    // function myFunc() {
+    //   return 'funcProp';
+    // };
+
+    // console.log(myObj);
+    // myObj[myFunc()] = 'world!';
+    // console.log(myFunc());
+
+    ////// Array Object 1
+    // var myArray = ['a', 'b', 'c'];
+    // console.log(myArray[0]);
+    // console.log(myArray[-1]);
+    // myArray[-1] = 'd';
+    // myArray['e'] = 5;
+    // myArray[3] = 'f';
+
+    // console.log(myArray[-1]);
+    // console.log(myArray['e']);
+    // console.log(myArray);
+
+    ////// Penultimate
+    // console.log(penultimate('last word'));               // 'last')
+    // console.log(penultimate('Launch School is great!')); // 'is'
+
+    // function penultimate(string) {
+    //   // return string.split(' ').splice(-2, 1).pop();
+    //   return string.split(' ').slice(-2, -1)[0]
+    // }
+
+    /////// After midnight
+    // var date = new Date(1996, 5, 31, 0, 0);
+    // date.setMinutes(-130);
+    // console.log(date.getHours());
+    // console.log(date.getMinutes());
+
+    // function timeOfDay(minutes) {
+    //   var date = new Date(1996, 5, 31, 0, 0);
+    //   date.setMinutes(minutes);
+
+    //   var hours = date.getHours();
+    //   var minutes = date.getMinutes();
+
+    //   if (hours < 10) {
+    //     hours = '0' + String(hours);
+    //   }
+
+    //   if (minutes < 10) {
+    //     minutes = '0' + String(minutes);
+    //   }
+
+    //   return `${hours}:${minutes}`
+ 
+    // }
+
+    // console.log(timeOfDay(0));       // "00:00"
+    // console.log(timeOfDay(-3));      // "23:57"
+    // console.log(timeOfDay(35));      // "00:35"
+    // console.log(timeOfDay(-1437));   // "00:03"
+    // console.log(timeOfDay(3000));    // "02:00"
+    // console.log(timeOfDay(800));     // "13:20"
+    // console.log(timeOfDay(-4231));   // "01:29"
+
+    // var midnight = new Date('1/1/2000 00:00');
+    // console.log(midnight);
+
+    ///////// After midnight 2
+    // function afterMidnight(time) {
+    //   var [hours, minutes] = time.split(':');
+    //   hours = parseInt(hours, 10);
+    //   minutes = parseInt(minutes, 10);
+
+    //   return hours * MINUTES_PER_HOUR + minutes;
+    // }
+
+    // function beforeMidnight(time) {
+    //   var [hours, minutes] = time.split(':');
+    //   hours = parseInt(hours, 10);
+    //   minutes = parseInt(minutes, 10);
+
+    //   return (hours * MINUTES_PER_HOUR - minutes) % MINUTES_PER_DAY;
+    // }
+
+    /// version 2 with expression in the Date object as initialization
+
+    var MINUTES_PER_HOUR = 60;
+    var HOURS_PER_DAY = 24;
+    var MINUTES_PER_DAY = MINUTES_PER_HOUR * HOURS_PER_DAY;
+    var DATE_PART = '1/1/2000';
+
+    function afterMidnight(timestr) {
+      var midnight = new Date(DATE_PART + ' 00:00');
+      var currentDateTime = new Date(DATE_PART + ' ' + timestr);
+
+      return (currentDateTime.getTime() - midnight.getTime()) / 60000;
+    }
+
+    function beforeMidnight(timestr) {
+      var deltaMinutes = MINUTES_PER_DAY - afterMidnight(timestr);
+
+      return deltaMinutes % MINUTES_PER_DAY;
+    }
+
+
+    console.log(afterMidnight('00:00'));        // 0
+    console.log(beforeMidnight('00:00'));       // 0
+    console.log(afterMidnight('12:34'));        // 754
+    console.log(beforeMidnight('12:34'));       // 686
+  </script>
+</body>
+</html>
