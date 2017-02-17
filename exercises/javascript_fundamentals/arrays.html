@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Array</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // var myArray = [1, 2, 3, 4];
+    // var myOtherArray = [...myArray];
+
+    // myArray.pop();
+    // console.log(myOtherArray);
+
+    // myArray = [1, 2];
+    // console.log(myOtherArray);
+
+    ////// Concat 1
+    // function concat(array1, secondArgument) {
+    //   var result = [];
+
+    //   result = [...array1];
+
+    //   if (Array.isArray(secondArgument)) {
+    //     for (var i = 0; i < secondArgument.length; i++) {
+    //       result.push(secondArgument[i]);
+    //     }
+    //   } else {
+    //     result.push(secondArgument);
+    //   }
+
+    //   return result;
+    // }
+
+    // console.log(concat([1, 2, 3], [4, 5, 6]));            // [1, 2, 3, 4, 5, 6]
+    // console.log(concat([1, 2], 3));                       // [1, 2, 3]
+    // console.log(concat([2, 3], ['two', 'three']));        // [2, 3, "two", "three"]
+    // console.log(concat([2, 3], 'four'));                  // [2, 3, "four"]
+
+    // var obj = { a: 2, b: 3 };
+    // var newArray = concat([2, 3], obj);      // [2, 3, { a: 2, b: 3 }]
+    // console.log(newArray);
+    // obj.a = 'two';
+    // console.log(newArray);
+
+    /////////////////////////////
+    // var myArray = [1, 2, 3];
+    // var myOtherArray = ['a', 'b', 'c'];
+    // var myObject = { obj: 'myObject', };
+    // console.log(myObject);
+    // var newArray = myArray.concat(myOtherArray, myObject);
+    // console.log(newArray);               // [ 1, 2, 3, 'a', 'b', 'c', { obj: 'myObject' } ]
+    // myObject.obj = 'yourObject';
+    // console.log(newArray);
+
+    ///// Array Concat 2
+    // function concat(a) {
+    //   var newArray = [];
+
+    //   for (var i = 0; i < arguments.length; i += 1) {
+    //     if (Array.isArray(arguments[i])) {
+    //       for (var j = 0; j < arguments[i].length; j += 1) {
+    //         newArray.push(arguments[i][j]);
+    //       }
+    //     } else {
+    //         newArray.push(arguments[i]);
+    //     }
+    //   }
+
+    //   return newArray;
+    // }
+
+    // console.log(concat([1, 2 ,3], [4, 5, 6], [7, 8, 9]));           // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+    // console.log(concat([1, 2], "a", ["one", "two"]));               // [ 1, 2, "a", "one", "two" ]
+    // console.log(concat([1, 2], ["three"], 4));                      // [ 1, 2, "three", 4 ]
+
+    ////////////
+
+    // console.log([1, 2].concat([4, 5, 6], 'a', ['one', 'two', 'three']))
+
+    ////// Array Pop and push
+
+    // function pop(array) {
+    //   var lastIndex = array.length - 1;
+
+    //   if (lastIndex < 0) {
+    //     return undefined;
+    //   }
+
+    //   var lastElement = array[lastIndex];
+
+    //   array.length = lastIndex;
+
+    //   return lastElement;
+    // }
+
+    // var array = [1, 2, 3];
+    // console.log(pop(array));       // 3
+    // console.log(array);            // [1, 2]
+    // console.log(pop([]));
+    // console.log(pop([1, 2, ['a', 'b', 'c']]));
+
+    // function push(array) {
+    //   console.log(array);
+
+    //   for (var i = 1; i < arguments.length; i += 1) {
+    //     arguments[0].push(arguments[i]);
+    //   }
+
+    //   console.log(array);
+    //   return array.length;
+    // }
+
+    // var array = [1, 2, 3];
+    // console.log(push(array, 4, 5, 6));   
+    // console.log(array);
+
+    ////// Buggy Solution 
+    // function pop(array) {
+    //   var poppedElement = array.splice(array.length - 1);
+
+    //   return poppedElement[0];
+    // }
+
+    // function push(array) {
+    //   for (var i = 1, length = arguments.length; i < length; i++) {
+    //     array[i] = arguments[i];
+    //   }
+
+    //   return array.length;
+    // }
+    // var array = [1, 2, 3];
+    // console.log(pop(array));       // 3
+    // console.log(array);            // [1, 2]
+    // console.log(pop([]));
+
+    // console.log([5, 6, 7].push(2, 2));    
+
+    ////// String And Array Reverse
+
+    // function reverse(input) {
+    //   var output;
+
+    //   if (Array.isArray(input)) {
+    //     output = [];
+    //   } else {
+    //     output = '';
+    //   }
+    // }
+
+    // function reverse(inputForReversal) {
+    //   if (Array.isArray(inputForReversal)) {
+    //     return reverseArray(inputForReversal);
+    //   } else {
+    //     return reverseString(inputForReversal);
+    //   }
+    // }
+
+    // function reverseArray(inputForReversal) {
+    //   var reversed = [];
+    //   for (var i = 0, length = inputForReversal.length - 1; i <= length; i++) {
+    //     reversed[length - i] = inputForReversal[i];
+    //   }
+
+    //   return reversed;
+    // }
+
+    // function reverseString(inputForReversal) {
+    //   stringArray = inputForReversal.split('');
+    //   return reverseArray(stringArray).join('');
+    // }
+
+    // console.log(reverse('Hello'));          // olleH
+    // console.log(reverse('a'));              // a
+    // console.log(reverse([1, 2, 3, 4]));     // [4, 3, 2, 1]
+    // console.log(reverse([]));               // []
+
+    ////// Shift and unshift
+    // function shift(array) {
+    //   if (array.length !== 0) {
+    //     return array.splice(0, 1).pop();        
+    //   }
+    // }
+
+    // function unshift(array) {
+    //   for (var i = 1; i < arguments.length; i++) {
+    //     array.splice(i - 1, 0, arguments[i])
+    //   }
+
+    //   return array.length
+    // }
+
+    // console.log(shift([1, 2, 3]));                // 1
+    // console.log(shift([]));                       // undefined
+    // console.log(shift([[1, 2, 3], 4 ,5]));        // [1, 2, 3]
+
+    // console.log(unshift([1, 2, 3], 5, 6));        // 5
+    // console.log(unshift([1, 2, 3]));              // 3
+    // console.log(unshift([4, 5], [1, 2 ,3]));      // 3
+
+    // var testArray = [1, 2, 3];
+    // console.log(shift(testArray));                // 1
+    // console.log(testArray);                       // [2, 3]
+    // console.log(unshift(testArray, 5, 6));           // 3
+    // console.log(testArray);                       // [5, 2, 3]
+
+    ////// Slice and splice
+
+    // function slice(arr, begin, end) {
+    //   var newArray = [];
+
+    //   if (end > arr.length) {
+    //     end = arr.length;
+    //   }
+
+    //   for (var i = begin; i < end; i++) {
+    //     newArray.push(arr[i]);
+    //   }
+
+    //   return newArray;
+    // }
+
+    // console.log(slice([1, 2, 3], 1, 2));           // [2]
+    // console.log(slice([1, 2, 3], 2, 0));           // []
+    // console.log(slice([1, 2, 3], 5, 1));           // []
+
+    // var arr = [1, 2, 3];
+    // console.log(slice(arr, 1, 3));                 // [2, 3]
+    // console.log(arr);                              // [1, 2, 3]
+
+    // function splice(arr, begin, deletecount) {
+    //   var arrayCopy = [...arr];
+    //   var newItems = Array.prototype.slice.call(arguments, 3);
+    //   console.log(newItems);
+    //   var newItemsLength = newItems.length;
+
+    //   arr.length = arr.length + newItemsLength - deletecount;
+
+    //   for (var i = 0; i < begin; i++) {
+    //     arr[i] = arrayCopy[i]
+    //   }
+
+    //   for (var j = begin; j < begin + newItemsLength; j++) {
+    //     arr[j] = newItems[j - begin];
+    //   }
+
+    //   for (var k = begin + newItemsLength + deletecount; k < arr.length; k++) {
+    //     arr[k] = arrayCopy[k - newItemsLength - deletecount]
+    //   }
+
+    //   return arr;
+    // }
+
+    // console.log(splice([1, 2, 3], 1, 2));                   // [2, 3]
+    // console.log(splice([1, 2, 3], 1, 3));                   // [2, 3]
+    // splice([1, 2, 3], 1, 0);                   // []
+    // splice([1, 2, 3], 0, 1);                   // [1]
+    // console.log(splice([1, 2, 3], 1, 0, 'a'));               // []
+
+    // var arr = [1, 2, 3];
+    // splice(arr, 1, 1, 'two');                  // [2]
+    // arr;                                       // [1, 'two', 3];
+
+    // var arr = [1, 2, 3];
+    // splice(arr, 1, 2, 'two', 'three')          // [2 ,3]
+    // arr;                                       // [1, "two", "three"]
+
+    // var arr = [1, 2, 3];
+    // splice(arr, 1, 0);                         // []
+    // splice(arr, 1, 0, 'a');                    // []
+    // arr;                                       // [1, 'a', 2, 3]
+
+    // var arr = [1, 2, 3];
+    // splice(arr, 0, 0, 'a');                    // []
+    // arr;                              
+
+    // function oddities(array) {
+    //   var oddElements = [];
+    //   for (var i = 0; i < array.length; i += 2) {
+    //     oddElements.push(array[i]);
+    //   }
+    //   return oddElements;
+    // }
+
+    // console.log(oddities(['abc', 'def']));
+
+    // function areArraysEqual(array1, array2) {
+    //   if (array1.length != array2.length) {
+    //     return false
+    //   }
+
+    //   array1 = array1.sort();
+    //   array2 = array2.sort();
+
+    //   for (var i = 0; i < array1.length; i++) {
+    //     if (array1[i] !== array2[i]) {
+    //       return false;
+    //     }
+    //   }
+
+    //   return true;
+    // }
+
+    //////////
+    function areArraysEqual(array1, array2) {
+      if (array1.length !== array2.length) {
+        return false;
+      }
+
+      var index;
+      for (var i = 0; i < array1.length; i++) {
+        index = array2.indexOf(array1[i]);
+        if (index >= 0) {
+          array2.splice(index, 1);
+        } else {
+          return false;
+        }
+      }
+
+      return true;
+    }
+
+    // console.log(areArraysEqual([1, 2, 3], [1, 2, 3]));                  // true
+    // console.log(areArraysEqual([1, 2, 3], [3, 2, 1]));                  // true
+    // console.log(areArraysEqual(['a', 'b', 'c'], ['b', 'c', 'a']));      // true
+    // console.log(areArraysEqual(['1', 2, 3], [1, 2, 3]));                // false
+    // console.log(areArraysEqual([1, 1, 2, 3], [3, 1, 2, 1]));            // true
+    // console.log(areArraysEqual([1, 2, 3, 4], [1, 1, 2, 3]));            // false
+    var a = [1, 1, 2, 2];
+    var b = [2, 1, 1, 2];
+    console.log(areArraysEqual(a, b));
+    console.log(a);            // false
+    console.log(b);
+  </script>
+</body>
+</html>
