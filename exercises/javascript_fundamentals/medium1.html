@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Medium 1</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // false
+    // undefined
+    // undefined
+    // undefined
+    // false
+    // false
+    // 'a'
+    // ''
+    // false
+    // false
+
+    ////// Multiplication table
+
+    // var row;
+    // var i;
+    // var j;
+
+    // function padLeft(num) {
+    //   return String(num).length <= 1 ? ' ' + num : num;
+    // }
+
+    // for (i = 1; i <= 10; i++) {
+    //   row = '';
+    //   for (j = 1; j <= 10; j++) {
+    //     row += padLeft(i * j) + ' ';
+    //   }
+    //   console.log(row + '\n');
+    // }
+
+    ////// getSelectedColumns
+
+    // function getSelectedColumns(numbers, cols) {
+    //   var result = [];
+    //   for (var i = 0; i < numbers.length; i += 1) {
+    //     for (var j = 0; j < cols.length; j += 1) {
+    //       if (!result[j]) {
+    //         result[j] = [];
+    //       }
+
+    //       result[j].push(numbers[i][cols[j]])
+    //     }
+    //   }
+
+    //   return result;
+    // }
+
+
+    // // Given array of number arrays
+    // var array1 = [[1, 2, 3], [4, 5 ,6], [7, 8 ,9]];
+    // var array2 = [[1, 2, 3], [1, 2, 3], [1, 2, 3]];
+
+    // // array1 in row/column format
+    // // [[1, 2, 3],
+    // //  [4, 5, 6],
+    // //  [7, 8, 9]]
+
+    // console.log(getSelectedColumns(array1, [0]));     // [[1]]; expected [[1, 4, 7]]
+    // console.log(getSelectedColumns(array1, [0, 2]));  // [[1, 4], [3, 6]]; expected [[1, 4, 7], [3, 6, 9]]
+    // console.log(getSelectedColumns(array2, [1, 2]));  // [[2, 2], [3, 4]]; expected [[2, 2, 2], [3, 3, 3]]
+
+    ////// Counter
+    // var counter = 5;
+    // var rate = 3;
+    // console.log('The total value is ' + (counter * rate));
+
+    // function counter(count) {
+    //   // ...
+    // }
+
+    // function counter(count) {
+    //   // ...
+    // }
+
+    // console.log('The total value is ' + (counter * rate));
+
+    // var counter = 5;
+    // var rate = 3;
+
+    // var rate = 3;
+
+    // function counter(count) {
+    //   return 4;
+    // }
+
+    // console.log('The total value is ' + (counter() * rate));
+
+    ////// Invoice
+
+    // function invoiceTotal() {
+    //   var sum = 0;
+
+    //   for (var i = 0; i < arguments.length; i++) {
+    //     sum += arguments[i];
+    //   }
+
+    //   return sum;
+    // }
+
+    // console.log(invoiceTotal(20, 30, 40, 50));             // works
+    // console.log(invoiceTotal(20, 30, 40, 50, 40, 40));  
+    // var test = "I'm global";
+
+    // function testScope() {
+    //   var test = "I'm local 1";
+
+    //   function testScope2() {
+    //     test = "I'm local 2"
+    //   }
+    //   testScope2();
+    //   console.log(test);
+      
+    // }
+
+    // // console.log(test);     // output: I'm global
+
+    // testScope();           // output: I'm local
+
+    // console.log(test);     // output: I'm local (the global variable is reassigned)
+
+    // function speak() {
+    //   console.log("Howdy!");
+    // }
+
+    // var speak;
+// function objectHasProperty(object, property) {
+
+//   if (property in object) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// var obj = { enabled: false };
+// console.log(objectHasProperty(obj, 'active'));  // returns false
+// console.log(objectHasProperty(obj, 'enabled'));
+
+// function isEmpty(value) {
+//   var type = typeof value;
+//   console.log(type);
+//   if (type === 'string') {
+//     return value.length === 0;
+//   } else if (type === 'object') {
+//     return Object.keys(value).length === 0;
+//   }
+// }
+
+// // console.log(isEmpty({}));                 // true
+// // console.log(isEmpty({ name: 'Janice' })); // false
+
+// // console.log(isEmpty(''));                 // true
+// // console.log(isEmpty('Janice'));           // false
+
+// console.log(isEmpty([]));                 // should return true
+// console.log(isEmpty(['Janice']));  
+function objectHasProperty(object, property) {
+  if (property in object) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+var obj = { enabled: false };
+console.log(objectHasProperty(obj, 'active'));  // returns false
+console.log(objectHasProperty(obj, 'enabled')); // returns false, should be true
+  </script>
+}
+</body>
+</html>

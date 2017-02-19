@@ -7,7 +7,7 @@ class ScrabbleTest < Minitest::Test
   end
 
   def test_whitespace_scores_zero
-    assert_equal 0, Scrabble.new(" \t\n").score
+    assert_equal 0, Scrabble.new("t \t\n").score
   end
 
   def test_nil_scores_zero
