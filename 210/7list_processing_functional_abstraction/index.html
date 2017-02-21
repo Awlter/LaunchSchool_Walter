@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <script type="text/javascript">
+    // function callback(number) {
+    //   console.log(number)
+    // }
+
+    // function iterate(array) {
+    //   for (var i = 0; i < array.length; i++) { // for each element in the Array
+    //     callback(array[i]);                    // invoke callback and pass the element
+    //   }
+    // }
+
+    // var count = [1, 2, 3, 4];
+
+    // iterate(count)
+
+    // function myForEach(array, func) {
+    //   for (var i = 0; i < array.length; i++) {
+    //     func(array[i])
+    //   }
+    // }
+
+    // var min = Infinity;
+    // var getMin = function(value) {
+    //   min = value <= min ? value : min;
+    // }
+
+    // console.log(myForEach([4, 5, 12, 23, 3], getMin));
+
+    // console.log(min);
+
+    // function myFilter(array, func) {
+    //   var newArray = [];
+
+    //   for (var i = 0; i < array.length; i++) {
+    //     if (func(array[i])) {
+    //       newArray.push(array[i])
+    //     }
+    //   }
+
+    //   return newArray;
+    // }
+
+    // var isPythagoreanTriple = function(triple) {
+    //   return Math.pow(triple.a, 2) + Math.pow(triple.b, 2) === Math.pow(triple.c, 2)
+    // }
+
+    // var result = myFilter([{a: 3, b: 4, c: 5}, {a: 5, b: 12, c: 13}, {a: 1, b: 2, c: 3}], isPythagoreanTriple);
+
+    // console.log(result);
+
+    //////
+    // var count = [1, 2, 3, 4, 5];
+
+    // count.reduce(function(prev, current, index, array) {
+    //   console.log(prev, current, index, array);
+    //   return prev + current;
+    // })
+
+    ///// Combining
+
+    // var names = ['Heather', 'Gisella', 'Katsuki', 'Hua', 'Katy', 'Kathleen', 'Otakar'];
+
+    // var letters = names.map(function(name) {
+    //   return name[0];
+    // });
+
+    // var counts = letters.reduce(function(obj, letter) {
+    //   obj[letter] = obj[letter] || 0;
+    //   obj[letter] += 1;
+    //   return obj;
+    // }, {});
+
+    // var letter = Object.keys(counts).reduce(function(lastLetter, currentLetter) {
+    //   if (counts[currentLetter] > counts[lastLetter]) {
+    //     return currentLetter;
+    //   } else {
+    //     return lastLetter;
+    //   }
+    // });
+
+    // console.log(letter);
+
+    ////// Exercise Total square area
+
+    // - input
+    //  - an array of arrays containing two integers as the height and width of rectangles
+    // - output
+    //  - total area of a set of rectangles
+
+    // - abstraction
+    //  - map to transform each nested array to its area
+    //  - reduce to sum the array up
+    // function totalArea(rectangles) {
+    //   var areas = rectangles.map(function(rectangle) {
+    //     return rectangle[0] * rectangle[1]
+    //   })
+
+    //   return areas.reduce(function(prev, current) {
+    //     return prev + current
+    //   })
+    // }
+
+    // var rectangles = [[3, 4], [6, 6], [1, 8], [9, 9], [2, 2]];
+
+    // console.log(totalArea(rectangles)); // 141   
+
+
+    //////
+    // function totalSquareArea(rectangles) {
+    //   var squareRectangles = rectangles.filter(function(rectangle) {
+    //     return rectangle[0] === rectangle[1];
+    //   })
+
+    //   return totalArea(squareRectangles)
+    // }
+
+    // var rectangles = [[3, 4], [6, 6], [1, 8], [9, 9], [2, 2]];
+
+    // console.log(totalSquareArea(rectangles)); // 121
+
+
+    ///////// Processing releases
+
+    // - input
+    //   - array of objects
+
+    // - output
+    //   - array of objects only with ones that have both id and title
+
+    // - abstraction
+    //   - filter
+    //   - map
+    // var newReleases = [
+    //   {
+    //     'id': 70111470,
+    //     'title': 'Die Hard',
+    //     'boxart': 'http://cdn-0.nflximg.com/images/2891/DieHard.jpg',
+    //     'uri': 'http://api.netflix.com/catalog/titles/movies/70111470',
+    //     'rating': [4.0],
+    //     'bookmark': [],
+    //   },
+    //   {
+    //     'id': 654356453,
+    //     'boxart': 'http://cdn-0.nflximg.com/images/2891/BadBoys.jpg',
+    //     'uri': 'http://api.netflix.com/catalog/titles/movies/70111470',
+    //     'rating': [5.0],
+    //     'bookmark': [{ id:432534, time:65876586 }],
+    //   },
+    //   {
+    //     'title': 'The Chamber',
+    //     'boxart': 'http://cdn-0.nflximg.com/images/2891/TheChamber.jpg',
+    //     'uri': 'http://api.netflix.com/catalog/titles/movies/70111470',
+    //     'rating': [4.0],
+    //     'bookmark': [],
+    //   },
+    //   {
+    //     'id': 675465,
+    //     'title': 'Fracture',
+    //     'boxart': 'http://cdn-0.nflximg.com/images/2891/Fracture.jpg',
+    //     'uri': 'http://api.netflix.com/catalog/titles/movies/70111470',
+    //     'rating': [5.0],
+    //     'bookmark': [{ id:432534, time:65876586 }],
+    //   },
+    // ];
+
+    // function processReleaseDate(data) {
+    //   var filteredRealses = data.filter(function(release) {
+    //     return ('id' in release) && ('title' in release)
+    //   });
+
+    //   return filteredRealses.map(function(release) {
+    //     return {'id': release.id, 'title': release.title}
+    //   })
+    // }
+
+    // console.log(processReleaseDate(newReleases))
+
+    // function octalToDecimal(number) {
+    //   return number.split('').reverse().map(function(digit, index) {
+    //     return Number(digit) * Math.pow(8, index);
+    //   }).reduce(function(sum, digit) {
+    //     return sum + digit;
+    //   })
+    // }
+
+    // octalToDecimal('1');           // 1
+    // octalToDecimal('10');          // 8
+    // octalToDecimal('130');         // 88
+    // octalToDecimal('17');          // 15
+    // console.log(octalToDecimal('2047'));        // 1063
+    // octalToDecimal('011');         // 9
+
+    // console.log('abc'.split(''))
+
+    // function anagram(word, list) {
+    //   return list.filter(function(candidate) {
+    //     return areAnagram(word, candidate)
+    //   })
+    // }
+
+    // function areAnagram(source, target) {
+    //   var sourceLetters = source.split('').sort();
+    //   var targetLetters = target.split('').sort();
+    //   return compareArrays(sourceLetters, targetLetters);
+    // }
+
+    // function compareArrays(array1, array2) {
+    //   if (array1.length !== array2.length) {
+    //     return false;
+    //   }
+
+    //   return array1.every(function(letter, index) {
+    //     return letter === array2[index];
+    //   });
+    // }
+
+    // console.log(anagram('listen', ['enlists', 'google', 'inlets', 'banana'])); // [ "inlets" ]
+    // console.log(anagram('listen', ['enlist', 'google', 'inlets', 'banana']));  // [ "enlist", "inlets" ]
+
+    ///////////
+    // var bands = [
+    //   { name: 'sunset rubdown', country: 'UK', active: false },
+    //   { name: 'women', country: 'Germany', active: false },
+    //   { name: 'a silver mt. zion', country: 'Spain', active: true },
+    // ];
+
+    // function processBands(data) {
+    //   return data.map(function(band) {
+    //     var dataName = correctName(band);
+    //     var dataCountry = correctCountry(band);
+
+    //     return {
+    //       name: dataName,
+    //       country: dataCountry,
+    //       active: band.active,
+    //     }
+    //   })
+    // }
+
+    // function correctCountry(band) {
+    //   return 'Canada';
+    // }
+
+    // function correctName(band) {
+    //   var capitalizedName = capitalizeName(band);
+    //   return removeName(capitalizedName);
+    // }
+
+    // function capitalizeName(band) {
+    //   return band.name.split(' ').map(function(word) {
+    //     return capitalizeWord(word)
+    //   }).join(' ')
+    // }
+
+    // function capitalizeWord(word) {
+    //   return word[0].toUpperCase() + word.slice(1)
+    // }
+
+    // function removeName(name) {
+    //   return name.replace(/[.]/g, '');
+    // }
+
+    // console.log(processBands(bands));
+
+    // should return:
+
+    // [
+    //   { name: 'Sunset Rubdown', country: 'Canada', active: false },
+    //   { name: 'Women', country: 'Canada', active: false },
+    //   { name: 'A Silver Mt Zion', country: 'Canada', active: true },
+    // ]
+
+    ////// 
+    // - rules
+    //   - exam * 4, each 100, average, 65%
+    //   - exercises, total 100, 35%
+    //   - sum the total and find the related grade appending the total score with paranthesis
+
+    // - input
+    //   - an ojbect with different students as properties whose value is also an object with id, scores whose value is also an ojbect with 4 exams, and different exercise scores
+
+    // - output
+    //   - an ojbect
+    //   - studentGrades propertie with a value of an array
+    //   - exams propertie with a value of an array of objects containing the aver, min, max of each exam scores
+
+    // var studentScores = {
+    //   student1: {
+    //     id: 123456789,
+    //     scores: {
+    //       exams: [90, 95, 100, 80],
+    //       exercises: [20, 15, 10, 19, 15],
+    //     },
+    //   },
+    //   student2: {
+    //     id: 123456799,
+    //     scores: {
+    //       exams: [50, 70, 90, 100],
+    //       exercises: [0, 15, 20, 15, 15],
+    //     },
+    //   },
+    //   student3: {
+    //     id: 123457789,
+    //     scores: {
+    //       exams: [88, 87, 88, 89],
+    //       exercises: [10, 20, 10, 19, 18],
+    //     },
+    //   },
+    //   student4: {
+    //     id: 112233445,
+    //     scores: {
+    //       exams: [100, 100, 100, 100],
+    //       exercises: [10, 15, 10, 10, 15],
+    //     },
+    //   },
+    //   student5: {
+    //     id: 112233446,
+    //     scores: {
+    //       exams: [50, 80, 60, 90],
+    //       exercises: [10, 0, 10, 10, 0],
+    //     },
+    //   },
+    // };
+
+    // function generateClassRecordSummary(scores) {
+    //   // var exam1 = [];
+    //   // var exam2 = [];
+    //   // var exam3 = [];
+    //   // var exam4 = [];
+    //   // var totalScore = [];
+
+    //   // Object.keys(scores).forEach(function(student) {
+    //   //   var scores = studentScores[student].scores;
+    //   //   var examScores = scores.exams;
+
+    //   //   exam1.push(examScores[0]);
+    //   //   exam2.push(examScores[1]);
+    //   //   exam3.push(examScores[2]);
+    //   //   exam4.push(examScores[3]);
+
+    //   //   totalScore.push(gradeScore(examScores, scores.exercises))
+    //   // })
+
+    //   var scoresData = Object.keys(scores).map(function(student) {
+    //     return scores[student].scores
+    //   })
+
+    //   var examData = scoresData.map(function(score) {
+    //     return score.exams;
+    //   })
+
+    //   // return {
+    //   //   studentGrades: totalScore,
+    //   //   exams: [
+    //   //     {
+    //   //       average: calculateAverageExams(exam1), minimum: findMin(exam1), maximum: findMax(exam1),
+    //   //     },
+    //   //     {
+    //   //       average: calculateAverageExams(exam2), minimum: findMin(exam2), maximum: findMax(exam2),
+    //   //     },
+    //   //     {
+    //   //       average: calculateAverageExams(exam3), minimum: findMin(exam3), maximum: findMax(exam3),
+    //   //     },
+    //   //     {
+    //   //       average: calculateAverageExams(exam4), minimum: findMin(exam4), maximum: findMax(exam4),
+    //   //     },
+    //   //   ]
+    //   // }
+
+    //   return {
+    //     studentGrades: scoresData.map(function(scoreObj) {
+    //       return getStudentScore(scoreObj);
+    //     }),
+    //     exams: getExamSummary(examData),
+    //   }
+    // }
+
+    // function getExamSummary(examData) {
+    //   var exam1 = [];
+    //   var exam2 = [];
+    //   var exam3 = [];
+    //   var exam4 = [];
+
+    //   examData.forEach(function(examScores) {
+    //     exam1.push(examScores[0]);
+    //     exam2.push(examScores[1]);
+    //     exam3.push(examScores[2]);
+    //     exam4.push(examScores[3]); 
+    //   })
+
+    //   return [
+    //     {
+    //       average: calculateAverageExams(exam1), minimum: findMin(exam1), maximum: findMax(exam1),
+    //     },
+    //     {
+    //       average: calculateAverageExams(exam2), minimum: findMin(exam2), maximum: findMax(exam2),
+    //     },
+    //     {
+    //       average: calculateAverageExams(exam3), minimum: findMin(exam3), maximum: findMax(exam3),
+    //     },
+    //     {
+    //       average: calculateAverageExams(exam4), minimum: findMin(exam4), maximum: findMax(exam4),
+    //     },
+    //   ]    
+    // }
+
+    // function findMin(exam) {
+    //   return exam.reduce(function(min, curr) {
+    //     if (min < curr) {
+    //       return min
+    //     } else {
+    //       return curr
+    //     }
+    //   })
+    // }
+
+    // function findMax(exam) {
+    //   return exam.reduce(function(max, curr) {
+    //     if (max > curr) {
+    //       return max
+    //     } else {
+    //       return curr
+    //     }
+    //   })
+    // }
+
+    // function getStudentScore(scoreObj) {
+    //   var averageExams = calculateAverageExams(scoreObj.exams);
+    //   var totalExercises = calculateTotalExercises(scoreObj.exercises)
+
+    //   var totalScore = Math.round(averageExams * 0.65 + totalExercises * 0.35);
+
+    //   if (totalScore >= 93) {
+    //     return `${totalScore}(A)`
+    //   } else if (totalScore >= 85) {
+    //     return `${totalScore}(B)`
+    //   } else if (totalScore >= 77) {
+    //     return `${totalScore}(C)`
+    //   } else if (totalScore >= 69) {
+    //     return `${totalScore}(D)`
+    //   } else if (totalScore >= 60) {
+    //     return `${totalScore}(E)`
+    //   } else {
+    //     return `${totalScore}(F)`
+    //   }
+    // }
+
+    // // function gradeScore(exams, exercises) {
+    // //   var averageExams = calculateAverageExams(exams);
+    // //   var totalExercises = calculateTotalExercises(exercises)
+
+    // //   var totalScore = Math.round(averageExams * 0.65 + totalExercises * 0.35);
+
+    // //   if (totalScore >= 93) {
+    // //     return `${totalScore}(A)`
+    // //   } else if (totalScore >= 85) {
+    // //     return `${totalScore}(B)`
+    // //   } else if (totalScore >= 77) {
+    // //     return `${totalScore}(C)`
+    // //   } else if (totalScore >= 69) {
+    // //     return `${totalScore}(D)`
+    // //   } else if (totalScore >= 60) {
+    // //     return `${totalScore}(E)`
+    // //   } else {
+    // //     return `${totalScore}(F)`
+    // //   }
+    // // }
+
+    // function calculateAverageExams(exams) {
+    //   var total = exams.reduce(function(sum, curr) {
+    //     return sum + curr
+    //   })
+
+    //   return parseFloat((total / exams.length).toFixed(1));
+    // }
+
+    // function calculateTotalExercises(exercises) {
+    //   return exercises.reduce(function(sum, curr) {
+    //     return sum + curr
+    //   })
+    // }
+
+    // console.log(generateClassRecordSummary(studentScores));
+
+    // // - abstraction
+    // //  - iterate each object with Ojbect.keys.forEach
+    // //  - for each exam, create an array to collect every score when the above is iterating
+    // //  - calculate the total score
+    // //   - calculate the average score of exams
+    // //   - sum up the exercise score
+    // //  - convert to grade
+    // // // returns:
+
+    // // {
+    // //   studentGrades: [ '87 (B)', '73 (D)', '84 (C)', '86 (B)', '56 (F)' ],
+    // //   exams: [
+    // //     { average: 75.6, minimum: 50, maximum: 100 },
+    // //     { average: 86.4, minimum: 70, maximum: 100 },
+    // //     { average: 87.6, minimum: 60, maximum: 100 },
+    // //     { average: 91.8, minimum: 80, maximum: 100 },
+    // //   ],
+    // // }
+    /////////////////////////
+
+    function isAllUnique(string) {
+
+    }
+
+    isAllUnique('The quick brown fox jumped over a lazy dog');     // false
+    isAllUnique('123,456,789');                                    // false
+    isAllUnique('The big apple');                                  // false
+    isAllUnique('The big apPlE');                                  // false
+    isAllUnique('!@#$%^&*()');                                     // true
+    isAllUnique('abcdefghijklmnopqrstuvwxyz');   
+  </script>
+</body>
+</html>
