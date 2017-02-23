@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>String pattern process</title>
+</head>
+<body>
+  <script src="http://dbdwvr6p7sskw.cloudfront.net/210/files/email_data_v2.js"></script>
+  <script type="text/javascript">
+    //////// Exercises: String
+    // ////// No.1
+    // var firstName = 'Walter';
+    // var lastName = 'Wang';
+
+    // var fullName = [firstName, lastName].join(' ');
+
+    // // console.log(fullName);
+
+    // ////// No.2
+    // // console.log(firstName.concat(lastName));
+
+    // ///// No.3
+    // // console.log(fullName.split(' '));
+
+    // ///// No.4
+    // var language = 'JavaScript';
+    // var idx = language.indexOf('S');
+    // // console.log(idx)
+
+    // ///// No.5
+    // var charCode = language.charCodeAt(idx);
+    // ///// No.6
+    // // console.log(String.fromCharCode(charCode));
+    // ///// No.7
+    // // console.log(language.lastIndexOf('a'));
+    // ///// No.8
+    // var a = 'a';
+    // var b = 'b';
+
+    // console.log(a > b);
+
+    // b = 'B';
+
+    // console.log(a > b);
+    // ///// No.9
+    // var aIndex = language.indexOf('a');
+    // var vIndex = language.indexOf('v');
+
+    // // console.log(language.substring(0, 4));
+    // var fact1 = 'JavaScript is fun';
+    // var fact2 = 'Kids like it too';
+
+    // var conpoundSentence = fact1 + ' and ' + fact2.toLowerCase();
+
+    // ///// No.12
+    // // console.log(fact1[0]);
+    // // console.log(fact2[0]);
+    // ///// No.13
+    // var pi = (22 / 7).toString();
+    // // console.log(pi.lastIndexOf('14'));
+
+    // ///// No.14
+    // var boxNumber = 356..toString();
+
+    // ///// No.15
+    // // console.log(parseInt(boxNumber));
+    // var name = prompt("What's your name");
+
+    // if (name.endsWith('!')) {
+    //   var result = `Hello ${name.slice(0, -1)}! Why are you screaming?`;
+    //   console.log(result.toUpperCase()) } else {
+    //   console.log(`Hi, ${name}`)
+    // }
+
+    //////////// Reverse a string
+    // function reverse(string) {
+    //   // var result;
+    //   // var length = string.length;
+
+    //   // result = string.split('').map(function(char, indx, arr) {
+    //   //   return arr[length - indx - 1]
+    //   // })
+
+    //   // return result.join('');
+
+    //   return string.split('').reverse().join('');
+    // }
+
+    // console.log(reverse('hello'));               // returns "olleh"
+    // console.log(reverse('The quick brown fox'));
+    ///////////// Acronym
+    // function acronym(string) {
+    //   return string.split(/[ |-]/).map(function(word) {
+    //     return word[0].toUpperCase();
+    //   }).join('')
+    // }
+
+    // console.log(acronym('Portable Network Graphics'));                 // "PNG"
+    // console.log(acronym('First In, First Out'));                       // "FIFO"
+    // console.log(acronym('PHP: HyperText Preprocessor'));               // "PHP"
+    // console.log(acronym('Complementary metal-oxide semiconductor'));   // "CMOS"
+    // console.log(acronym('Hyper-text Markup Language'));                // "HTML"
+
+    //////////// Email validation
+
+    // - criteria
+    //   - one @ sign
+    //   - local part: only letters and digits, at least one
+    //   - domain part: two or more components seperated by a dot or more. Contain one or more letters
+
+    // function isValidEmail(email) {
+    //   // var parts = email.split('@');
+
+    //   // if (parts.length !== 2) {
+    //   //   return false;
+    //   // }
+
+    //   // if (parts[0].match(/[\W|_]/)) {
+    //   //   return false;
+    //   // }
+
+    //   // if (parts[1].match(/[^a-z|^\.]/i)) {
+    //   //   return false;
+    //   // }
+
+    //   // if (parts[1].split('.').length < 2 || parts[1].split('.').some(function(comp) { return comp === ''})) {
+    //   //   return false;
+    //   // }
+
+    //   if (email.match(/^[a-z0-9]+@([a-z]+\.[a-z]+)(\.[a-z]+)*$/i)) {
+    //     return true
+    //   } else {
+    //     return false;
+    //   }
+
+    // }
+
+    // console.log(isValidEmail('Foo@baz.com.ph'));          // returns true
+    // console.log(isValidEmail('Foo@mx.baz.com.ph'));       // returns true
+    // console.log(isValidEmail('foo@baz.com'));             // returns true
+    // console.log(isValidEmail('foo@baz.ph'));              // returns true
+    // console.log(isValidEmail('HELLO123@baz'));            // returns false
+    // console.log(isValidEmail('foo.bar@baz.to'));          // returns false
+    // console.log(isValidEmail('foo@baz.'));                // returns false
+    // console.log(isValidEmail('foo_bat@baz'));             // returns false
+    // console.log(isValidEmail('foo@bar.a12'));             // returns false
+    // console.log(isValidEmail('foo_bar@baz.com'));         // returns false
+    // console.log(isValidEmail('foo@bar.....com'));         // returns false
+
+    ////////// Matching Parentheses
+    // function isBalanced(string) {
+    //   var tally = 0;
+
+    //   for (var i = 0; i < string.length; i++) {
+    //     if (string[i] === '(') {
+    //       tally += 1;
+    //     }
+
+    //     if (string[i] === ')') {
+    //       tally -= 1;
+    //     }
+
+    //     if (tally < 0) {
+    //       return false;
+    //     }
+    //   }
+
+    //   return tally === 0;
+    // }
+
+    // console.log(isBalanced('What (is) this?'));        // true
+    // console.log(isBalanced('What is) this?'));         // false
+    // console.log(isBalanced('What (is this?'));         // false
+    // console.log(isBalanced('((What) (is this))?'));    // true
+    // console.log(isBalanced('((What)) (is this))?'));   // false
+    // console.log(isBalanced('Hey!'));                   // true
+    // console.log(isBalanced(')Hey!('));                 // false
+    // console.log(isBalanced('What ((is))) up('));       // false
+
+    ///////// sentiment analysis
+    // var textExcerpt = 'To be or not to be-that is the question:\n' +
+    //   'Whether \'tis nobler in the mind to suffer\n' +
+    //   'The slings and arrows of outrageous fortune,\n' +
+    //   'Or to take arms against a sea of troubles,\n' +
+    //   'And, by opposing, end them. To die, to sleep-\n' +
+    //   'No more-and by a sleep to say we end\n' +
+    //   'The heartache and the thousand natural shocks\n' +
+    //   'That flesh is heir to-\'tis a consummation\n' +
+    //   'Devoutly to be wished. To die, to sleep-\n' +
+    //   'To sleep, perchance to dream. Aye, there\'s the rub,\n' +
+    //   'For in that sleep of death what dreams may come,\n' +
+    //   'When we have shuffled off this mortal coil,\n' +
+    //   'Must give us pause. There\'s the respect\n' +
+    //   'That makes calamity of so long life.\n' +
+    //   'For who would bear the whips and scorns of time,\n' +
+    //   'Th\' oppressor\'s wrong, the proud man\'s contumely, [F: poor]\n' +
+    //   'The pangs of despised love, the law’s delay, [F: disprized]\n' +
+    //   'The insolence of office, and the spurns\n' +
+    //   'That patient merit of the unworthy takes,\n' +
+    //   'When he himself might his quietus make\n' +
+    //   'With a bare bodkin? Who would fardels bear, [F: these Fardels]\n' +
+    //   'To grunt and sweat under a weary life,\n' +
+    //   'But that the dread of something after death,\n' +
+    //   'The undiscovered country from whose bourn\n' +
+    //   'No traveler returns, puzzles the will\n' +
+    //   'And makes us rather bear those ills we have\n' +
+    //   'Than fly to others that we know not of?\n' +
+    //   'Thus conscience does make cowards of us all,\n' +
+    //   'And thus the native hue of resolution\n' +
+    //   'Is sicklied o\'er with the pale cast of thought,\n' +
+    //   'And enterprises of great pitch and moment, [F: pith]\n' +
+    //   'With this regard their currents turn awry, [F: away]\n' +
+    //   'And lose the name of action.-Soft you now,\n' +
+    //   'The fair Ophelia.-Nymph, in thy orisons\n' +
+    //   'Be all my sins remembered';
+
+
+    //   var positiveWords = ['fortune', 'dream', 'love', 'respect', 'patience', 'devout', 'noble', 'resolution'];
+    //   var negativeWords = ['die', 'heartache', 'death', 'despise', 'scorn', 'weary', 'trouble', 'oppress'];
+
+    //   function sentiment(text) {
+    //     // var words = text.replace(/[\W]/g, ' ').split(' ')
+    //     var words = text.replace(/\n/g, ' ').replace(/[\!\?\.\,]/g, '').split(' ')
+    //     var positiveCount;
+    //     var negativeCount;
+    //     var resultCount;
+    //     var result;
+
+    //     // words.forEach(function(word) {
+    //     //   if (positiveWords.includes(word)) {
+    //     //     positiveText.push(word);
+    //     //   } else if (negativeWords.includes(word)) {
+    //     //     negativeText.push(word);
+    //     //   }
+    //     // })
+
+    //     var positiveText = words.filter(function(word) {
+    //       return positiveWords.includes(word)
+    //     });
+
+    //     var negativeText = words.filter(function(word) {
+    //       return negativeWords.includes(word)
+    //     });
+
+
+    //     positiveCount = positiveText.length;
+    //     negativeCount = negativeText.length;
+    //     resultCount = positiveCount - negativeCount;
+
+    //     console.log(`There are ${positiveCount}`);
+    //     console.log(`Positive sentiments: ${positiveText.join(', ')}`);
+    //     console.log(`There are ${negativeCount}`);
+    //     console.log(`Negative sentiments: ${negativeText.join(', ')}`);
+    //   }
+
+    //   sentiment(textExcerpt);
+    /////////// Sentiment analysis 2
+    // var positiveRegex = /(fortunes?)|(dream(s|t|ed)?)|(love(s|ed)?)|(respect(s|ed)?)|(patien(ce|t)?)|(devout(ly)?)|(noble)|(resolut(e|ion)?)/gi;
+    // var negativeRegex = /(die(s|d)?)|(heartached?)|(death)|(despise(s|d)?)|(scorn(s|ed)?)|(weary)|(troubles?)|(oppress(es|ed|or)?)/gi;
+
+    // function sentiment(text) {
+    //   var words = text.replace(/\n/g, ' ').replace(/[\!\?\.\,]/g, '').split(' ')
+
+    //   var positiveText = words.filter(function(word) {
+    //     return word.match(positiveRegex);
+    //   });
+
+    //   var negativeText = words.filter(function(word) {
+    //     return word.match(negativeRegex);
+    //   });
+
+    //   console.log(positiveText.length);
+    //   console.log(negativeText.length);
+    // }
+
+    // sentiment(textExcerpt);
+
+
+    //////// Mail Count
+    // function mailCount(emailData) {
+    //   var emails = emailData.split('#||#');
+
+    //   var emailDates = emails.map(function(email) {
+    //     return email.split('#/#')[2];
+    //   })
+
+    //   // console.log(emailDates);
+
+    //   console.log(`Count of Email: ${emailDates.length}`);
+    //   console.log('Date Range: ' + getDataRange(emailDates))
+    // }
+
+    // function getDataRange(dates) {
+    //   var dateOjbects = getDateObjects(dates);
+
+    //   dateOjbects.sort(function(date) {
+
+    //   })
+
+    // }
+
+    // function getDateObjects(dates) {
+    //   dates.map(function(date) {
+    //     var dateElements = date.split(' ')[1].split('-');
+    //     var month = dateElements[0] - 1;
+    //     var day = dateElements[1];
+    //     var year = dateElements[2];
+    //     return new Date(year, month, day);
+    //   })
+    // }
+
+    // mailCount(emailData);
+
+    //////// Longest Sentence
+var longText = 'Four score and seven years ago our fathers brought forth' +
+  ' on this continent a new nation, conceived in liberty, and' +
+  ' dedicated to the proposition that all men are created' +
+  ' equal.' +
+  ' Now we are engaged in a great civil war, testing whether' +
+  ' that nation, or any nation so conceived and so dedicated,' +
+  ' can long endure. We are met on a great battlefield of that' +
+  ' war. We have come to dedicate a portion of that field, as' +
+  ' a final resting place for those who here gave their lives' +
+  ' that that nation might live. It is altogether fitting and' +
+  ' proper that we should do this.' +
+  ' But, in a larger sense, we can not dedicate, we can not' +
+  ' consecrate, we can not hallow this ground. The brave' +
+  ' men, living and dead, who struggled here, have' +
+  ' consecrated it, far above our poor power to add or' +
+  ' detract. The world will little note, nor long remember' +
+  ' what we say here, but it can never forget what they' +
+  ' did here. It is for us the living, rather, to be dedicated' +
+  ' here to the unfinished work which they who fought' +
+  ' here have thus far so nobly advanced. It is rather for' +
+  ' us to be here dedicated to the great task remaining' +
+  ' before us -- that from these honored dead we take' +
+  ' increased devotion to that cause for which they gave' +
+  ' the last full measure of devotion -- that we here highly' +
+  ' resolve that these dead shall not have died in vain' +
+  ' -- that this nation, under God, shall have a new birth' +
+  ' of freedom -- and that government of the people, by' +
+  ' the people, for the people, shall not perish from the' +
+  ' earth.';
+
+    function longestSentence(text) {
+      var sortedSentences = text.split(/[\!\.\?]/).sort(function(a, b) {
+        return b.split(' ').length - a.split(' ').length
+      })
+
+      var wordsOfLongest = sortedSentences[0].trim().split(' ')
+
+      console.log(wordsOfLongest.join(' '));
+      console.log(`The longest sentence has ${wordsOfLongest.length} words`);
+
+    }
+
+    longestSentence(longText);
+
+    // function longestSentence(text) {
+    //   var sentenceArray = text.match(/[\w].*?[.!?])/g);
+    //   console.log(sentenceArray);
+
+    //   var longest = sentenceArray.reduce(function(longest, currentSentence) {
+    //     return wordCount(longest) > wordCount(currentSentence) ? longest : currentSentence;
+    //   });
+
+    //   console.log(longest);
+    //   console.log('The longest sentence has ' + wordCount(longest) + ' words.');
+    // }
+
+    // function wordCount(sentence) {
+    //   return sentence.split(' ').length;
+    // }
+
+    // longestSentence(longText);
+
+    </script>
+</body>
+</html>
