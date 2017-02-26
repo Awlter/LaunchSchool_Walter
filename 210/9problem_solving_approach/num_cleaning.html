@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Number cleaning</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // function numberCleanup(number) {
+    //   var digits, length;
+    //   digits = number.match(/[0-9]/g);
+    //   length = digits.length;
+
+    //   if (length > 11 || length < 10) {
+    //     return '0'.repeat(10);
+    //   }
+
+    //   if (length === 11) {
+    //     if (digits[0] !== '1') {
+    //       return '0000000000'          
+    //     } else {
+    //       return digits.slice(1).join('')
+    //     }
+    //   }
+
+    //   return digits.join('');
+
+    // }
+
+    var DEFAULT = '0'.repeat(10);
+
+    function numberCleanup(number) {
+      var cleanedNumber = number.replace(/\D/g, '');
+      var length = cleanedNumber.length;
+
+      if (length < 10 || length > 11) {
+        return DEFAULT;
+      } else if (length === 10) {
+        return cleanedNumber;
+      }
+
+      if (cleanedNumber[0] === '1') {
+        return cleanedNumber.slice(1);
+      } else {
+        return DEFAULT;
+      }
+    }
+
+    console.log(numberCleanup('12345678901'));    // 2345678901
+    console.log(numberCleanup('23456789012'));    // 0000000000
+    console.log(numberCleanup('2345678901'));     // 2345678901
+    console.log(numberCleanup('234567890'));      // 0000000000
+    console.log(numberCleanup('234-567 89(01)')); // 2345678901
+
+  </script>
+</body>
+</html>
+
+<!--
+- input: a string consisting of numbers special characters such as space, dash, dot and parenthesis
+- output: a string just contains 10 digits
+
+- rules
+  - if the length of cleaned number is not 10 or 11, bad number
+  - if the length is 11 and the first number is not 1, bad number
+    - trim to 10 digits if the first number is 1
+  - bad numbers return 10 '0'
+
+- data structure
+  - array
+
+- algorithms
+  - use the match method to return a cleaned array
+  - if the length of the cleaned array is less than 10 or more than 11, return 0000000000;
+  - if length equals to 11 and the first digit is not 1 return bad number;
+    - otherwise return the last 10 digits
+  - return the number
+-->

@@ -1,0 +1,59 @@
+<!--
+- input: a string of characters
+  - upper or down case
+  - empty string
+  - contain other characters?
+  - other type of input?
+
+- output: boolean
+
+- rules:
+  - there are 13 blocks, each with two letters
+  - each block can be used just once to spell a given word
+  - if both letters on the same block can be found it's false
+
+- data sturcture
+  - block as an object
+  - letters as an array
+
+- algorithm
+  - split the input string to an array
+  - map elements to uppercase
+  - forEach array, iterate through each character
+  - get the other letter by object
+  - index of string by the other
+  - if the index is not -1 or current index, return false
+  - otherwise return true
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Block Word</title>
+</head>
+<body>
+  <script type="text/javascript">
+    var BLOCK = {
+      B: 'O', X: 'K', D: 'Q', C: 'P',
+      N: 'A', G: 'T', R: 'E', F: 'S',
+      J: 'W', H: 'U', V: 'I', L: 'Y',
+      Z: 'M',
+    }
+
+    function isBlockWord(word) {
+      var words = word.toUpperCase().split('');
+      var result = true;
+
+      return words.every(function(letter, indx) {
+        var otherLetterIndex = word.indexOf(BLOCK[letter]);
+
+        return otherLetterIndex !== -1 ? false : true;
+      })
+    }
+
+    console.log(isBlockWord('BAUTCH'));
+    console.log(isBlockWord('BHUTC'));
+    console.log(isBlockWord('jestW'));
+  </script>
+</body>
+</html>

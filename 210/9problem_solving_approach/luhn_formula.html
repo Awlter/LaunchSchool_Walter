@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Luhn Formular</title>
+</head>
+<body>
+  <script type="text/javascript">
+  function luhnFormular(string) {
+    var number = string.replace(/\D/g, '');
+    var reversedDigits = number.split('').reverse();
+    var doubledDigits = reversedDigits.map(Number).map(function(digit, indx) {
+      if (indx % 2 === 1) {
+        var double = digit * 2;
+        return double >= 10 ? double - 9 : double;
+      } else {
+        return digit;
+      }
+    })
+    var sum = doubledDigits.reduce(function(prev, curr) {
+      return prev + curr;
+    })
+
+    return String(sum).slice(-1) === '0'
+  }
+
+  function makeValid(string) {
+    var number = string.replace(/\D/g, '');
+
+    if (luhnFormular(string)) {
+      return number;
+    }
+
+    var reversedDigits = number.split('').reverse();
+    var doubledDigits = reversedDigits.map(Number).map(function(digit, indx) {
+      if (indx % 2 === 0 || indx === 0) {
+        var double = digit * 2;
+        return double >= 10 ? double - 9 : double;
+      } else {
+        return digit;
+      }
+    });
+
+    var sum = doubledDigits.reduce(function(prev, curr) {
+      return prev + curr;
+    })
+
+    var append = (10 - sum % 10) % 10;
+
+    return number + append.toString();
+
+  }
+
+  // console.log(makeValid('2323 2005 7766 3554')); // true
+  console.log(makeValid('2323 2005 7766 3555')); // false
+  // console.log(makeValid('2323a2005/7766-3554'));  // true
+  // console.log(makeValid('2323a2005/7766-3556')); // false
+  </script>
+</body>
+</html>
+
+<!--
+- input: a string of characters
+- output: true or false
+
+- rules
+  - ignore all non-numeric characters
+  - from the right of the string, double the every second digit
+    - if the doubled number exceed 10, minus 9
+  - sum up every digits
+  - if the sum ends with 0, then it's true
+
+- data structure
+  - array
+
+- algorithms
+  - take the input string argument, replace all non-numeric characters
+  - split the string into an array
+  - reverse the array
+  - map out the digits with the every second digit doubled
+  - sum them up by reduce
+  - if slice(-1) === '0' then return true
+-->
+
+<!--
+- input: a string of characters
+- output: numbers in the string with a extra digit make it a valid luhn number
+
+- rule:
+  - if it is the valid luhn number, return the original number
+  - if it's not, add a digit to make it valid
+  - sum the digits with every first digit double
+  - appended digit will be 10 - sum % 10
+
+- algorithm
+  - use luhnFormular to check if the number is valid
+  - if valid, return the number
+  - if not, loop through the reversed array and sum up as rules required
+  - push a digit into the array which is 10 - sum % 10
+-->
