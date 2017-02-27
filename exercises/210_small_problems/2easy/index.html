@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Easy 2</title>
+</head>
+<body>
+  <script type="text/javascript">
+    ///// Crunch word
+
+    // function crunch(string) {
+    //   var result = '';
+
+    //   for (var i = 0; i < string.length; i++) {
+    //     if (result.slice(-1)[0] === string[i]) {
+    //       continue
+    //     }
+
+    //     result += string[i];
+    //   }
+
+    //   return result;
+    // }
+
+    // console.log(crunch('ddaaiillyy ddoouubbllee'));        // 'daily double'
+    // console.log(crunch('4444abcabccba'));                  // '4abcabcba'
+    // console.log(crunch('ggggggggggggggg'));                // 'g'
+    // console.log(crunch('a'));                              // 'a'
+    // console.log(crunch(''));
+
+    ///// Bannerizer
+
+    // function logInBox(banner, limit) {
+    //   var length = banner.length;
+    //   var horizontalRule = '+' + '-'.repeat(length + 2) + '+\n';
+    //   var emptyLine = '|' + ' '.repeat(length + 2) + '|\n';
+
+    //   var bannerRule = bannerRow(banner, limit);
+
+    //   return horizontalRule + emptyLine + bannerRow + emptyLine + horizontalRule
+    // }
+
+    // function bannerRow(banner, limit) {
+    //   if 
+    // }
+
+
+    // console.log(logInBox('To boldly go where no one has gone before.'));
+
+    // logInBox('');
+
+    ///// Stringy Strings
+
+    // function stringy(length) {
+    //   var result = '';
+
+    //   for (var i = 1; i <= length; i++) {
+    //     result += i % 2 === 0 ? '0' : '1'  
+    //   }
+
+    //   console.log(result);
+    // }
+
+    // stringy(6) // '101010'
+    // stringy(9) // '101010101'
+    // stringy(4) // '1010'
+    // stringy(7) // '1010101'
+
+    ///// Fibonacci Number
+
+// function findFibonacciIndexByLength(length) {
+//   var fibonacciNumbers = [null, 1, 1];
+//   var curr;
+
+//   for (var i = 3; i < Number.POSITIVE_INFINITY; i++) {
+//     curr = fibonacciNumbers[i-2] + fibonacciNumbers[i-1];
+
+//     if (curr.toString().length == length) {
+//       return i;
+//     }
+
+//     fibonacciNumbers.push(curr);
+//   }
+// }
+
+    // console.log(findFibonacciIndexByLength(2));     // 7
+    // console.log(findFibonacciIndexByLength(10));    // 45
+    // console.log(findFibonacciIndexByLength(16));    // 74
+
+    // function triangle(line) {
+    //   for (var i = 0; i <= line; i++) {
+    //     console.log(' '.repeat(line-i) + '*'.repeat(i))
+    //   }
+    // }
+
+    // triangle(5);
+    // triangle(9);
+
+    // function twice(integer) {
+    //   var length = String(integer).length;
+
+    //   if (length % 2 === 1) {
+    //     return integer * 2;
+    //   }
+
+    //   var midPoint = length / 2;
+
+    //   if (String(integer).substring(0, midPoint)=== String(integer).slice(midPoint)) {
+    //     return integer;
+    //   }
+
+    //   return integer * 2;
+    // } 
+
+    // console.log(twice(37));                 // 74
+    // console.log(twice(44));                 // 44
+    // console.log(twice(334433));             // 668866
+    //  console.log(twice(444));                // 888
+    //  console.log(twice(107));                // 214
+    // console.log(twice(103103));             // 103103
+    //  console.log(twice(3333));               // 3333
+    //  console.log(twice(7676));               // 7676
+
+    ////// grade book
+
+    // function getGrade(s1, s2, s3) {
+    //   var args = Array.from(arguments);
+
+    //   var average = args.reduce(function(sum, score) {
+    //     return sum + parseInt(score);
+    //   }, 0) / args.length;
+
+    //   return grade(average);
+    // }
+
+    // function grade(score) {
+    //   if (score >= 90) {
+    //     return 'A'
+    //   } else if (score >= 80) {
+    //     return 'B'
+    //   } else if (score >= 70) {
+    //     return 'C'
+    //   } else if (score >= 60) {
+    //     return 'D'
+    //   }
+    // }
+
+    // console.log(getGrade(95, 90, 93)); // "A"
+    // console.log(getGrade(50, 50, 95)); // "D"
+
+    ////// Clean up the words
+    // function cleanUp(string) {
+    //   return string.replace(/(\W)+/g, ' ')
+    // }
+
+    // console.log(cleanUp('---what\'s my +*& line?'));      // ' what s my line '
+
+    ////// What century is that
+    // function century(year) {
+    //   var century =  Math.ceil(year / 100).toString();
+
+
+    //   return String(century) + suffix(century.slice(-2));
+    // }
+
+    // function suffix(lastTwo) {
+    //   if (catchWithTh(lastTwo)) {
+    //     return 'th'
+    //   }
+
+    //   switch (lastTwo.slice(-1)) {
+    //     case '1': return 'st';
+    //     case '2': return 'nd';
+    //     case '3': return 'rd';
+    //     default: return 'th';
+    //   }
+    // }
+
+    // function catchWithTh(lastTwo) {
+    //   return lastTwo === '11' || lastTwo === '12' || lastTwo === '13'
+    // }
+
+    console.log(century(2000));        // '20th'
+    console.log(century(2001));        // '21st'
+    console.log(century(1965));        // '20th'
+    console.log(century(256));         // '3rd'
+    console.log(century(5));           // '1st'
+    console.log(century(10103));       // '102nd'
+    console.log(century(1052));        // '11th'
+    console.log(century(1127));        // '12th'
+    console.log(century(11201));       // '113th'
+  </script>
+</body>
+</html>
+
+<!--
+  - input: an integer representing year
+  - output: an string representing the century of the year
+
+  - rules
+    - the return string starts with cetury number, ends with appropriate suffix, such as st, nd, rd, or th
+    - a new century starts with the first year, 1901 - 2000
+    - every 100 year is a new century
+-->
