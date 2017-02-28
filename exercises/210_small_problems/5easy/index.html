@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Easy 5</title>
+</head>
+<body>
+  <script type="text/javascript">
+    ////// Double Char part 1
+
+    // function repeater(argument) {
+    //   return argument.split('').map(function(char) {
+    //     return char.repeat(2);
+    //   }).join('')
+    // }
+
+    // function repeater(string) {
+    //   return string.replace(/(.)/g, '$1$1')
+    // }
+
+    // console.log(repeater('Hello'));     // "HHeelllloo"
+    // console.log(repeater("Good job!")); // "GGoooodd  jjoobb!!"
+
+    ////// Double Char Part 2
+
+    // function doubleConsonants(string) {
+    //   return string.replace(/([^aeiou !\-0-9])/g, '$1$1')
+    // }
+
+    // function doubleConsonants(string) {
+    //   var chars = string.split('');
+
+    //   return chars.reduce(function(result, char) {
+    //     if (isContonant(char)) {
+    //       return result.concat(char, char)
+    //     } else {
+    //       return result.concat(char)
+    //     }
+    //   }, '')
+    // }
+
+    // function isContonant(char) {
+    //   return !!(char.match(/[a-z]/i) && !char.match(/[aeiou]/i))
+    // }
+
+    // console.log(doubleConsonants('String'));       // "SSttrrinngg"
+    // console.log(doubleConsonants('Hello-World!')); // "HHellllo-WWorrlldd!"
+    // console.log(doubleConsonants('July 4th'));     // "JJullyy 4tthh"
+    // console.log(doubleConsonants(''));             // ""
+
+    ////// Convert number to reversed array of digits
+    // function reversedNumber(number) {
+    //   return parseInt(String(number).split('').reverse().join(''), 10);
+    // }
+
+    // console.log(reversedNumber(12345)); // 54321
+    // console.log(reversedNumber(12213)); // 31221
+    // console.log(reversedNumber(456));   // 654
+    // console.log(reversedNumber(12000)); // 21 # Note that zeros get dropped!
+    // reversedNumber(1);     // 1
+
+    ////// Get The Middle Character
+    // function centerOf(string) {
+    //   var length = string.length / 2;
+
+    //   if (length % 1 === 0) {
+    //     return string.substr(length - 1, 2)
+    //   } else {
+    //     return string[Math.floor(length)]; 
+    //   }
+    // }
+
+    // console.log(centerOf('I love ruby'));    // 'e'
+    // console.log(centerOf('Launch School'));  // ' '
+    // console.log(centerOf('Launch'));         // 'un'
+    // console.log(centerOf('Launchschool'));   // 'hs'
+    // console.log(centerOf('x'));              // 'x'
+
+    ////// Always Return Negative
+    // function negative(number) {
+    //   return number > 0 ? number * -1 : number;
+    // }
+
+    // console.log(negative(5));  // -5
+    // console.log(negative(-3)); // -3
+    // console.log(negative(0));  // -0
+
+    ////// Counting UP
+    // function sequence(limit) {
+    //   var result = [];
+
+    //   for (var i = 1; i <= limit; i += 1) {
+    //     result.push(i);
+    //   }
+
+    //   return result;
+    // }
+
+    // console.log(sequence(5)); // [1, 2, 3, 4, 5]
+    // console.log(sequence(3)); // [1, 2, 3]
+    // console.log(sequence(1)); // [1]
+
+    ////// Name Swapping
+    // function swapName(name) {
+    //   return name.split(' ').reverse().join(', ')
+    // }
+
+    // function swapName(name) {
+    //   var fullName = name.split(' ');
+    //   var lastName = fullName.slice(-1);
+    //   var firstName = fullName.slice(0, -1);
+
+    //   return [lastName[0], firstName.join(' ')].join(', ')
+    // }
+
+    // console.log(swapName('Joe Walter Roberts')); // 'Roberts, Joe'
+
+    /////// Sequence Count
+    // function sequence(count, base) {
+    //   var result = [];
+
+    //   for (var i = 1; i <= count; i += 1) {
+    //     result.push(base * i)
+    //   }
+
+    //   return result;
+    // }
+
+    // console.log(sequence(5, 1));       // [1, 2, 3, 4, 5]
+    // console.log(sequence(4, -7));      // [-7, -14, -21, -28]
+    // console.log(sequence(3, 0));       // [0, 0, 0]
+    // console.log(sequence(0, 1000000)); // []
+
+    ////// Reverse It 2
+    function reverseWords(string) {
+      function reverseFiveMoreLetter(word) {
+        if (word.length < 5) {
+          return word
+        } else {
+          return word.split('').reverse().join('')
+        }
+      }
+      return string.split(' ').map(reverseFiveMoreLetter).join(' ')
+    }
+
+    console.log(reverseWords('Professional'));          // lanoisseforP
+    console.log(reverseWords('Walk around the block')); // Walk dnuora the kcolb
+    console.log(reverseWords('Launch School'));         // hcnuaL loohcS
+  </script>
+</body>
+</html>
