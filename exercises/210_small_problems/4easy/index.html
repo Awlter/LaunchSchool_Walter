@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Easy 4</title>
+</head>
+<body>
+  <script type="text/javascript">
+    ////// Cute Angel
+    // function dms(angle) {
+    //   var totalSeconds = angle * 3600;
+    //   var degrees = Math.floor(totalSeconds / 3600);
+    //   var minutes = Math.floor(totalSeconds % 3600 / 60);
+    //   var seconds = Math.floor(totalSeconds % 3600 % 60);
+
+    //   console.log(degrees, minutes, seconds);
+    // }
+
+    // dms(30);        // 30°00'00"
+    // dms(76.73);     // 76°43'48"
+    // dms(254.6);     // 254°35'59"
+    // dms(93.034773); // 93°02'05"
+    // dms(0);         // 0°00'00"
+    // dms(360);       // 360°00'00" or 0°00'00"
+
+    ////// Combining Arrays
+
+    // function union(arr1, arr2) {
+    //   var arrWithDup = arr1.concat(arr2);
+
+    //   function removeDup(element, index, arr) {
+    //     return (arr.indexOf(element) === index && arr.lastIndexOf(element) === index)
+    //   }
+
+    //   console.log(arrWithDup.filter(removeDup));
+    // }
+
+    // function union() {
+    //   var inputs = [...arguments];
+    //   var newArray = [];
+
+    //   for (var i = 0; i < inputs.length; i++) {
+    //     copyNonDupsTo(newArray, inputs[i])
+    //   }
+
+    //   return newArray;
+    // }
+
+    // function copyNonDupsTo(newArray, arr) {
+    //   arr.forEach(function(element) {
+    //     if (newArray.indexOf(element) === -1) {
+    //       newArray.push(element);
+    //     }
+    //   })
+    // }
+
+    // console.log(union([1, 3, 5], [3, 6, 9])); // [1, 3, 5, 6, 9]
+
+    ////// Halvsies
+    // function halvsies(arr) {
+    //   var midPoint = Math.ceil(arr.length / 2);
+
+    //   return [arr.slice(0, midPoint), arr.slice(midPoint)]
+    // }
+
+    // console.log(halvsies([1, 2, 3, 4]));    // [[1, 2], [3, 4]]
+    // console.log(halvsies([1, 5, 2, 4, 3])); // [[1, 5, 2], [4, 3]]
+    // console.log(halvsies([5]));             // [[5], []]
+    // console.log(halvsies([]));              // [[], []]
+
+    ////// Find the duplicate
+    // function findDup(arr) {
+    //   var result;
+
+    //   arr.some(function(ele, indx) {
+    //     if (arr.lastIndexOf(ele) !== indx) {
+    //       result = ele;
+    //       return true;
+    //     }
+    //   })
+
+    //   return result;
+    // }
+
+    // console.log(findDup([1, 5, 3, 1]));                              // 1
+    // console.log(findDup([18,  9, 36, 96, 31, 19, 54, 75, 42, 15,
+    //          38, 25, 97, 92, 46, 69, 91, 59, 53, 27,
+    //          14, 61, 90, 81,  8, 63, 95, 99, 30, 65,
+    //          78, 76, 48, 16, 93, 77, 52, 49, 37, 29,
+    //          89, 10, 84,  1, 47, 68, 12, 33, 86, 60,
+    //          41, 44, 83, 35, 94, 73, 98,  3, 64, 82,
+    //          55, 79, 80, 21, 39, 72, 13, 50,  6, 70,
+    //          85, 87, 51, 17, 66, 20, 28, 26,  2, 22,
+    //          40, 23, 71, 62, 73, 32, 43, 24,  4, 56,
+    //          7,  34, 57, 74, 45, 11, 88, 67,  5, 58]))  // 73
+
+    ////// Combine two lists
+
+    // function interleave(arr1, arr2) {
+    //   // var arr = [];
+
+    //   // arr1.forEach(function(ele, indx) {
+    //   //   arr.push(ele);
+    //   //   arr.push(arr2[indx]);
+    //   // })
+
+    //   return arr1.reduce(function(arr, elem, indx) {
+    //     arr.push(elem, arr2[indx])
+    //     return arr;
+    //   }, [])
+
+    //   // return arr;
+    // }
+
+    // console.log(interleave([1, 2, 3] , ['a', 'b', 'c']));
+
+    ////// Multiplicative Average
+    // function showMultiplicativeAverage(arr) {
+    //   var multiple = arr.reduce(function(mul, elem) {
+    //     return mul * elem;
+    //   }, 1)
+
+    //   return (multiple / arr.length).toFixed(3);
+    // }
+
+    // console.log(showMultiplicativeAverage([3, 5]));                 // '7.500'
+    // console.log(showMultiplicativeAverage([2, 5, 7, 11, 13, 17]));  // '28361.667'
+
+    ////// Multiply lists
+    // function multiplyList() {
+    //   var inputs = Array.from(arguments);
+    //   var result = inputs.shift();
+
+    //   inputs.forEach(function(arr) {
+    //     for (var i = 0; i < arr.length; i += 1) {
+    //       result[i] *= arr[i];
+    //     }
+    //   })
+
+    //   return result;
+    // }
+
+    // function multiplyList() {
+    //   var inputs = Array.from(arguments);
+    //   var result = [];
+
+    //   for (var i = 0; i < arguments[0].length; i++) {
+    //     result.push(inputs.reduce(function(mul, ele) {
+    //       return mul * ele[i];
+    //     }, 1));
+    //   }
+
+    //   return result;
+    // }
+
+    // console.log(multiplyList([3, 5, 7], [9, 10, 11], [2, 2, 2])); // [27, 50, 77]
+
+    ////// Digits List
+    // function digitList(number) {
+    //   return String(number).split('').map(Number);
+    // }
+
+    // digitList(12345);       // [1, 2, 3, 4, 5]
+    // digitList(7);           // [7]
+    // console.log(digitList(375290));      // [3, 7, 5, 2, 9, 0]
+    // digitList(444);         // [4, 4, 4]
+
+    ////// How many
+    // function countOccurrences(vehicles) {
+    //   var result = {};
+
+    //   vehicles.forEach(function(type) {
+    //     result[type] = result[type] || 0;
+    //     result[type] += 1;
+    //   })
+
+    //   // Object.keys(result).forEach(function(type) {
+    //   //   console.log(type + ' => ' + result[type])
+    //   // })
+
+    //   for (var item in result) {
+    //     console.log(item + ' => ' + result[item])
+    //   }
+    // }
+
+    // var vehicles = ['car', 'car', 'truck', 'car', 'SUV', 'truck', 'motorcycle', 'motorcycle', 'car', 'truck'];
+
+
+    // countOccurrences(vehicles);
+
+    // console output
+
+    ////// Array Average
+    function average(arr) {
+      return Math.floor(arr.reduce(function(total, curr) {
+        return total + curr;
+      }, 0) / arr.length)
+    }
+
+
+    console.log(average([1, 5, 87, 45, 8, 8]))    // 25
+    console.log(average([9, 47, 23, 95, 16, 52])); // 40
+
+  </script>
+</body>
+</html>
+
+<!--
+- input: An array of strings which are vechicle types
+
+- output: each vehicle type strings along with a numbe which is the appearance times
+
+- rules
+  - if a string is met, then the count of it plus one
+
+- objects
+
+- algorithm
+  -  create an empty object to keep track
+  - iterate through the array
+  - array[type] = array[type] || 1
+  - array[type] += 1
+  - output the formated output by iterating through the ojbect
+-->
