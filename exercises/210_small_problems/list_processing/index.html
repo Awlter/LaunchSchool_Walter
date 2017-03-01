@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>List processing</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // var NUMBER_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight',
+    //                   'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen',
+    //                   'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+
+    // function alphabeticNumberSort(array) {
+    //   return array.sort(function(a, b) {
+    //     return NUMBER_WORDS[a] > NUMBER_WORDS[b] ? 1 : -1; 
+    //   })
+    // }
+
+    // console.log(alphabeticNumberSort([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]));
+    // // [8, 18, 11, 15, 5, 4, 14, 9, 19, 1, 7, 17, 6, 16, 10, 13, 3, 12, 2, 0]
+
+    ////// Sum of digits
+    // function sumup(total, digit) {
+    //   return total + Number(digit);
+    // }
+
+    // function sum(number) {
+    //   return String(number).split('').reduce(sumup, 0)
+    // }
+
+    // console.log(sum(23));          // 5 
+    // console.log(sum(496));         // 19
+    // console.log(sum(123456789));   // 45
+
+    ////// Multiple pairs
+    // function multiplyAllPairs(arr1, arr2) {
+    //   var result = [];
+
+    //   arr1.forEach(function(num1) {
+    //     arr2.forEach(function(num2) {
+    //       result.push(num1 * num2)
+    //     })
+    //   })
+
+    //   return result.sort(function(a, b) {
+    //     return a- b 
+    //   })
+    // }
+
+    // console.log(multiplyAllPairs([2, 4], [4, 3, 1, 2]));
+
+    ///// Sum of sums
+
+    // function sumOfSums(arr) {
+    //   var sums = arr.map(function(element, index) {
+    //     return arr.slice(0, index + 1).reduce(function(prev, curr) {
+    //       return prev + curr
+    //     })
+    //   })
+
+    //   return sums.reduce(function(prev, curr) {
+    //     return prev + curr
+    //   })
+    // }
+
+    // console.log(sumOfSums([3, 5, 2]));       // (3) + (3 + 5) + (3 + 5 + 2) # -> (21)
+    // console.log(sumOfSums([1, 5, 7, 3]));    // (1) + (1 + 5) + (1 + 5 + 7) + (1 + 5 + 7 + 3) # -> (36)
+    // console.log(sumOfSums([4]));             // 4
+    // console.log(sumOfSums([1, 2, 3, 4, 5])) // 35
+
+    ////// Leading substrings
+    // function substringsAtStart(string) {
+    //   return string.split('').map(function(char, indx, arr) {
+    //     return arr.slice(0, indx + 1).join('')
+    //   })
+    // }
+
+    // console.log(substringsAtStart('abc'));   // ['a', 'ab', 'abc']
+    // console.log(substringsAtStart('a'));     // ['a']
+    // console.log(substringsAtStart('xyzzy')); // ['x', 'xy', 'xyz', 'xyzz', 'xyzzy']
+
+    ////// All strings
+    // function substrings(string) {
+    //   var result = [];
+
+    //   for (var i = 0; i < string.length; i++) {
+    //     result = result.concat(substringsAtStart(string.slice(i)));
+    //   }
+
+    //   return result;
+    // }
+
+    // console.log(substrings('abcde'));
+
+    ////// Palindromic Substrings
+    // function palindromes(string) {
+    //   return substrings(string).filter(isPalindrome)
+    // }
+
+    // function isPalindrome(string) {
+    //   return string === string.split('').reverse().join('') && string.length > 1
+    // }
+
+    // palindromes('abcd');  // []
+    // palindromes('madam'); // ['madam', 'ada']
+    // console.log(palindromes('hello-madam-did-madam-goodbye'));
+    // console.log(palindromes('knitting cassettes'));
+
+    /////// Grocery list
+    // function buyFruit(array) {
+    //   var result = [];
+
+    //   array.forEach(function(element) {
+    //     for (var i = 0; i < element[1]; i++) {
+    //       result.push(element[0]);
+    //     }
+    //   })
+
+    //   return result;
+    // }
+
+    
+    // console.log(buyFruit([['apples', 3], ['orange', 1], ['bananas', 2]])); 
+
+    ////// Inventory transaction
+
+var transactions = [ {id: 101, movement: 'in', quantity: 5, },
+                     {id: 105, movement: 'in', quantity: 10, },
+                     {id: 102, movement: 'out', quantity: 17, },
+                     {id: 101, movement: 'in', quantity: 12, },
+                     {id: 103, movement: 'out', quantity: 15, },
+                     {id: 102, movement: 'out', quantity: 15, },
+                     {id: 105, movement: 'in', quantity: 25, },
+                     {id: 101, movement: 'out', quantity: 18, },
+                     {id: 102, movement: 'in', quantity: 22, },
+                     {id: 103, movement: 'out', quantity: 15, },];
+
+      function transactionFor(inventoryItem, transactions) {
+        return transactions.filter(function(obj) {
+          return obj.id === inventoryItem;
+        })
+      }
+
+      function isItemAvailable(inventoryItem, transactions) {
+        var items = transactionFor(inventoryItem, transactions);
+
+        var itemsStorage = items.reduce(calculateStorage, 0)
+
+        return itemsStorage >= 0;
+      }
+
+      function calculateStorage(total, obj) {
+        if (obj.movement === 'in') {
+          total += obj.quantity;
+        } else {
+          total -= obj.quantity;
+        }
+
+        return total
+      }
+
+      console.log(isItemAvailable(101, transactions)); // false
+      console.log(isItemAvailable(105, transactions)); // true
+  </script>
+</body>
+</html>
+
+<!--
+  - input: a string
+  - output: an array of every substring of the original string
+
+  - rules
+    - 
+-->
