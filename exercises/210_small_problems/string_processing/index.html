@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>String and text processing</title>
+</head>
+<body>
+  <script type="text/javascript">
+    ////// Uppercase check
+    // function isUppercase(string) {
+    //   return string.split('').every(function(char) {
+    //     return char.toUpperCase() === char
+    //   })
+    // }
+
+    // console.log(isUppercase('t'))          // false
+    // console.log(isUppercase('T'))          // true
+    // console.log(isUppercase('Four Score')) // false
+    // console.log(isUppercase('FOUR SCORE')) // true
+    // console.log(isUppercase('4SCORE!'))    // true
+    // console.log(isUppercase(''))           // true
+
+    ///// Delete Vowels
+    // function removeVowels(arr) {
+    //   return arr.map(function(str) {
+    //     return str.replace(/[aeiou]/ig, '')
+    //   })
+    // }
+
+    // console.log(removeVowels(['abcdefghijklmnopqrstuvwxyz']));             // ['bcdfghjklmnpqrstvwxyz']
+    // console.log(removeVowels(['green', 'YELLOW', 'black', 'white']));      // ['grn', 'YLLW', 'blck', 'wht']
+    // console.log(removeVowels(['ABC', 'AEIOU', 'XYZ']));                    // ['BC', '', 'XYZ']
+
+    /////// Letter Case counter
+
+    // function letterCaseCount(string) {
+    //   var obj = { lowercase: 0, uppercase: 0, neither: 0,};
+
+    //   string.split('').forEach(function(char) {
+    //     if (char < 'z' && char > 'a') {
+    //       obj.lowercase += 1;
+    //     } else if (char < 'Z' && char > 'A') {
+    //       obj.uppercase += 1;
+    //     } else {
+    //       obj.neither += 1
+    //     }
+    //   })
+
+    //   return obj
+    // }
+
+    // console.log(letterCaseCount('abCdef 123')); // { lowercase: 5, uppercase: 1, neither: 4 }
+    // console.log(letterCaseCount('AbCd +Ef'));   // { lowercase: 3, uppercase: 3, neither: 2 }
+    // console.log(letterCaseCount('123'));        // { lowercase: 0, uppercase: 0, neither: 3 }
+    // console.log(letterCaseCount(''));           // { lowercase: 0, uppercase: 0, neither: 0 }
+
+    ////// Capitalize words
+    // function wordCap(string) {
+    //   return string.split(' ').map(function(word) {
+    //     return word[0].toUpperCase() + word.slice(1)
+    //   }).join(' ')
+    // }
+
+    // console.log(wordCap('four score and seven'));    // 'Four Score And Seven'
+    // console.log(wordCap('the javaScript language')); // 'The Javascript Language'
+    // console.log(wordCap('this is a "quoted" word')); // 'This Is A "quoted" Word'
+
+    ////// Swap Case
+    // function swapcase(string) {
+    //   return string.replace(/([a-z])([A-Z])/g, '$1')
+    // }
+
+    // console.log(swapcase('CamelCase'))         // 'cAMELcASE'
+    // swapcase('Tonight on XYZ-TV') // 'tONIGHT ON xyz-tv'
+
+    ////// Staggered Caps Part 1
+    // function staggeredCase(string) {
+    //   function staggerize(char, indx) {
+    //     if (indx % 2 === 0) {
+    //       return char.toUpperCase();
+    //     } else {
+    //       return char.toLowerCase();
+    //     }
+    //   }
+
+    //   return string.split('').map(staggerize).join('');
+    // }
+
+    // console.log(staggeredCase('I Love Launch School!'));     // 'I LoVe lAuNcH ScHoOl!'
+    // console.log(staggeredCase('ALL_CAPS'));                  // 'AlL_CaPs'
+    // console.log(staggeredCase('ignore 77 the 444 numbers')); // 'IgNoRe 77 ThE 444 NuMbErS'
+
+    ////// Staggered caps part 2
+    // function staggeredCase(string) {
+    //   var uppercase = true;
+    //   var newChar;
+
+    //   var staggeredArray = string.split('').map(function(char) {
+    //     if (char.match(/[a-z]/i)) {
+    //       if (uppercase) {
+    //         newChar = char.toUpperCase();
+    //       } else {
+    //         newChar = char.toLowerCase();
+    //       }
+
+    //       uppercase = !uppercase;
+    //       return newChar;
+    //     } else {
+    //       return char
+    //     }
+    //   }) 
+
+    //   return staggeredArray.join('')
+    // }
+
+    // console.log(staggeredCase('I Love Launch School!'));     // 'I lOvE lAuNcH sChOoL!'
+    // console.log(staggeredCase('ALL CAPS'));                  // 'AlL cApS'
+    // console.log(staggeredCase('ignore 77 the 444 numbers')); // 'IgNoRe 77 ThE 444 nUmBeRs'
+
+    /////// How old are you
+    // function wordLengths(string) {
+    //   if (!string || string.length === 0) {
+    //     return [];
+    //   }
+
+    //   return string.split(' ').map(function(word) {
+    //     return [word, word.length].join(' ')
+    //   })
+    // }
+
+    // console.log(wordLengths('cow sheep chicken'));
+    // console.log(wordLengths('baseball hot dogs and apple pie'));
+    // console.log(wordLengths('It ain\'t easy, is it?'));
+    // console.log(wordLengths('Supercalifragilisticexpialidocious'))
+    // console.log(wordLengths(''));
+
+    ////// Search Word Part 1
+
+    var text = 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?'
+
+    //   function searchWord(word, text) {
+    //     if (!word || !text) {
+    //       return null
+    //     }
+
+    //     var regex = new RegExp(`\\b${word}\\b`, 'ig')
+    //     return text.match(regex)
+    //   }
+
+    // console.log(searchWord('qui', text).length)
+
+    ////// Search Word Part 2
+function searchWord(word, text) {
+  var regex = new RegExp(`(\\b${word}\\b)`, 'ig');
+
+  return text.replace(regex, `**${word.toUpperCase()}**`);
+}
+
+    searchWord('sed', text);
+  </script>
+</body>
+</html>
