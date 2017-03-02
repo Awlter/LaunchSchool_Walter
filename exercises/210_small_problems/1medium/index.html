@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Medium 1</title>
+</head>
+<body>
+  <script type="text/javascript">
+    ////// Rotation 1
+    // function rotateArray(arr) {
+    //   if (!arr || !Array.isArray(arr)) {
+    //     return undefined;
+    //   }
+
+    //   var length = arr.length;
+    //   var nextIndex;
+
+    //   var result = arr.map(function(ele, index) {
+    //     nextIndex = (index + 1) % length;
+    //     return arr[nextIndex]
+    //   });
+
+    //   console.log(result)
+    // }
+
+    // rotateArray([7, 3, 5, 2, 9, 1])   // [3, 5, 2, 9, 1, 7]
+    // rotateArray(['a', 'b', 'c'])      // ['b', 'c', 'a']
+    // rotateArray(['a'])                // ['a']
+    // rotateArray([1, 'a', 3, 'c']);    // [ 'a', 3, 'c', 1 ]
+    // rotateArray([{a: 2}, [1, 2], 3]); // [ [1, 2], 3, {a: 2} ]
+    // rotateArray([])                   // []
+
+    // console.log(rotateArray());                    // undefined
+    // console.log(rotateArray(1));                   // undefined
+
+    // var x = [1, 2, 3, 4]
+    // rotateArray(x)                  // [2, 3, 4, 1]
+    // console.log(x)                  // [1, 2, 3, 4]
+
+    ////// Rotation 2
+
+    // function rotateArray(arr) {
+    //   if (!Array.isArray(arr)) {
+    //     return undefined;
+    //   }
+
+    //   if (arr.length === []) {
+    //     return [];
+    //   }
+
+    //   return arr.slice(1).concat(arr[0]);
+    // }
+
+    // function rotateRightmostDigits(number, rotatePoint) {
+    //   var newArray;
+    //   var newArrayPart1;
+    //   var newArrayPart2;
+    //   var digits;
+
+    //   digits = String(number).split('');
+    //   newArrayPart1 = digits.slice(0, -rotatePoint);
+    //   newArrayPart2 = rotateArray(digits.slice(-rotatePoint));
+
+    //   newArray = newArrayPart1.concat(newArrayPart2);
+
+    //   console.log(Number(newArray.join('')));
+    // }
+
+    // rotateRightmostDigits(735291, 1) // 735291
+    // rotateRightmostDigits(735291, 2) // 735219
+    // rotateRightmostDigits(735291, 3) // 735912
+    // rotateRightmostDigits(735291, 4) // 732915
+    // rotateRightmostDigits(735291, 5) // 752913
+    // rotateRightmostDigits(735291, 6) // 352917
+
+    ////// Rotation part 3
+    // function maxRotation(number) {
+    //   var numberString = String(number);
+    //   var numberLength = numberString.length;
+    //   var result;
+
+    //   for (var i = numberLength; i > 0; i -= 1) {
+    //     numberString = rotateRightmostDigits(numberString, i)
+    //   }
+
+    //   return Number(numberString);
+    // }
+
+    // function rotateRightmostDigits(numberString, n) {
+    //   var firstPart = numberString.slice(0, -n);
+    //   var lastPart = rotateString(numberString.slice(-n));
+
+    //   return firstPart + lastPart;
+    // }
+
+    // function rotateString(string) {
+    //   return string.slice(1) + string[0];
+    // }
+
+    // console.log(maxRotation(735291));        // 321579
+    // console.log(maxRotation(3));             // 3
+    // console.log(maxRotation(35));            // 53
+    // console.log(maxRotation(105));           // 15 # the leading zero gets dropped
+    // console.log(maxRotation(8703529146));    // 7321609845
+
+    ////// Mini language
+    const tokens = ['PUSH', 'ADD', 'SUB', 'MULT', 'DIV', 'MOD', 'POP', 'PRINT']
+
+    // function minilang(commands) {
+    //   var register = 0;
+    //   var stack = [];
+    //   var errorMessage;
+    //   var commands = commands.split(' ');
+
+    //   commands.some(function(command) {
+    //     if (tokens.indexOf(command) === -1) {
+    //       if (command.match(/[a-z]/i)) {
+    //         errorMessage = 'Wrong token';
+    //         return true;
+    //       } else {
+    //         register = Number(command);
+    //       }
+    //     }
+
+    //     switch (command) {
+    //       case 'PUSH':
+    //         stack.push(register);
+    //         break;
+    //       case 'ADD':
+    //         register += stack.pop();
+    //         break;
+    //       case 'SUB':
+    //         register -= stack.pop();
+    //         break
+    //       case 'MULT':
+    //         register *= stack.pop();
+    //         break;
+    //       case 'DIV':
+    //         register = parseInt(register / stack.pop(), 10);
+    //         break
+    //       case 'MOD':
+    //         register = parseInt(register % stack.pop(), 10);
+    //         break;
+    //       case 'POP':
+    //         register = stack.pop();
+    //         break;
+    //       case 'PRINT':
+    //         console.log(register);
+    //         break;
+    //     }
+    //   });
+
+    //   return errorMessage;
+    // }
+
+    // minilang('PRINT');
+    // minilang('5 PUSH 3 MULT PRINT');
+    // minilang('5 PRINT PUSH 3 PRINT ADD PRINT');
+    // minilang('5 PUSH POP PRINT');
+    // minilang('3 PUSH 4 PUSH 5 PUSH PRINT ADD PRINT POP PRINT ADD PRINT');
+    // minilang('3 PUSH PUSH 7 DIV MULT PRINT ');
+    // minilang('4 PUSH PUSH 7 MOD MULT PRINT ');
+    // console.log(minilang('-3 PUSH 5 SUB PRINT'));
+    // console.log(minilang('6 PUSHs RPINT'));
+
+    ////// Word to digit
+    // const wordDigit = {
+    //   one: '1', two: '2', three: '3', four: '4', five: '5',
+    //   six: '6', seven: '7', eight: '8', nine: '9', zero: '0',
+    // }
+
+    // function wordToDigit(string) {
+    //   Object.keys(wordDigit).forEach(function(numberWord) {
+    //     var regex = new RegExp(`\\b${numberWord}\\b`, 'gi')
+    //     string = string.replace(regex, wordDigit[numberWord])
+    //   })
+
+    //   return string
+    // }
+
+    // console.log(wordToDigit('Please call me at five five five one two three four. Thanks.'));
+
+    /////// Fibonacci Numbers (recursion)
+    // function fibonacci(n) {
+    //   if (n <= 2) {
+    //     return 1
+    //   } else {
+    //     return fibonacci(n - 1) + fibonacci(n - 2)
+    //   }
+    // }
+
+    // console.log(fibonacci(1));   // 1
+    // console.log(fibonacci(2));   // 1
+    // console.log(fibonacci(3));   // 2
+    // console.log(fibonacci(4));   // 3
+    // console.log(fibonacci(5));   // 5
+    // console.log(fibonacci(12));  // 144
+    // console.log(fibonacci(20));  // 6765
+
+    /////// Fibonacci Number (procedural)
+    // function fibonacci(nth) {
+    //   var previousTwo = [1, 1]
+
+    //   for (var i = 3; i <= nth; i++) {
+    //     previousTwo = [previousTwo[1], previousTwo[0] + previousTwo[1]]
+    //   }
+
+    //   return previousTwo[1]
+    // }
+
+    // console.log(fibonacci(20));    // 6765
+    // console.log(fibonacci(50));   // 12586269025
+    // console.log(fibonacci(100));  // 354224848179261915075
+
+    ////// Fibonacci NUmber memoization
+    var cache = {};
+    function fibonacci(nth) {
+      if (cache[nth]) {
+        return cache[nth];
+      }
+
+      if (nth <= 2) {
+        return 1
+      } else {
+        cache[nth] = fibonacci(nth - 1) + fibonacci(nth - 2);
+        return cache[nth]
+      }
+    }
+
+    // var memo = {};
+    // function fibonacci(nth) {
+    //   if (nth <= 2) {
+    //     return 1;
+    //   } else {
+    //     if (memo[nth]) {
+    //       return memo[nth]
+    //     } else {
+    //       memo[nth] = fibonacci(nth - 1) + fibonacci(nth - 2);
+    //       return memo[nth];
+    //     }
+    //   }
+    // }
+    console.log(fibonacci(20));    // 6765
+    console.log(fibonacci(100))
+  </script>
+</body>
+</html>
+<!--
+  - input: the n
+  - output: nth of the fibonacci number
+
+  - rules
+    - if n <= 2, return 1
+    - if n > 2, return fibonacci(n - 1) + 
+-->
