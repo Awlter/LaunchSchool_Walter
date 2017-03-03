@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Medium 2</title>
+</head>
+<body>
+  <script type="text/javascript">
+    ////// Lettercase Percentage Ratio
+    // function letterPercentages(text) {
+    //   var count = {};
+
+    //   count.lowercase = calculatePercentage(text, new RegExp(/[a-z]/, 'g'));
+
+    //   count.uppercase = calculatePercentage(text, new RegExp(/[A-Z]/, 'g'));
+
+    //   count.neither = calculatePercentage(text, new RegExp(/[^a-z]/, 'ig'));
+
+    //   return count;
+    // }
+
+    // function calculatePercentage(text, regex) {
+    //   var matched = text.match(regex) || [];
+    //   return (matched.length / text.length * 100).toFixed(2);
+    // }
+
+    // function letterPercentages(text) {
+    //   var percentage = {lowercase: 0, uppercase: 0, neither: 0};
+
+    //   text.split('').forEach(function(char) {
+    //     if (char.match(/[a-z]/)) {
+    //       percentage.lowercase += 1;
+    //     } else if (char.match(/[A-Z]/)) {
+    //       percentage.uppercase += 1;
+    //     } else {
+    //       percentage.neither += 1;
+    //     }
+    //   });
+
+    //   Object.keys(percentage).forEach(function(condi) {
+    //     percentage[condi] = (percentage[condi] / text.length * 100).toFixed(2);
+    //   })
+
+    //   console.log(percentage);
+    // }
+
+    // letterPercentages('abCdef 123') // { lowercase: 50.00, uppercase: 10.00, neither: 40.00 }
+    // letterPercentages('AbCd +Ef')   // { lowercase: 37.50, uppercase: 37.50, neither: 25.00 }
+    // letterPercentages('123')        // { lowercase: 0.00, uppercase: 0.00, neither: 100.00 }
+
+    ////// Triangle Sides
+    /****
+    - input: three arguments, there are all integers?
+      - zero?
+      - characters?
+    - output: log out what a triangle can be based on the three input sides
+
+    - rules:
+      - if any side equals to zero, it is invalid
+      - if the sum of two shortest sides is less than the longes, it is invalid
+      - if three sides are all equal, it's Equilateral
+      - if two sides are equal and different than the third, it's Isosceles
+      - if three sides are all different, it's Scalene
+
+    - data structure
+      - array
+
+    - algorithm
+      - Array.from(arguments), to get an array containing three sides
+      - if sides.indexOf(0) >= 0, return invalid
+      - sort the array
+      - if sides[0] + sides[1] < sides[2], return invalid
+      - if sides[0] === sides[2], log Equilateral
+      - if sides[0] === sides[1], log Isosceles
+      - else ,log Scalene
+***/
+    // function triangle() {
+    //   var sides = Array.from(arguments);
+
+    //   if (sides.indexOf(0) >= 0) {
+    //     return 'invalid'
+    //   }
+
+    //   sides = sides.sort();
+
+    //   if (sides[0] + sides[1] < sides[2]) {
+    //     return 'invalid'
+    //   }
+
+    //   if (sides[0] === sides[2]) {
+    //     return 'Equilateral'
+    //   } else if (sides[0] === sides[1] || sides[1] === sides[2]) {
+    //     return 'Isosceles'
+    //   } else {
+    //     return 'Scalene'
+    //   }
+    // }
+
+    // console.log(triangle(3, 3, 3));   // equilateral
+    // console.log(triangle(3, 3, 1.5)); // isosceles
+    // console.log(triangle(3, 4, 5));   // scalene
+    // console.log(triangle(0, 3, 3));   // invalid
+    // console.log(triangle(3, 1, 1));   // invalid
+
+    ////// Tri Angles
+    /*****
+    - algorithm:
+      - Array.from(arguments), to get an array containing three angels
+      - if the sum the angles is not equal to 180 or there is 0 in the array, return invalid
+      - if there is 90, right
+      - Max > 90 
+    *****/
+    // function triangle() {
+    //   var angles = Array.from(arguments);
+
+    //   if (angles.reduce(function(pre, curr) {return pre + curr}) !== 180 || angles.indexOf(0) >= 0) {
+    //     return 'invalid'
+    //   }
+
+    //   if (angles.indexOf(90) >= 0) {
+    //     return 'right';
+    //   } else if (Math.max(angles[0], angles[1], angles[2]) > 90) {
+    //     return 'obtuse';
+    //   } else {
+    //     return 'acute';
+    //   }
+    // }
+
+    // console.log(triangle(60, 70, 50));   // acute
+    // console.log(triangle(30, 90, 60));   // right
+    // console.log(triangle(120, 50, 10));  // obtuse
+    // console.log(triangle(0, 90, 90));    // invalid
+    // console.log(triangle(50, 50, 50));   // invalid
+
+    ////// Unlucky days
+    /****
+      - input: an integer as a year
+      - output: an integer of 
+
+      - rules
+        - check if the 13th in any month is also friday
+        - sum them up
+
+      - algorithm
+        - new Date(year, 1, 13)
+        - var result = 0;
+        - 
+    *////
+    // function fridayThe13ths(year) {
+    //   var month = 0;
+    //   var date = new Date(year, month, 13);
+    //   var count = 0;
+
+    //   do {
+    //     if (date.getDay() === 5) {
+    //       count += 1;
+    //     }
+    //     month += 1
+    //     date.setMonth(month)
+    //   } while (month < 12)
+
+    //   return count
+    // }
+
+    // console.log(fridayThe13ths(2015));
+    // console.log(fridayThe13ths(1986));
+
+    ////// Next Featured Number Higher than a Given Value
+    /***
+      - input: a number
+      - output: the nearest featured number greater than given number
+
+      - rules:
+        - an odd number
+        - multiple of 7
+        - digits occur just once
+
+      - algorithm:
+        - find the nearest odd and 7-multiple number
+          - input + input % 7
+          - isOdd(input) ? input : input + 7
+        - loop from the nearest odd-7-multiple number with 14 steps
+        - return the number if it's a number with unique digits
+    ***/
+
+    // function featured(number) {
+    //   var MAX_FEATURED = 9876543210;
+    //   var startNumber = toOddMultipleOf7(number);
+
+    //   for (var i = startNumber; i < MAX_FEATURED ; i += 14) {
+    //     if (isUnique(i)) {
+    //       return i
+    //     }
+    //   }
+
+    //   return 'There is no possible number that fulfills those requirements.'
+    // }
+
+    // function toOddMultipleOf7(number) {
+    //   number = (number - number % 7) + 7;
+    //   return number % 2 === 0 ? number + 7 : number;
+    // }
+
+    // function isUnique(number) {
+    //   var numberString = String(number);
+
+    //   return numberString.split('').every(function(digit) {
+    //     var regex = new RegExp(digit, 'g');
+    //     return numberString.match(regex).length === 1;
+    //   })
+    // }
+
+    // console.log(featured(12));        // 21
+    // console.log(featured(20));        // 21
+    // console.log(featured(21));        // 35
+    // console.log(featured(997));       // 1029
+    // console.log(featured(1029));      // 1043
+    // console.log(featured(999999));    // 1023547
+    // console.log(featured(999999987)); // 1023456987
+
+    /////// Sum square - square sum
+    // function sumSquareDifference(n) {
+    //   var sum = 0;
+    //   var squareSum = 0;
+
+    //   for (var i = 1; i <= n; i += 1) {
+    //     sum += i;
+    //     squareSum += i ** 2;
+    //   }
+
+    //   return sum ** 2 - squareSum
+    // }
+
+    // console.log(sumSquareDifference(3));
+    // console.log(sumSquareDifference(10));
+    // console.log(sumSquareDifference(1));
+    // console.log(sumSquareDifference(100));
+
+    ////// Bubble Sort
+    /****
+      - input: an array of integers or words
+      - output: sorted array based on the incrementing order
+
+      - rules:
+        - iterate through the array multiple times
+        - compare the consecutive elements
+          - if the first element is greater, swap the two elements
+          - mark: true
+        - repeat the process untill mark is false
+    ****/
+    function bubbleSort(array) {
+      var temp;
+
+      do {
+        var swapped = false;
+
+        for (var i = 1; i < array.length; i++) {
+          if (array[i-1] > array[i]) {
+            swap(i-1, i, array)
+            swapped = true;
+          }
+        }
+      } while (swapped)
+    }
+
+    function swap(indx1, indx2, array) {
+      var temp = array[indx1];
+      array[indx1] = array[indx2];
+      array[indx2] = temp;
+    }
+
+    var array = [5, 3];
+    bubbleSort(array);
+    console.log(array);     // [3, 5]
+
+    array = [6, 2, 7, 1, 4]
+    bubbleSort(array);
+    console.log(array);     // [1, 2, 4, 6, 7]
+
+    array = ['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie'];
+    bubbleSort(array);
+    console.log(array);   
+  </script>
+</body>
+</html>
+
+<!--
+  - input: a string of different characters
+  - output: an object that indicates the percentage of the number of lowercase letters, uppercase letters and neither
+
+  - rules
+    - the percentage of each case is a number with 2 decimal places
+
+  - data structure
+    - need to use match to count different charaters
+
+  - algorithm
+    - count the length of the string
+    - match the lowercase characters and count them, then divide by total length,
+    - match the uppercase characters and count them, then divide by total length,
+    - match the neither characters and count them, then divide by total length,
+-->
