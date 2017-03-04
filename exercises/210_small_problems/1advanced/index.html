@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Advanced 1</title>
+</head>
+<body>
+  <script type="text/javascript">
+    ////// Madlibs
+    /***
+    - input: text template as input
+    - output: the input text with nouns, verbs, adjectives, adverbs plugged
+
+    - rules
+      - build a list of nouns, verbs, adjs and advs
+      - for each line, place the random words for each type
+
+    - data structure
+      - 
+    ***/
+
+    // The "sleepy" brown "cat" "noisily"
+    // "licks" the "sleepy" yellow
+    // "dog", who "lazily" "licks" his
+    // "tail" and looks around.
+
+    // function madlibs(argument) {
+    //   var words = {
+    //       adjectives: ['quick', 'lazy'],
+    //       nouns: ['cat', 'dog'],
+    //       verbs: ['licks', 'jumps'],
+    //       adverbs: ['easily', 'lazily'],
+    //     }
+
+    //   return argument.split('\n').map(function(line) {
+    //     var adjective = randomElement(words.adjectives);
+    //     var noun = randomElement(words.nouns);
+    //     var verb = randomElement(words.verbs);
+    //     var adverb = randomElement(words.adverbs);
+
+    //     line = line.replace(/\bnoun\b/, noun);
+    //     line = line.replace(/\badjective\b/, adjective);
+    //     line = line.replace(/\bverb\b/, verb);
+    //     line = line.replace(/\badverb\b/, adverb);
+
+    //     return line
+    //   }).join('\n')
+    // }
+
+    // function randomElement(words) {
+    //   var length = words.length;
+    //   var randomIndex = Math.floor(Math.random() * length);
+
+    //   return words[randomIndex]
+    // } 
+
+    // var template1 = 'The adjective brown noun adverb\n' + 
+    //                 'verb the adjective yellow\n' +
+    //                 'noun, who adverb verb his\n' +
+    //                 'noun and looks around.';
+
+    // var template2 = 'The noun verb the noun\'s noun'
+
+    // console.log(madlibs(template1));
+
+    /****
+      - input: a special string as the text template
+      - output: the text template with the four types of words replaced
+
+      - algorithm
+        - create a template like this ${noun}
+        - create an object with the type as the key and an array of words as the value
+        - template.replace(/{[a-z]+}/, replacer)
+        - replacer
+          - need the reform the match to get the key
+          - use the key to get a random element
+            - index = Math.floor(Math.random() * words[key].length);
+            - words[key][index]
+        -
+    ****/
+
+    // var template1 = 'The ${adjective} brown ${noun} ${adverb} ' +
+    //             '${verb} the ${adjective} yellow ' +
+    //             '${noun}, who ${adverb} ${verb} his ' +
+    //             '${noun} and looks around.';
+
+    // var template2 = 'The ${noun} ${verb} the ${noun}\'s ${noun/}'
+
+    // function madlibs(template) {
+    //   var REPLACEMENT_TEXT = {
+    //     adjective: ['quick', 'lazy', 'sleepy', 'noisy', 'hungry'],
+    //     noun: ['fox', 'dog', 'head', 'leg', 'tail'],
+    //     verb: ['jumps', 'lifts', 'bites', 'licks', 'pats'],
+    //     adverb: ['easily', 'lazily', 'noisily', 'excitedly'],
+    //   }
+
+    //   function replacer(match) {
+    //     key = match.replace(/[^a-z]/g, '');
+    //     var index = Math.floor(Math.random() * REPLACEMENT_TEXT[key].length);
+
+    //     return REPLACEMENT_TEXT[key][index];
+    //   }
+
+    //   return template.replace(/\${[a-z]+}/g, replacer)
+    // }
+
+    // console.log(madlibs(template1));
+
+    ////// Transpose 3 X 3
+    /***
+      - input: a nested array
+      - output: a nested array
+
+      - rules
+        - the "row" of the matrix becomes the column of the matrix
+          - the first element of each sub-array become the first sub-array of the new array
+
+      - algorithm
+        - create a new empty array with three empty array
+        - loop from 0 - 2
+          - originalArray.forEach, push the num element to the num array of the new array
+        - return the new array
+    ***/
+
+    // function rotate90(matrix){
+    //   var transposed = [];
+
+    //   for (var i = 0; i < matrix[0].length; i += 1){
+    //     transposed.push([]);
+    //   }
+
+    //   for (var row = 0; row < matrix.length; row += 1) {
+    //     for (var col = 0; col < matrix[0].length; col += 1 ) {
+    //       transposed[col].unshift(matrix[row][col]);
+    //     }
+    //   }
+
+    //   return transposed;
+    // }
+
+    // console.log(transpose([[1, 2, 3, 4]]));       // [[1], [2], [3], [4]]
+    // console.log(transpose([[1], [2], [3], [4]])); // [[1, 2, 3, 4]]
+    // console.log(transpose([[1]]));                // [[1]]
+    // console.log(transpose([[1, 2, 3, 4, 5], [4, 3, 2, 1, 0], [3, 7, 8, 6, 2]])); // [[1, 5, 8], [4, 7, 2], [3, 9, 6]]
+
+    // var matrix1 = [
+    //   [1, 5, 8],
+    //   [4, 7, 2],
+    //   [3, 9, 6]
+    // ]
+
+    // var matrix2 = [
+    //   [3, 7, 4, 2],
+    //   [5, 1, 0, 8]
+    // ]
+
+    // var newMatrix1 = rotate90(matrix1);
+    // var newMatrix2 = rotate90(matrix2);
+    // var newMatrix3 = rotate90(rotate90(rotate90(rotate90(matrix2))));
+
+    // console.log(newMatrix1); // [[3, 4, 1], [9, 7, 5], [6, 2, 8]]
+    // console.log(newMatrix2); // [[5, 3], [1, 7], [0, 4], [8, 2]]
+    // console.log(newMatrix3); // matrix2
+
+    ////// Merge Sorted lists
+    /****
+      - input: two arrays of integers
+      - output: one new array combined by two arrays in the incrementing order
+
+      - rules
+        - it's not allowed to combine the two arrays first and then sort
+        - compare the elements in each array with each other
+          - if the first element in arr2 is smaller than second element in arr1, the interating index of arr2 plus one
+        - end the loop if both indices have reached the end of the array
+
+      - algorithm
+        - create a new array to contain the sorted elements
+        - create a do while loop, keep looping if the relevent index is within the range
+          - var indx1 = 0, indx2 = 0;
+          - if arr1[indx1] < arr2[indx2]
+            - newArray.push(arr1[indx1])
+            - indx1 += 1;
+    ****/
+    // function merge(arr1, arr2) {
+    //   var result = [];
+
+
+    //   while(indx1 < arr1.length && indx2 < arr2.length) {
+    //     if (arr1[indx1] <= arr2[indx2]) {
+    //       result.push(arr1[indx1]);
+    //       indx1 += 1;
+    //     } else {
+    //       result.push(arr2[indx2]);
+    //       indx2 += 1;
+    //     }
+    //   }
+
+    //   return result;
+    // }
+function merge(arr1, arr2) {
+  var result = [];
+  arr1 = [...arr1];
+  arr2 = [...arr2];
+
+  while (arr1.length > 0 && arr2.length > 0) {
+    if (arr1[0] < arr2[0]) {
+      result.push(arr1.shift())
+    } else {
+      result.push(arr2.shift())
+    }
+  }
+
+  return result.concat(arr1.length === 0 ? arr2 : arr1)
+}
+
+    // console.log(merge([1, 5, 9], [2, 6, 8])); // [1, 2, 5, 6, 8, 9]
+    // console.log(merge([1, 1, 3], [2, 2]));    // [1, 1, 2, 2, 3]
+    // console.log(merge([], [1, 4, 5]));        // [1, 4, 5]
+    // console.log(merge([1, 4, 5], []));        // [1, 4, 5]
+
+    ///// Merge Sort
+    /*****
+    - input: an array of elements which are of the same type
+    - output: sorted array in an incrementing order
+
+    - rules:
+      - first: all elements is split into two nested arrays
+
+    *****/
+
+    // function mergeSort(array){
+    //   if (array.length === 1) {
+    //     return array
+    //   }
+
+    //   var midPoint = Math.floor(array.length / 2)
+
+    //   var splited = [mergeSort(array.slice(0, midPoint)), mergeSort(array.slice(midPoint))];
+
+    //   return splited
+
+    // }
+
+    // console.log(mergeSort([9, 5, 7, 1]));                // [1, 5, 7, 9]
+    // console.log(mergeSort([5, 3]));                      // [3, 5]
+    // console.log(mergeSort([6, 2, 7, 1, 4]));             // [1, 2, 4, 6, 7]
+    // console.log(mergeSort(['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie']));
+    // console.log(mergeSort([7, 3, 9, 15, 23, 1, 6, 51, 22, 37, 54, 43, 5, 25, 35, 18, 46]));
+
+    ////// Binary Search
+    /***
+      - input: 
+        - an array in a sorted (incrementing) order
+        - searchItem, an integer or a word
+      - output:
+        - -1 if the searchItem is not found
+        - the index of the searchItem in the array
+
+      - rules
+        - the input array is a sorted array
+        - before finding the searchItem, the array is halved
+        - if the value at half is equal to searchItem, stop an return the indx
+        - if searchItem is greater than the value at half, return the second half
+
+      - algorithm
+        - get the midIndex, by Math.floor(array.length / 2)
+        - if array[midIndex] === searchItem
+          - return midIndex
+        - if array[midIndex] > searchItem
+          - call this method again with array.slice(midIndex + 1)
+        - otherwise
+          - call this method again with array.slice(0, midIndex)
+    ***/  
+    function binarySearch(array, searchItem) {
+      var start = 0;
+      var end = array.length;
+
+      while (start + 1 <= end) {
+        var midIndex = Math.floor((end - start) / 2) + start;
+        var midValue = array[midIndex];
+
+        if (searchItem === midValue) {
+          return midIndex;
+        }
+
+        if (searchItem > midValue) {
+          start = midIndex + 1; 
+        }
+
+        if (searchItem < midValue) {
+          end = midIndex - 1;
+        }
+      }
+
+      return -1;
+    }
+
+    console.log(binarySearch([1, 5, 7, 11, 23, 45, 65, 89, 102], 77));                                // -1
+    console.log(binarySearch([0 , 1, 5, 7, 11, 23, 45, 65, 77, 89], 89));                                // 7
+    console.log(binarySearch(['Alice', 'Bonnie', 'Kim', 'Pete', 'Rachel', 'Sue', 'Tyler'], 'Peter')); // -1
+    console.log(binarySearch(['Alice', 'Bonnie', 'Kim', 'Pete', 'Rachel', 'Sue', 'Tyler'], 'Tyler')); // 6
+  </script>
+</body>
+</html>
