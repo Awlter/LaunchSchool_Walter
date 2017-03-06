@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The global object</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // var foo = 1;
+
+    // function inside() {
+    //   more_foo = 3;
+
+    //   function bar() {
+    //     return 1;
+    //   }
+
+    //   console.log(window.more_foo);  // 3
+    //   console.log(window.bar);
+    //   console.log(window.foo);
+    // }
+
+    // inside();
+
+    // var john = {
+    //   firstName: 'John',
+    //   lastName: 'Doe',
+    //   greetings: function() {
+    //     console.log('hello, ' + this.firstName + ' ' + this.lastName);
+    //   },
+    // };
+
+    // john.greetings();
+    // var foo = john.greetings;
+    // foo();
+
+    // var a = 'good';
+    // var b = 'bye';
+
+    // obj = {
+    //   a: 'hello',
+    //   b: 'world',
+    //   foo: function() {
+    //     function bar() {
+    //       console.log(this.a + ' ' + this.b);
+    //       console.log(this);
+    //     }
+
+    //     bar();
+    //   },
+    // };
+
+    // obj.foo();   
+
+    // obj = {
+    //   a: 'hello',
+    //   b: 'world',
+    //   foo: function() {
+    //     var self = this;
+    //     [1, 2, 3].forEach(function(number) {
+    //       console.log(String(number) + ' ' + self.a + ' ' + self.b);
+    //     });
+    //   },
+    // };
+
+    // obj.foo();
+
+
+    // function repeatThreeTimes(func) {
+    //   func();
+    //   func();
+    //   func();
+    // }
+
+    // function foo() {
+    //   var john = {
+    //     firstName: 'John',
+    //     lastName: 'Doe',
+    //     greetings: function() {
+    //       var self = this;
+    //       repeatThreeTimes(function() {
+    //         console.log('hello, ' + self.firstName + ' ' + self.lastName);
+    //       });
+    //     },
+    //   };
+
+    //   john.greetings();      
+    // }
+
+    // foo();
+
+    // function hello(name) {  
+    //   return 'Hello ' + name + '!';
+    // }
+    // // Function invocation
+    // var message = hello;  
+    // console.log(message); // => 'Hello World!' 
+
+    // function Animal(type, legs) {  
+    //   this.type = type;
+    //   this.legs = legs;  
+    //   this.logInfo = function() {
+    //     console.log(this === myCat); // => false
+    //     console.log('The ' + this.type + ' has ' + this.legs + ' legs');
+    //   }
+    // }
+    // var myCat = new Animal('Cat', 4);  
+    // // logs "The undefined has undefined legs"
+    // // or throws a TypeError in strict mode
+    // setTimeout(myCat.logInfo, 2000);
+
+    // var myObject = {
+    //   count: 1,
+    //   myChildObject: {
+    //     myMethod: function() {
+    //       return this.count;
+    //     }
+    //   },
+    // };
+
+    // console.log(myObject.myChildObject.myMethod.call(myObject));
+
+    // var computer = {
+    //   price: 30000,
+    //   shipping: 2000,
+    //   total: function() {
+    //     var tax = 3000;
+    //     var self = this
+
+    //     function specialDiscount() {
+    //       if (self.price > 20000) {
+    //         return 1000;
+    //       } else {
+    //         return 0;
+    //       }
+    //     }
+    //     return this.price + this.shipping + tax - specialDiscount();
+    //   },
+    // };
+
+    // console.log(computer.total())
+
+    // var RECTANGLE = {
+    //   area: function() {
+    //     return this.width * this.height;
+    //   },
+    //   circumference: function() {
+    //     return 2 * (this.width + this.height);
+    //   },
+    // };
+
+    // function Rectangle(width, height) {
+    //   this.width = width;
+    //   this.height = height;
+    //   this.area = RECTANGLE.area.call(this);
+    //   this.circumference = RECTANGLE.circumference.call(this);
+    // }
+
+    // var rect1 = new Rectangle(2, 3);
+    // console.log(rect1.area);
+    // console.log(rect1.circumference);
+
+    ////// Functions in Objects
+    var me = {
+      firstName: 'Jane',
+      lastName: 'Doe',
+    };
+
+    var me = {};
+    me.firstName = 'Jane';
+    me.lastName = 'Doe';
+
+    function fullName(person) {
+      console.log(person.firstName + ' ' + person.lastName)
+    }
+
+    var friend = {
+      firstName: 'John',
+      lastName: 'Smith',
+    };
+
+    var mother = {
+      firstName: 'Amber',
+      lastName: 'Doe',
+    };
+
+    var father = {
+      firstName: 'Shane',
+      lastName: 'Doe',
+    };
+
+    var people = [];
+
+    people.push(me, friend, mother, father);
+
+    // function rollCall(collection) {
+    //   // for (var i = 0, length = collection.length; i < length; i += 1) {
+    //   //   fullName(collection[i]);
+    //   // }
+    //   collection.forEach(fullName);
+    // }
+
+    var newPerson = {
+      firstName: 'Walter',
+      lastName: 'Wang',
+    }
+
+    var people = {
+      collection: [me, friend, mother, father],
+      get: function(person) {
+        if (this.isInvalidPerson(person)) {
+          return;
+        }
+
+        return this.collection[this.getIndex(person)];
+      },
+      update: function(person) {
+        if (this.isInvalidPerson(person)) {
+          return;
+        }
+
+        
+      },
+      fullName: function(person) {
+        console.log(person.firstName + ' ' + person.lastName);
+      },
+      rollCall: function() {
+        this.collection.forEach(this.fullName);
+      },
+      add: function(person) {
+        if (this.isInvalidPerson(person)) {
+          return;
+        }
+
+        this.collection.push(person);
+      },
+      getIndex: function(person) {
+        var index = -1;
+        this.collection.forEach(function(comparator, i) {
+          if (comparator.firstName === person.firstName &&
+            comparator.lastName === comparator.lastName) {
+            index = i;
+          }
+        })
+
+        return index;
+      },
+      remove: function(person) {
+        if (this.isInvalidPerson(person)) {
+          return;
+        }
+
+        var index = this.getIndex(person);
+        if (index === -1) {
+          return;
+        }
+
+        this.collection.splice(index, 1)
+      },
+      isInvalidPerson: function(person) {
+        return typeOf person.firstName !== 'string' || typeOf person.lastName !== string;
+      }
+    }
+
+    people.add(newPerson);
+    people.rollCall();
+    people.remove(mother);
+    people.rollCall();
+
+  </script>
+</body>
+</html>
