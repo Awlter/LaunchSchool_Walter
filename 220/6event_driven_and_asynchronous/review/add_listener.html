@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Test Page</title>
+    <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+      var target = document.querySelector('#alert');
+      var content = document.querySelector('#message');
+
+      target.addEventListener('click', function() {
+        alert(content.value);
+      })
+    })
+    </script>
+  </head>
+  <body>
+    <textarea id="message"></textarea>
+    <button id="alert">Alert</button>
+  </body>
+</html>

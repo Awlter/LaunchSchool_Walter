@@ -1,0 +1,43 @@
+<ul>
+  <li>Fruit</li>
+  <li>Vegetables
+    <ul>
+      <li>Root
+        <ul>
+          <li>Potatoes</li>
+          <li>Carrots
+            <ul>
+              <li>Danvers</li>
+              <li>Chantenay</li>
+            </ul>
+          </li>
+          <li>Herbs
+            <ul>
+              <li>Cilantro</li>
+              <li>Parsley</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Lettuce</li>
+    </ul>
+  </li>
+</ul>
+
+<script type="text/javascript">
+function walklist() {
+  function walk(node) {
+    if (node.nodeName === 'LI') {
+      console.log(node.childNodes[0].nodeValue.trim());
+    }
+
+    for (var i = 0; i < node.children.length; i += 1) {
+      walklist(node.children[i])  
+    }
+  }
+
+  walk(document)
+}
+
+walklist();
+</script>

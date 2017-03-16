@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Build an Input Box</title>
+  <style type="text/css">
+    .text-field {
+      border: solid 1px #ccc;
+      padding: 1em;
+      cursor: pointer;
+      font-family: sans-serif;
+      font-size: 18px;
+      overflow: hidden;
+      width: 300px; 
+    }
+
+    .text-field .content {
+      display: inline-block;
+      height: 21px;
+      float: left;
+      white-space: pre;
+    }
+
+    .text-field.focused {
+      border-color: black;
+    }
+
+    .text-field.focused .content {
+
+    }
+
+    .text-field.cursor .content {
+      border-right: solid 2px black;
+    }
+  </style>
+  <script type="text/javascript">
+    document.addEventListener('click', function(event) {
+      var target = event.target;
+      var textField = document.querySelector('.text-field');
+
+      if (target.classList.contains('text-field')) {
+        textField.classList.toggle('focused', true);
+        cursorID = setInterval(function() {textField.classList.toggle('cursor')}, 500);
+      } else {
+        textField.classList.remove('focused', 'cursor');
+        clearInterval(cursorID);
+      }
+    });
+
+    document.addEventListener('keyup', function(event) {
+      var content = document.querySelector('.content');
+      var textField = document.querySelector('.text-field');
+      var input = event.key;
+
+      if (input.length <= 1 && textField.classList.contains('focused')) {
+        content.textContent += input;
+      } else if (input === 'Backspace') {
+        content.textContent = content.textContent.slice(0, -1);
+      }
+
+    })
+
+
+  </script>
+</head>
+<body>
+  <div class="text-field">
+    <div class="content"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event-driven and asynchronous programming</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // setTimeout(function() {   // 1
+    //   console.log("Once");    // 5
+    // }, 1000);
+    // setTimeout(function() {   // 2
+    //   console.log("upon");    // 6
+    // }, 3000);
+    // setTimeout(function() {   // 3
+    //   console.log("a");       // 7
+    // }, 2000);
+    // setTimeout(function() {   // 4
+    //   console.log("time");    // 8
+    // }, 4000);
+
+    // setTimeout(function() {       // 1
+    //   setTimeout(function() {     // 6
+    //     q();                      // 12
+    //   }, 15);
+
+    //   d();                        // 7
+
+    //   setTimeout(function() {     // 8
+    //     n();                      // 10
+    //   }, 5)
+
+    //   z();                        // 9
+    // }, 10);
+
+    // setTimeout(function() {       // 2
+    //   s();                        // 11
+    // }, 20);  - 10 = 10
+
+    // setTimeout(function() {       // 3
+    //   f();                        // 5
+    // });
+
+    // g();                          // 4
+
+    function afterNSeconds(callback, sec) {
+      setTimeout(callback, sec * 1000);
+    }
+
+    // afterNSeconds(startCounting, 1);
+
+
+    function startCounting() {
+      var count = 0;
+      setInterval(function() {
+        count += 1;
+        console.log(count);
+      }, 1000)
+    }
+
+    // startCounting();
+
+  </script>
+</body>
+</html>

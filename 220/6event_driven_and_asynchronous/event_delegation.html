@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event delegation</title>
+  <style type="text/css">
+    #message {
+      padding: .5em .8em;
+      background-color: lightyellow;
+      display: inline-block;
+    }
+  </style>
+  <script type="text/javascript">
+    function clickHandler(event) {
+      var text = event.target.textContent;
+      var message = document.querySelector('#message');
+
+      message.textContent = text;
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var buttons = document.querySelectorAll('button');
+
+      for (var i = 0; i < buttons.length; i += 1) {
+        buttons[i].addEventListener('click', clickHandler)
+      }
+    })
+  </script>
+</head>
+<body>
+  <button>One</button>
+  <button>Two</button>
+  <button>Three</button>
+  <button>Four</button>
+
+  <div>
+    <p>
+      <button>Five</button>
+      <button>Six</button>
+      <button>Seven</button>
+      <button>Eight</button>
+    </p>
+  </div>
+
+  <div id="message"></div>
+</body>
+</html>

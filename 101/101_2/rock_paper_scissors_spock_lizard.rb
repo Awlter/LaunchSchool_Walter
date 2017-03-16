@@ -45,12 +45,9 @@ loop do
     user_choice = gets.chomp
     choice = USER_CHOICE_TRANSLATER[user_choice]
 
-    if VALID_CHOICES.include?(choice)
-      break
-    else
-      prompt "Please choose the first or the first two
-      lettes of #{VALID_CHOICES.join(', ')}"
-    end
+    break if VALID_CHOICES.include?(choice)
+
+    prompt "Please choose the first or the first two lettes of #{VALID_CHOICES.join(', ')}"
   end
 
   computer_choice = VALID_CHOICES.sample
@@ -69,7 +66,7 @@ loop do
   prompt "Your score is #{player_score}."
   prompt "The computer's score is #{computer_score}."
 
-  break if player_score == 5 || computer_score == 5
+  if player_score == 5 || computer_score == 5
 end
 
 prompt "Thank you for playing, good bye!"

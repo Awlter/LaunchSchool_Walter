@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Test page</title>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+      function displayAltert(event) {
+        console.log(event.type);
+        console.log(event.button);
+        console.log(event.target.tagName);
+        var message = document.getElementById('message').value;
+        alert(message);
+      } 
+
+      var button = document.getElementById('alert');
+      button.addEventListener("click", displayAltert);
+    })
+  </script>
+</head>
+<body>
+  <textarea id="message"></textarea>
+  <button id="alert">Alert</button>
+</body>
+</html>

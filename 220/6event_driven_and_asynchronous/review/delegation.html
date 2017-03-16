@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    div {
+  border: solid 2px blue;
+  background: lightblue;
+  padding: 2em;
+}
+  </style>
+  <script type="text/javascript">
+    function turnRed(event) {
+      console.log(this)
+      event.stopPropagation();
+      event.currentTarget.style.background = 'red';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('.outer').addEventListener('click',  turnRed, true);    
+      document.querySelector('.inner').addEventListener('click',  turnRed, true);
+    }); 
+  </script>
+</head>
+<body>
+<div class="outer">
+  <div class="inner">
+  </div>
+</div>
+</body>
+</html>

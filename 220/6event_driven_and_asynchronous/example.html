@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add One</title>
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+      var addButton = document.getElementById('add');
+      var output = document.getElementById('output');
+      var count = 0;
+
+      document.addEventListener('click', function() {
+        count += 1;
+        output.textContent = count;
+      });
+    });
+  </script>
+</head>
+<body>
+  <p>
+    <span id="output">0</span>
+    <button id="add">Add one</button>
+  </p>
+</body>
+</html>

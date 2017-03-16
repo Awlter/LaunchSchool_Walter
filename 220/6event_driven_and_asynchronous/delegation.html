@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Delegation</title>
+  <script type="text/javascript">
+    // document.addEventListener('DOMContentLoaded', function() {
+    //   var collection = document.querySelectorAll('button');
+    //   var buttons = Array.prototype.slice.call(collection);
+      
+    //   buttons.forEach(function(button) {
+    //     button.addEventListener('click', function(event) {
+    //       var text = button.textContent;
+    //       alert('Button ' + text + ' was clicked.');
+    //     });
+    //   });
+    // });
+
+    document.addEventListener('click', function(event) {
+      var target = event.target;
+      if (target.tagName === 'BUTTON') {
+        alert('Button ' + target.textContent + ' was clicked');
+      }
+    })
+  </script>
+</head>
+<body>
+  <button>One</button>
+  <button>Two</button>
+  <button>Three</button>
+</body>
+</html>
