@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Functions as object factories</title>
+  <script type="text/javascript">
+    function makeCar(rate, brake) {
+      return {
+        speed: 0,
+        rate: rate,
+        brake: brake,
+        accelerator: function() {
+          this.speed += this.rate;
+        },
+        brake: function() {
+          this.speed -= this.brake;
+          this.speed = this.speed < 0 ? 0 : this.speed;
+        }
+      };
+    }
+
+    var hatckback = makeCar(9);
+  </script>
+</head>
+<body>
+
+</body>
+</html>

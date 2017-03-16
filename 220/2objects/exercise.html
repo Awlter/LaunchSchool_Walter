@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Objects exercises</title>
+  <script type="text/javascript">
+    var invoices = {
+      unpaid: [],
+      paid: [],
+      add: function(customer, owingAmount) {
+        this.unpaid.push({name: customer, amount: owingAmount});
+      },
+      total: function(items) {
+        return items.reduce(function(total, item) {
+          return total + item.amount;
+        }, 0);
+      },
+      totalDue: function() {
+        return this.total(this.unpaid);
+      },
+      totalPaid: function() {
+        return this.total(this.paid);
+      },
+      payInvoice: function(name) {
+        var unpaid = [];
+
+        this.unpaid.forEach(function(unpaidItem) {
+          if (name === unpaidItem.name) {
+            this.paid.push(unpaidItem);
+          } else {
+            unpaid.push(unpaidItem);
+          }
+        }, this);
+
+        this.unpaid = unpaid
+      },
+    };
+
+    invoices.add("Due North Development", 250);
+    invoices.add("Moonbeam Interactive", 187.50);
+    invoices.add("Slough Digital", 300);
+
+    invoices.payInvoice("Due North Development");
+    invoices.payInvoice("Slough Digital");
+
+    console.log(invoices.totalPaid());
+    console.log(invoices.totalDue());
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

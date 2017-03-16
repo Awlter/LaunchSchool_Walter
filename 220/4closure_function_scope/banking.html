@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Banking</title>
+  <script type="text/javascript">
+    function makeAccount(number) {
+      number: number,
+      var balance = 0,
+
+      return {
+        deposit: function(amount) {
+          this.balance += amount;
+          this.transactions.push({type: 'deposit', amount: amount})
+          return amount;
+        },
+        withdraw: function(amount) {
+          if (this.balance - amount < 0) {
+            amount = this.balance;
+          }
+
+          this.balance -= amount;
+          this.transactions.push({type: 'withdraw', amount: amount})
+          return amount;
+        },
+      };
+    }
+    
+    function makeBank() {
+      var accounts = [];
+      var number = 101;
+      return {
+        openAccount: function() {
+          var newAcount = makeAccount(number);
+          number += 1;
+          accounts.push(newAcount);
+          return newAcount;
+        },
+        transfer: function(source, destination, amount) {
+          source.withdraw(amount);
+          destination.deposit(amount);
+          return amount;
+        }
+      }
+    };
+
+    var bank = makeBank();
+    var account = bank.openAccount();
+  </script>
+</head>
+<body>
+
+</body>
+</html>

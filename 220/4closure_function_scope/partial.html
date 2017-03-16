@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Partial</title>
+  <script type="text/javascript">
+    function greet(greeting, name) {
+      var capitalized = greeting[0].toUpperCase() + greeting.slice(1);
+      var message = capitalized + ', ' + name + '!';
+      console.log(message);
+    }
+
+    function partial(greet, greeting) {
+      return function(name) {
+        greet(greeting, name);
+      }
+    }
+
+    var sayHello = partial(greet, 'Hello');
+    sayHello('Walter');
+  </script>
+</head>
+<body>
+
+</body>
+</html>
