@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    html, body {
+      padding: 25px 0;
+      background: #780e24;
+    }
+
+    h1 {
+      font-size: 1.4em;
+    }
+
+    main {
+      max-width: 450px;
+      padding: 20px;
+      margin: 0 auto;
+      background: #fff;
+    }
+
+    fieldset {
+      border: none;
+    }
+
+    input[type='text'] {
+      width: 40px;
+      height: 30px;
+      font: normal 24px monospace;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      $('form').submit(function(event) {
+        event.preventDefault();
+
+        var char = $('input[type=text]').val();
+        var char_code = char.charCodeAt(0);
+
+        $(document).off('keypress').on('keypress', function(event) {
+          if (event.which !== char_code) { return;}
+
+          $('a').trigger('click');
+        })
+      });
+
+      $('a').click(function(event) {
+        event.preventDefault();
+        $("#accordian").slideToggle('slow');
+      })
+    });
+  </script>
+</head>
+<body>
+  <main>
+    <form>
+      <fieldset>
+        <h1>Type a key to toggle accordian with</h1>
+        <input type="text" maxlength="1">
+        <input type="submit" value="Set">
+      </fieldset>
+    </form>
+
+    <p><a href="#">Toggle the accordion</a></p>
+
+    <div id="accordian">
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+  </main>
+  </script>
+</body>
+</html>

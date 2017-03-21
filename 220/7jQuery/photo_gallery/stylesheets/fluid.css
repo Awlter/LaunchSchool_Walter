@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  font: normal 16px Helvetica, Arial, sans-serif;
+  color: #f0f0f0;
+  background: #151515;
+}
+
+main {
+  max-width: 1000px;
+  min-width: 600px;
+  margin: 0 auto;
+  padding: 25px 20px 20px 20px;
+  background: #333333;
+}
+
+h1 {
+  text-align: center;
+}
+
+figure {
+  display: block;
+  margin: 0 0 15px 0;
+}
+
+figure + figure {
+  display: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  border: 15px solid white;
+  box-sizing: border-box;
+}
+
+figcaption {
+  padding: 10px 0 0 0;
+}
+
+ul {
+  padding: 0;
+}
+
+ul li {
+  display: inline-block;
+  width: 22%;
+  margin: 1.5%;
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0 -1.5%;
+}
+
+li img {
+  border: 2px solid white;
+}
+
+li.active img {
+  border-color: blue;
+}

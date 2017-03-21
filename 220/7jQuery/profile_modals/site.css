@@ -1,0 +1,325 @@
+@import url("reset.css");
+
+body {
+  font: normal 20px "Avenir", Helvetica, Arial, sans-serif;
+  padding-top: 120px;
+  text-align: center;
+  background: #2f2840 url("./images/bg_body.gif") 50% 0;
+}
+
+h1 {
+  padding-bottom: 50px
+}
+
+h1 a {
+  display: block;
+  width: 300px;
+  height: 243px;
+  text-indent: -9999px;
+  overflow: hidden;
+  background: transparent url("./images/logo.png") 0 0 no-repeat;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 36px;
+  color: #45494d;
+  padding-bottom: 40px;
+}
+
+h2:before,
+h2:after {
+  display: inline-block;
+  content: "\2022";
+  width: 24px;
+  height: 24px;
+  padding: 0 14px;
+}
+
+
+h3 {
+  font-size: 24px;
+  color: #3e59b2;
+  padding-bottom: 25px;
+}
+
+nav li {
+  display: inline;
+  padding: 0 44px;
+}
+
+a {
+  text-decoration: none;
+  color: #cacaca;
+}
+
+nav .active {
+  font-weight: bold;
+  color: #6db9ff;
+}
+
+.column {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+main {
+  margin-top: 50px;
+  padding: 125px 0 0 0;
+  background: #fff;
+}
+
+article {
+  padding: 0 110px 125px 110px;
+}
+
+footer {
+  padding: 80px 0;
+  color: #b2b2b2;
+  background: #e7e7e7;
+}
+
+footer p {
+  padding: 0 0 40px 0;
+}
+
+footer ul {
+  padding: 0 40px;
+}
+
+footer li {
+  display: inline-block;
+  padding: 0 60px;
+}
+
+footer a:before {
+  display: inline-block;
+  background: transparent url("./images/icons_social-media.png") 0 0 no-repeat;
+  content: "";
+  width: 46px;
+  height: 46px;
+}
+
+footer a.facebook:before {
+  background: transparent url("./images/icons_social-media.png") 0 -46px no-repeat;
+}
+
+footer a.google:before {
+  background: transparent url("./images/icons_social-media.png") 0 -92px no-repeat;
+}
+
+footer a.instagram:before {
+  background: transparent url("./images/icons_social-media.png") 0 100% no-repeat;
+}
+
+#project article {
+  padding: 0 0 125px 0;
+}
+
+#project img {
+  display: block;
+  width: 100%;
+}
+
+#project h3 {
+  padding-top: 50px;
+}
+
+#project p {
+  padding: 0 110px;
+}
+
+#team p {
+  padding: 0 120px 120px 120px;
+}
+
+#team ul {
+  padding-bottom: 135px;
+}
+
+#team li {
+  display: inline-block;
+  padding: 0 30px;
+  font-size: 24px;
+}
+
+#team a {
+  color: #3e59b2;
+}
+
+#team img {
+  display: block;
+}
+
+.modal_layer {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  left: 50%;
+  max-width: 660px;
+  padding: 125px 70px 90px 85px;
+  margin: 0 0 0 -408px;
+  text-align: left;
+  z-index: 3;
+  background: #fff;
+}
+
+#team .modal p {
+  padding: 0;
+  font-size: 20px;
+}
+
+.modal a.close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  text-align: left;
+  text-indent: -9999px;
+  overflow: hidden;
+  background: transparent url("images/icon_close.png") 0 0 no-repeat;
+}
+
+#team .modal img {
+  display: inline-block;
+  width: 96px;
+  margin: 0 20px 0 0;
+  vertical-align: middle;
+}
+
+#team .modal h3 {
+  display: inline-block;
+  font-size: 24px;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+@media (max-width: 875px) {
+  #team li {
+    width: 50%;
+    padding: 0 0 30px 0;
+  }
+
+  #team img {
+    margin: 0 auto;
+  }
+
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 60px;
+  }
+
+  h1 {
+    padding-bottom: 30px;
+  }
+
+  h1 a {
+    width: 223px;
+    height: 182px;
+    background-size: cover;
+  }
+
+  nav li {
+    padding: 0 45px;
+  }
+
+  main {
+    margin-top: 20px;
+    padding-top: 70px;
+  }
+
+  article {
+    padding: 0 30px 60px 30px;
+  }
+
+  article p {
+    text-align: justify;
+  }
+
+  footer {
+    padding-top: 40px;
+  }
+
+  footer li {
+    padding: 0 35px;
+  }
+
+  #project p,
+  #team p {
+    padding: 0 30px;
+  }
+
+  .modal {
+    left: 0;
+    margin: 0;
+    padding: 50px 30px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    margin-top: 0;
+  }
+
+  body {
+    padding: 0;
+    font-size: 16px;
+  }
+
+  header {
+    padding: 20px 15px;
+  }
+
+  header h1 {
+    float: left;
+    padding: 20px 0 0 0;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  header a {
+    width: auto;
+    height: 40px;
+    background-size: 100px auto;
+    background-position: -20px 0;
+    padding: 10px 0 0 55px;
+    text-indent: 0;
+    color: #fff;
+    font-size: 24px;
+  }
+
+  nav {
+    text-align: right;
+  }
+
+  nav li {
+    display: block;
+    padding: 1px 0;
+  }
+
+  nav a {
+    font-size: 16px;
+  }
+
+  #team ul {
+    padding: 30px 0;
+  }
+}

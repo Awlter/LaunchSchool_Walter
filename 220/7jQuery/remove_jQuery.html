@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    html, body {
+      padding: 25px 0;
+      background: #780e24;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      color: #16997c;
+      padding: 20px 0;
+    }
+
+    main {
+      max-width: 450px;
+      padding: 20px;
+      margin: 0 auto;
+      background: #fff;
+    }
+
+    fieldset {
+      border: none;
+    }
+
+    input[type='text'] {
+      width: 60px;
+      height: 30px;
+      font: normal 24px monospace;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    window.onload = function() {
+      var form = document.getElementById('calculator');
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var first = this.que('input[name=first]').val();
+        var second = parseFloat($('input[name=second]').val());
+        var operator = $('select').val();
+        var result;
+        
+        switch (operator) {
+          case '+':
+            result = first + second;
+            break;
+          case '-':
+            result = first - second;
+            break;
+          case '*':
+            result = first * second;
+            break;
+          case '/':
+            result = first / second;
+            break;
+        }
+
+        $('h1').text(result);
+      })
+
+      var testing = document.querySelector('#testing');
+
+      testing.onclick = function() {
+        console.log('1111');
+      };
+
+      testing.onclick = function() {
+        console.log('2222');
+      };
+
+      testing.addEventListener('click', function() {
+        console.log('3333');
+      });
+
+      testing.addEventListener('click', function() {
+        console.log('4444');
+      });
+
+      $('#testing').on('click', function() {
+        console.log('5555');
+      })
+
+      $('#testing').on('click', function() {
+        console.log('6666');
+      })
+    };
+  </script>
+</head>
+<body>
+  <main>
+    <form id='calculator'>
+      <fieldset>
+        <h1>0</h1>
+        <input name='first' type="text" value="0">
+        <select>
+          <option value="+">+</option>
+          <option value="-">-</option>
+          <option value="*">*</option>
+          <option value="/">/</option>
+        </select>
+        <input name='second' type="text" value="0">
+        <input type="submit" value="=">
+      </fieldset>
+    </form>
+    <a id="testing" href="#">tesing</a>
+  </main>
+</body>
+</html>

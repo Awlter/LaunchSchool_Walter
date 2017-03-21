@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    html, body {
+      padding: 25px 0;
+      background: #780e24;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      color: #16997c;
+      padding: 20px 0;
+    }
+
+    main {
+      max-width: 450px;
+      padding: 20px;
+      margin: 0 auto;
+      background: #fff;
+    }
+
+    fieldset {
+      border: none;
+    }
+
+    input[type='text'] {
+      width: 60px;
+      height: 30px;
+      font: normal 24px monospace;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      $('form').submit(function(event) {
+        event.preventDefault();
+
+        var first = parseFloat($('input[name=first]').val());
+        var second = parseFloat($('input[name=second]').val());
+        var operator = $('select').val();
+        var result;
+        
+        switch (operator) {
+          case '+':
+            result = first + second;
+            break;
+          case '-':
+            result = first - second;
+            break;
+          case '*':
+            result = first * second;
+            break;
+          case '/':
+            result = first / second;
+            break;
+        }
+
+        $('h1').text(result);
+      });
+
+    });
+  </script>
+</head>
+<body>
+  <main>
+    <form>
+      <fieldset>
+        <h1>0</h1>
+        <input name='first' type="text" value="0">
+        <select>
+          <option value="+">+</option>
+          <option value="-">-</option>
+          <option value="*">*</option>
+          <option value="/">/</option>
+        </select>
+        <input name='second' type="text" value="0">
+        <input type="submit" value="=">
+      </fieldset>
+    </form>
+  </main>
+</body>
+</html>
