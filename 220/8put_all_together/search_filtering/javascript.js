@@ -41,7 +41,7 @@ $(function() {
       "category": "Xbox One"
     }];
 
-  var $items = $('main li');
+  var $items = $('main ul');
   var $categories = $(":checkbox");
 
   $categories.on('change', function() {
@@ -55,7 +55,7 @@ $(function() {
     });
 
     category_items.forEach(function(item) {
-      $items.filter('[data-id=' + item.id + ']').toggle(checked);
+      $items.find('[data-id=' + item.id + ']').toggle(checked);
     });
   });
 })

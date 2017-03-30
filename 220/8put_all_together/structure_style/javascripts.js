@@ -1,3 +1,66 @@
+$(function() {
+  $form = $('form');
+  $canvas = $('#canvas');
+
+  function getFormObject() {
+    var data = {};
+
+    $f.serializeArray().forEach(function(obj) {
+      data[obj.name] = obj.value;
+    });
+
+    return data;
+  }
+
+  function resetElement($e) {
+    var data = $e.data();
+
+    $e.css({
+      left: +data.start_x,
+      top: +data.start_y
+    })
+  }
+
+  function createElement(data) {
+    $div = $('<div/>', {
+      "class": data.type,
+      data: data
+    })
+
+    resetElement($div);
+
+    return $div
+  }
+
+  function animateElement() {
+    $e = $(this);
+    var data = $e.data();
+
+    resetElement($e)
+
+    $e.animate({
+      left: +data.end_x,
+      top: +data.end_y
+    }, 800)
+  }
+
+  $form.on('submit', function(e) {
+    e.preventDefault();
+    $f = $(this);
+
+    var data = getFormObject($f);
+
+    $canvas.append(createElement(data));
+  })
+
+  $('#animate').on('click', function(e) {
+    e.preventDefault();
+
+    $canvas.find('div').each(animateElement);
+  })
+});
+
+
 // $(function() {
 //   var $form = $('form');
 //   var $canvas = $('#canvas');
@@ -46,72 +109,72 @@
 // });
 
 
-$(function() {
-  var $canvas = $('#canvas');
-  var $form = $('form');
+// $(function() {
+//   var $canvas = $('#canvas');
+//   var $form = $('form');
 
-  function getFormObject($f) {
-    var o = {};
+//   function getFormObject($f) {
+//     var o = {};
 
-    $f.serializeArray().forEach(function(ele) {
-      o[ele.name] = ele.value;
-    });
+//     $f.serializeArray().forEach(function(ele) {
+//       o[ele.name] = ele.value;
+//     });
 
-    return o;
-  }
+//     return o;
+//   }
 
-  function resetElement($e) {
-    var data = $e.data();
+//   function resetElement($e) {
+//     var data = $e.data();
 
-    $e.css({
-        top: +data.start_y,
-        left: +data.start_x
-      });
-  }
+//     $e.css({
+//         top: +data.start_y,
+//         left: +data.start_x
+//       });
+//   }
 
-  function createElement(data) {
-    var $d = $('<div/>', {
-      "class": data.type,
-      data: data
-    });
+//   function createElement(data) {
+//     var $d = $('<div/>', {
+//       "class": data.type,
+//       data: data
+//     });
 
-    resetElement($d);
+//     resetElement($d);
 
-    return $d;
-  }
+//     return $d;
+//   }
 
-  function animateElement() {
-    var $e = $(this);
-    var data = $e.data();
+//   function animateElement() {
+//     var $e = $(this);
+//     var data = $e.data();
 
-    resetElement($e);
+//     resetElement($e);
 
-    $e.animate({
-      top: +data.end_y,
-      left: +data.end_x
-    }, 1000);
-  }
+//     $e.animate({
+//       top: +data.end_y,
+//       left: +data.end_x
+//     }, 1000);
+//   }
 
-  $form.submit(function(e) {
-    e.preventDefault();
+//   $form.submit(function(e) {
+//     e.preventDefault();
 
-    var $f = $(this);
-    var data;
+//     var $f = $(this);
+//     var data;
 
-    data = getFormObject($f);
+//     data = getFormObject($f);
 
-    $canvas.append(createElement(data));
-  });
+//     $canvas.append(createElement(data));
+//   });
 
-  $('#animate').click(function(e) {
-    e.preventDefault();
+//   $('#animate').click(function(e) {
+//     e.preventDefault();
 
-    $canvas.find('div').each(animateElement);
-  });
+//     $canvas.find('div').each(animateElement);
+//   });
 
-  $('#stop').click(function(e) {
-    e.preventDefault();
+//   $('#stop').click(function(e) {
+//     e.preventDefault();
 
-    $canvas.find('div').stop(true);
-  })
-})
+//     $canvas.find('div').stop(true);
+//   })
+// })

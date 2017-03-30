@@ -4,8 +4,9 @@ $(function() {
 
   $('#comic').click(function() {
     $blinds.each(function(i) {
-      var $blind = $blinds.eq(i);
+      var $blind = $(this);
       var height = $blind.css('height');
+      console.log(typeof height);
       var speed = 250;
       var wait = 1500;
 
