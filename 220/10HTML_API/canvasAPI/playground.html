@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var canvas = document.querySelector('canvas');
+      var ctx = canvas.getContext('2d');
+
+      console.log(ctx)
+
+      var imageData = {
+        width: 2,
+        height: 2,
+        data: [
+          255, 0, 0, 255,
+          255, 0, 0, 255,
+          0, 0, 255, 255,
+          0, 0, 255, 255
+        ],
+      }
+
+      // new ImageData(array, width, height);
+
+      // var clamped = new Uint8ClampedArray(imageData.data);
+      var clamped = imageData.data;
+      var myImg = new ImageData(clamped, imageData.width, imageData.height);
+
+      ctx.putImageData(myImg, 0, 0);
+    });
+  </script>
+</head>
+<body>
+  <canvas width="800" height="600"></canvas>
+</body>
+</html>

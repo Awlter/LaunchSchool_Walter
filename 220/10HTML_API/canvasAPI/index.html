@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var canvas = document.querySelector('canvas');
+      var ctx = canvas.getContext('2d');
+
+      console.log(ctx)
+
+      imageData = {
+        width: 2,
+        height: 2,
+        data: [
+          255, 0, 0, 255,
+          255, 0, 0, 255,
+          0, 0, 255, 255,
+          0, 0, 255, 255
+        ],
+      }
+
+      ctx.putImageData(imageData, 0, 0);
+    })
+  </script>
+</head>
+<body>
+  <canvas width="800" height="600"></canvas>
+</body>
+</html>
