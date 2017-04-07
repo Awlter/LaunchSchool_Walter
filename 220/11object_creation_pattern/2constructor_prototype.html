@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript">
+  //Exercise 1
+  // 1
+    // function Circle(radius) {
+    //   this.radius = radius;
+    // }
+
+    // Circle.prototype.area = function() {
+    //   return Math.PI * Math.pow(this.radius, 2);
+    // }
+    // var a = new Circle(3);
+    // var b = new Circle(4);
+
+    // console.log(a.area().toFixed(2)); // 28.27
+    // console.log(b.area().toFixed(2)); // 50.27
+
+  // 5
+  // var ninjaA = (function() {
+  //   function Ninja(){};
+  //   return new Ninja();
+  // })();
+
+  // var ninjaB = Object.create(Object.getPrototypeOf(ninjaA));
+
+  // console.log(ninjaB.constructor === ninjaA.constructor)
+
+  //Exercise 2
+
+  //1
+
+    // var shape = {
+    //   type: 'cool',
+    //   getType: function() {
+    //     return this.type
+    //   }
+    // }
+
+    // function Triangle(a, b, c) {
+    //   this.a = a;
+    //   this.b = b;
+    //   this.c = c;
+    // }
+
+    // Triangle.prototype = shape;
+    // Triangle.prototype.constructor = Triangle;
+    // Triangle.prototype.getPerimeter = function() {
+    //   return this.a + this.b + this.c;
+    // }
+
+    // var t = new Triangle(1, 2, 3);
+    // console.log(t.constructor);                 // Triangle(a, b, c)
+    // console.log(shape.isPrototypeOf(t));        // true
+    // console.log(t.getPerimeter());              // 6
+    // console.log(t.getType());
+
+  //2
+    // function User(first, last) {
+    //   if (!(this instanceof User)) {
+    //     return new User(first, last)
+    //   }
+
+    //   this.name = first + ' ' + last
+    // }
+
+    // var name = 'Jane Doe';
+    // var user1 = new User('John', 'Doe');
+    // var user2 = User('John', 'Doe');
+
+    // console.log(name);        // Jane Doe
+    // console.log(user1.name);   // John Doe
+    // console.log(user2.name);   // John Doe
+
+  //3
+  // function createObject(obj) {
+  //   var result = {};
+
+  //   result.__proto__ = obj;
+  //   return result
+  // }
+
+  // var foo = {
+  //   a: 1,
+  // };
+
+  // function createObject(obj) {
+  //   function temp() {}
+  //   temp.prototype = obj;
+  //   temp.prototype.constructor = temp;
+
+  //   return new temp();
+  // }
+
+  // var bar = createObject(foo);
+  // console.log(foo.isPrototypeOf(bar));
+
+  //4
+  // var foo = {
+  //   a: 1,
+  // };
+
+  // foo.begetObject = function() {
+  //   function temp() {}
+  //   temp.prototype = this
+  //   temp.prototype.constructor = temp;
+
+  //   return new temp();
+  // }
+
+  // var bar = foo.begetObject();
+  // console.log(foo.isPrototypeOf(bar));
+
+  //5
+    function neww(constructor, args) {
+      return constructor.apply(constructor, args)
+    }
+
+    function Person(firstName, lastName) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+    }
+
+    Person.prototype.greeting = function() {
+      console.log('Hello, ' + this.firstName + ' ' + this.lastName);
+    }
+
+    var john = neww(Person, ['John', 'Doe']);
+    // john.greeting();          // Hello, John Doe
+    // john.constructor;         // Person(firstName, lastName) {...}
+  </script>
+</head>
+<body>
+
+</body>
+</html>

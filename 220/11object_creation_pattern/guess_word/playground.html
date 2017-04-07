@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>animate demo</title>
+  <style>
+  div:first-of-type {
+    left: 200px;
+  }
+
+  div:nth-of-type(2) {
+    background: #ff00ff;
+    left: 100px
+  }
+
+  div {
+    position: relative;
+    background-color: #abc;
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin: 5px;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+<p><button id="go">Run »</button></p>
+<div class="block"></div>
+<div class="block"></div>
+<!-- <div class="block"></div>
+<div class="block"></div>
+<div class="block"></div>
+<div class="block"></div>
+ -->
+<article></article>
+<script>
+$( "#go" ).click(function() {
+  $( ".block:first" ).animate({
+    left: 100
+  }, {
+    duration: 1000,
+    step: function( now, fx ){
+      $( ".block:gt(0)" ).css( "left", now );
+      var data = fx.elem + " " + fx.prop + ": " + now;
+      $( "article" ).append( "<p>" + data + "</p>" );
+      $( "article" ).append( "<p>" + '__________' + "</p>" );
+    }
+  });
+});
+</script>
+
+</body>
+</html>

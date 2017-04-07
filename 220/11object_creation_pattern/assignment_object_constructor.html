@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript">
+    function Vehicle() {}
+    Vehicle.prototype.doors = 4;
+    Vehicle.prototype.wheels = 4;
+
+    var sedan = new Vehicle();
+
+    function Coupe() {};
+    function Motorcycle() {
+      this.doors = 0;
+      this.wheels = 2;
+    };
+
+    Coupe.prototype = new Vehicle();
+    Coupe.prototype.constructor = Coupe;
+
+    Motorcycle.prototype = new Vehicle();
+    Motorcycle.prototype.constructor = Motorcycle;
+
+    var coupe = new Coupe();
+    var motorcycle = new Motorcycle();
+
+    function Sedan() {};
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

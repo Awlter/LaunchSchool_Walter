@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript">
+    // function Vehicle() {};
+    // Vehicle.prototype.doors = 4;
+    // Vehicle.prototype.wheels = 4;
+
+    // var sedan = new Vehicle();
+
+    // function Coupe() {};
+    // function Motorcycle() {};
+    // Coupe.prototype = Object.create(Vehicle.prototype);
+    // Coupe.prototype.constructor = Coupe;
+    // Motorcycle.prototype = Object.create(Vehicle.prototype);
+    // Motorcycle.prototype.constructor = Motorcycle;
+
+    // function Sedan() {}
+
+
+    // var prototype_car = {
+    //   doors: 4,
+    //   wheels: 4
+    // }
+
+    // var ceo_car = Object.create(prototype_car);
+    // console.log(ceo_car);
+    // ceo_car.doors = 7
+    // console.log(Object.getPrototypeOf(ceo_car) === prototype_car);
+
+    // function NewArray() {};
+    // NewArray.prototype = Object.create(Object.getPrototypeOf([]));
+
+    // NewArray.prototype.first = function() {
+    //   return this[0]
+    // }
+
+    // var newArr = new NewArray();
+    // var oldArr = new Array();
+
+    // oldArr.push(5);
+    // newArr.push(5);
+    // oldArr.push(2);
+    // newArr.push(2);
+    // console.log(newArr.first());           // 5
+    // // console.log(oldArr.first());
+
+    // var arr = [1];
+
+    // function newPerson(name) {
+    //   if (!(this instanceof newPerson)) {
+    //     return new newPerson(name)
+    //   }
+    //   this.name = name;
+    //   Object.defineProperties(this, {
+    //     log: {
+    //       value: function() { console.log(this.name)},
+    //       writable: false
+    //     }
+    //   });
+    //   return this
+    // }
+
+    // var me = new newPerson('Shane Riley');
+
+    // console.log(me);
+    // me.log();     // Shane Riley
+    // me.log = function() { console.log("Amanda Rose"); };
+    // me.log();     // Shane Riley
+
+    var digit_name = function() {
+      var names = ['zero', 'one', 'two', 'three', 'four']
+
+      return function(n) {
+        console.log(n)
+      }
+    }
+
+    setTimeout(digit_name(3), 500);
+  </script>
+</head>
+<body>
+
+</body>
+</html>
