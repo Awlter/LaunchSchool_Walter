@@ -1,0 +1,50 @@
+@import url("reset.css");
+
+body {
+  font: normal 16px Helvetica, Arial, sans-serif;
+}
+
+#page {
+  width: 800px;
+  margin: 0 auto;
+}
+
+
+nav ul {
+  padding: 15px 15px 0 15px;
+  background: rgb(179, 18, 229)
+}
+
+nav li {
+  padding-right: 10px;
+  vertical-align: bottom;
+  display: inline-block;
+}
+
+nav a {
+  display: block;
+  padding: 10px 10px 5px 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: #fff;
+  background: #5a2cd6;
+  text-decoration: none;
+}
+
+main {
+  height: 100vh;
+  padding: 15px;
+  background: rgb(18, 176, 229)
+}
+
+article p {
+  display: none;
+}
+
+article p.active {
+  display: block;
+}
+
+#body_color {
+  padding: 10px 0px;
+}

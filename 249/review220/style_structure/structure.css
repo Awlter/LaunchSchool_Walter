@@ -1,0 +1,35 @@
+main {
+  width: 800px;
+  margin: 0 auto;
+}
+
+#container {
+  position: relative;
+  width: 800px;
+  height: 600px;
+  background: linear-gradient(#299AF0, #8EC4ED);
+}
+
+form {
+  width: 800px;
+  margin: 0 auto;
+}
+
+fieldset {
+  border: none;
+}
+
+#container div {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: yellow;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.star {
+  background: url('') 0 0 no-repeat;
+}

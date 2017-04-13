@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Manager</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+  <script type="text/javascript" src="contact.js"></script>
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+  <header>
+    <h1>Contact Manager</h1>
+    <p>Using Backbone.js, Localstorage, RequireJS, Handlebar and Bootstrap</p>
+  </header>
+
+  <div class="container">
+    <div class="contacts">
+      <div class="function-bar">
+        <a href="#" class="btn add">Add Contact</a>
+        <input type="search" name="search" id="search" placeholder="search">
+      </div>
+      <ul class="contacts-container">
+      </ul>
+      <div class="empty-contacts-placeholder">
+        <h3>There is no contacts.</h3>
+        <a href="#" class="btn add">Add Contact</a>
+      </div>
+      <div class="empty-search-placeholder"></div>
+    </div>
+
+    <form action="#" method="post">
+      <fieldset>
+        <h2>Create Contact</h2>
+        <input type="hidden" name="id" value="">
+        <dl>
+          <dt><label for="name">Full Name:</label></dt>
+          <dd><input type="text" name="name" id="name"></dd>
+          <dt><label for="email">Email Address:</label></dt>
+          <dd><input type="email" name="email" id="email"></dd>
+          <dt><label for="telephone">Telephone Number:</label></dt>
+          <dd><input type="number" name="number" id="number"></dd>
+        </dl>
+
+        <input type="submit" class="btn" value="Submit">
+        <a href="#" class="btn cancel">Cancel</a>
+      </fieldset>
+    </form>
+  </div>
+
+  <footer>
+    <p>Developed by <a href="#">Devsaran.com</a> and <a href="#">239 Listing Real Estate</a>.</p>
+  </footer>
+
+  <script type="text/x-handlebar" id="contacts_temp">
+    {{#each contacts}}
+    {{>contact_temp}}
+    {{/each}}
+  </script>
+
+  <script type="text/x-handlebar" data-type="partial" id="contact_temp">
+    <li data-id="{{id}}">
+      <h3>{{name}}</h3>
+      <dl>
+        <dt>Phone Number:</dt>
+        <dd>{{number}}</dd>
+        <dt>Email:</dt>
+        <dd>{{email}}</dd>
+      </dl>
+      <a href="#" class="btn edit">Edit</a>
+      <a href="#" class="btn delete">Delete</a>
+    </li>
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Local Storage</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script type="text/javascript" src="storage.js"></script>
+  <link rel="stylesheet" href="storage.css" />
+</head>
+<body>
+  <div id="page">
+    <nav>
+      <ul>
+        <li><a data-block="tag1" href="#">Tag 1</a></li>
+        <li><a data-block="tag2" href="#">Tag 2</a></li>
+        <li><a data-block="tag3" href="#">Tag 3</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <article data-block='tag1'>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse pellentesque enim dignissim, malesuada urna in, condimentum sem. Donec non pharetra magna, rutrum porttitor nisi. Aenean accumsan fermentum gravida. Pellentesque quis ligula hendrerit, gravida ex et, egestas ante. Duis non velit sed magna rutrum mollis at varius ligula. Nulla massa enim, lobortis eget convallis commodo, venenatis at enim. Aliquam fringilla dignissim magna finibus lobortis. Pellentesque at augue dapibus, euismod lectus vitae, placerat leo.</p>
+      </article>
+      <article data-block='tag2'>
+        <p>Phasellus dolor purus, fringilla tempus venenatis eget, malesuada nec massa. Aenean vitae hendrerit dui. In hac habitasse platea dictumst. Nullam viverra scelerisque erat, maximus imperdiet tellus ornare vitae. Vestibulum ante velit, ullamcorper sed purus vel, auctor placerat est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam viverra risus id mollis mollis. Aliquam leo eros, efficitur vel felis non, semper semper dui. Donec feugiat sem ut arcu convallis rutrum. Pellentesque sed pellentesque augue. Pellentesque fermentum purus sit amet risus lobortis, id tincidunt justo ultrices. Phasellus ultrices maximus massa, a interdum nibh consequat ut. Curabitur vel nunc vitae velit scelerisque malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec eget magna vitae ipsum condimentum molestie eu quis dolor.</p>
+      </article>
+      <article data-block='tag3'>
+        <p>Etiam faucibus mi vel eros viverra, in hendrerit ipsum varius. In efficitur urna vel erat vehicula luctus. In hac habitasse platea dictumst. Nunc quis est feugiat, fermentum lacus ac, placerat metus. Nunc ac arcu augue. Proin sed venenatis neque. Sed cursus justo in viverra placerat. Proin in cursus mi, ac imperdiet libero. Suspendisse id sem et nisl commodo tempor eget in magna. Nunc tempus scelerisque fermentum. Curabitur massa elit, fermentum ut lacus at, venenatis sagittis elit. Donec in urna vitae enim mollis auctor. Nulla convallis fringilla libero pulvinar luctus. Etiam elementum risus et massa porta aliquam. Integer consequat maximus nulla, et bibendum purus convallis ac.</p>
+      </article>
+
+      <h3>Body Color:</h3>
+      <ul id="body_color">
+        <li><label><input type="radio" name="body_color" value="#ff0000">Red</label></li>
+        <li><label><input type="radio" name="body_color" value="#00ff00">Green</label></li>
+        <li><label><input type="radio" name="body_color" value="#0000ff">Blue</label></li>
+      </ul>
+
+      <h4>Notes:</h4>
+      <textarea cols="60" rows="8"></textarea>
+    </main>
+  </div>
+</body>
+</html>
