@@ -1,27 +1,17 @@
 $(function() {
   var templates = {};
-  var contacts;
-  var lastID = +localStorage.getItem('lastID');
-  console.log(+localStorage.getItem('lastID'))
-  var $form = $('form');
-  var $contacts = $('.contacts');
   var $templates = $("[type='text/x-handlebar']");
 
-  $templates.each(function(i) {
-    templates[$templates.eq(i)[0].id] = Handlebars.compile($templates.eq(i).html())
-  })
+  var contacts;
+  var $contactForm = $('form.contacts-form');
+  var $contacts = $('.contacts');
+  var lastID;
 
-  $("[data-type='partial']").each(function(i, item) {
-    Handlebars.registerPartial(item.id, item.innerHTML);
-  })
 
-  contacts = JSON.parse(localStorage.getItem('contacts')) || [];
-
-  if (contacts.length) {
-    $('.contacts-container').html(templates.contacts_temp({contacts: contacts}));
-  }
-
-  showContacts()
+  var $tagForm = $(".tagging form");
+  var tags;
+  var selectedTagNames = [];
+  var searchedTagNames = [];
 
   function showContacts() {
     if (contacts.length) {
@@ -31,6 +21,31 @@ $(function() {
     }
   }
 
+  function loadLastState() {
+    contacts = JSON.parse(localStorage.getItem('contacts')) || [];
+    tags = JSON.parse(localStorage.getItem('tags')) || [];
+    lastID = +localStorage.getItem('lastID');
+
+    if (contacts.length) {
+      $('.contacts-container').html(templates.contacts_temp({contacts: contacts}));
+    }
+
+    if (tags.length) {
+      $('.tags').html(templates.tags_temp({tags: tags}));
+      $contactForm.find('ul').append(templates.tags_temp({tags: tags}))
+    }
+
+    showContacts()
+  }
+
+  $templates.each(function(i) {
+    templates[$templates.eq(i)[0].id] = Handlebars.compile($templates.eq(i).html())
+  })
+  $("[data-type='partial']").each(function(i, item) {
+    Handlebars.registerPartial(item.id, item.innerHTML);
+  })
+
+  loadLastState();
 
   $('.add').on('click', function(e, contactTobeEdit) {
     e.preventDefault();
@@ -39,13 +54,16 @@ $(function() {
       $('#name').val(contactTobeEdit.name);
       $('#email').val(contactTobeEdit.email);
       $('#number').val(contactTobeEdit.number);
-      $form.find('[type=hidden]').val(contactTobeEdit.id);
+      $contactForm.find('[type=hidden]').val(contactTobeEdit.id);
+      selectedTagNames = contactTobeEdit.tags;
+      $.each(selectedTagNames, function(i, name) {
+        $contactForm.find("[data-tag=" + name + "]").addClass('selected')
+      })
     } else {
-      console.log(lastID)
-      $form.find('[type=hidden]').val(lastID);
+      $contactForm.find('[type=hidden]').val(lastID);
     }
 
-    $form.animate({
+    $contactForm.animate({
       height: "toggle"
     }, 600);
 
@@ -56,10 +74,11 @@ $(function() {
     showContacts()
   });
 
-  $form.on('click', '.cancel', function(e) {
+  $contactForm.on('click', '.cancel', function(e) {
     e.preventDefault();
 
-    $form.animate({
+    /??? toggleSheetAndForm()
+    $contactForm.animate({
       height: "toggle"
     }, 400);
 
@@ -67,11 +86,13 @@ $(function() {
       height: "toggle"
     }, 400);
 
-    $form.find('dd input').val(undefined);
+    selectedTagNames = [];
+    $contactForm.find('li').removeClass('selected');
+    $contactForm.find('dd input').val(undefined);
     showContacts()
-  });
+  })
 
-  $form.on('submit', function(e) {
+  $contactForm.on('submit', function(e) {
     e.preventDefault();
     var $e = $(this);
 
@@ -79,6 +100,8 @@ $(function() {
     $e.serializeArray().forEach(function(item) {
       contact[item.name] = item.value
     });
+
+    contact.tags = selectedTagNames;
 
     var editing = contacts.filter(function(item) {
       return +item.id === +contact.id
@@ -94,14 +117,14 @@ $(function() {
       contacts.push(contact);
     }
 
-    $form.find('.cancel').click();
-    $form.find('dd input').val(undefined);
+    $contactForm.find('.cancel').click();
+    $contactForm.find('dd input').val(undefined);
     lastID += 1;
 
     localStorage.setItem('contacts', JSON.stringify(contacts))
 
     showContacts();
-  });
+  })
 
   $('.contacts-container').on('click', '.delete', function(e) {
     e.preventDefault();
@@ -117,7 +140,7 @@ $(function() {
 
     localStorage.setItem('contacts', JSON.stringify(contacts));
     showContacts();
-  });
+  })
 
   $('.contacts-container').on('click', '.edit', function(e) {
     e.preventDefault();
@@ -133,7 +156,7 @@ $(function() {
     $('.add').eq(0).trigger('click', contact)
   })
 
-  $('#search').on('keydown', function(e) {
+  $('#search').on('keydown', function(e, nameFromTag) {
     var $e = $(this);
     var value = $e.val();
 
@@ -160,8 +183,69 @@ $(function() {
     }
   })
 
-  $(window).unload(function() {
-    localStorage.setItem('lastID', lastID)
+  $tagForm.on('submit', function(e) {
+    e.preventDefault();
+
+    var name = $tagForm.find('dd input').val();
+    $tagForm.find('dd input').val('');
+    var tagName = name.toLowerCase();
+
+    var tag = {
+      name: name,
+      tagName: tagName
+    };
+
+    tags.push(tag);
+
+    $('.tags').append(templates.tag_temp(tag));
+    $contactForm.find('ul').append(templates.tag_temp(tag))
+    localStorage.setItem('tags', JSON.stringify(tags));
   })
 
+  $contactForm.find('ul').on('click', 'li', function(e) {
+    $e = $(this);
+    var name = $e.data('tag');
+    $e.toggleClass('selected');
+
+    if ($e.hasClass('selected')) {
+      selectedTagNames.push(name)
+    } else {
+      selectedTagNames.splice(selectedTagNames.indexOf(name), 1);
+    }
+  })
+
+  $('.tagging').on('click', 'li', function(e) {
+    $e = $(this);
+    var name = $e.data('tag');
+    $e.toggleClass('selected');
+
+    if ($e.hasClass('selected')) {
+      searchedTagNames.push(name)
+    } else {
+      searchedTagNames.splice(searchedTagNames.indexOf(name), 1);
+    }
+
+    contacts.forEach(function(contact) {
+      function match(tag) {
+        return searchedTagNames.indexOf(tag) !== -1
+      }
+
+      var $li = $("li[data-id=" + contact.id + "]")
+      if (contact.tags.some(match)) {
+        $li.show();
+      } else {
+        $li.hide();
+      }
+    })
+
+    if (!$('.tags .selected').length && !$('.contacts-container li:visible').length) {
+      $('.contacts-container li').show();
+    }
+  })
+
+  $(window).unload(function() {
+    localStorage.setItem('lastID', lastID);
+  })
 });
+
+

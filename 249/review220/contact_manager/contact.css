@@ -50,7 +50,7 @@ header p {
   cursor: pointer;
 }
 
-.btn:hover {
+.selected, .btn:hover {
   color: #fff;
   background: #5d317d;
 }
@@ -61,9 +61,7 @@ header p {
   overflow: hidden;
 }
 
-.function-bar,
-.empty-contacts-placeholder,
-.empty-search-placeholder {
+.row {
   text-align: center;
   padding: 20px 0;
   background: #f5f5f5;
@@ -92,7 +90,53 @@ header p {
   display: none;
 }
 
-form {
+.tagging {
+  margin-top: 10px;
+  text-align: left;
+}
+
+.tagging p {
+  float: left;
+  margin: 5px 10px 0 30px;
+  vertical-align: top
+}
+
+.tagging ul,
+.tagging li,
+.tagging form {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.tagging dl,
+.tagging dt,
+.tagging dd {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.tagging form {
+  float: right;
+  margin-right: 20px;
+}
+
+.tagging dd input {
+  padding: 3px;
+  font-size: 14px;
+}
+
+.tagging .btn {
+  vertical-align: middle;
+  padding: 6px 8px;
+}
+
+.tagging
+
+li.btn {
+  border-radius: 30%;
+}
+
+.contacts-form {
   display: none;
   max-width: 1120px;
   margin: 0 auto;
@@ -100,33 +144,34 @@ form {
   box-sizing: border-box;
 }
 
-form h2 {
+.contacts-form h2 {
   text-align: center;
   margin: 0 0px 20px 0px;
   padding: 15px 0;
   border-bottom: 1px solid #f5f5f5;
 }
 
-form dt, dd {
+.contacts-form dt,
+.contacts-form dd {
   display: inline-block;
   margin-bottom: 20px;
 }
 
-form dt {
+.contacts-form dt {
   width: 40%;
   text-align: right;
 }
 
-form dt label {
+.contacts-form dt label {
   padding-right: 20px;
 }
 
-form dd {
+.contacts-form dd {
   width: 59%;
   text-align: left;
 }
 
-form dd input {
+.contacts-form dd input {
   width: 60%;
   font-size: 14px;
   padding: 8px 10px;
@@ -134,18 +179,47 @@ form dd input {
   border-radius: 4px;
 }
 
-form input[type=submit] {
+.contacts-form input[type=submit] {
   width: 17%;
   margin-left: 40.5%;
   font-size: 16px;
   padding: 15px 0;
 }
 
-form  a {
+.contacts-form a {
   text-align: center;
   width: 17%;
   padding: 15px 0;
   margin-left: 1%;
+}
+
+.contacts-form ul {
+  margin-left: 42%;
+  padding: 20px 0;
+}
+
+.contacts-form ul li {
+  display: inline-block;
+}
+
+.contacts-form ul label {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid #b138ed;
+  border-radius: 30%;
+}
+
+.contacts-form ul label:hover {
+  cursor: pointer;
+}
+
+.contacts-form ul input[type='checkbox'] {
+  display: none;
+}
+
+.contacts-form ul input:checked + label {
+  color: #fff;
+  background: #b138ed;
 }
 
 .contacts-container {
@@ -177,7 +251,8 @@ form  a {
   font-weight: 600;
 }
 
-.contacts-container dt, dd {
+.contacts-container dt,
+.contacts-container dd {
   padding-bottom: 5px;
 }
 
@@ -189,6 +264,14 @@ form  a {
   margin: 10px 0;
 }
 
+.tag-dec {
+  display: inline-block;
+  padding: 5px 5px 0 5px;
+  color: #fff;
+  background: pink;
+  border: 1px solid pink;
+  border-radius: 5px;
+}
 footer {
   max-width: 1120px;
   margin: 20px auto 0 auto;

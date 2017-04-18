@@ -4,7 +4,6 @@
   <title>Contact Manager</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
-  <script type="text/javascript" src="contact.js"></script>
   <link rel="stylesheet" href="contact.css" />
 </head>
 <body>
@@ -15,20 +14,36 @@
 
   <div class="container">
     <div class="contacts">
-      <div class="function-bar">
+      <div class="function-bar row">
         <a href="#" class="btn add">Add Contact</a>
         <input type="search" name="search" id="search" placeholder="search">
       </div>
-      <ul class="contacts-container">
-      </ul>
-      <div class="empty-contacts-placeholder">
+
+      <ul class="contacts-container"></ul>
+
+      <div class="empty-contacts-placeholder row">
         <h3>There is no contacts.</h3>
         <a href="#" class="btn add">Add Contact</a>
       </div>
-      <div class="empty-search-placeholder"></div>
+      <div class="empty-search-placeholder row"></div>
+
+      <div class="tagging row">
+        <p>Tags:</p>
+        <ul class="tags">
+        </ul>
+        <form accept="#" method="post">
+          <fieldset>
+            <dl>
+              <dt><label for="tag">Add:</label></dt>
+              <dd><input type="text" name="tag" id="tag"></dd>
+            </dl>
+            <input type="submit" class="btn">
+          </fieldset>
+        </form>
+      </div>
     </div>
 
-    <form action="#" method="post">
+    <form class="contacts-form" action="#" method="post">
       <fieldset>
         <h2>Create Contact</h2>
         <input type="hidden" name="id" value="">
@@ -40,6 +55,9 @@
           <dt><label for="telephone">Telephone Number:</label></dt>
           <dd><input type="number" name="number" id="number"></dd>
         </dl>
+
+        <ul>
+        </ul>
 
         <input type="submit" class="btn" value="Submit">
         <a href="#" class="btn cancel">Cancel</a>
@@ -57,6 +75,29 @@
     {{/each}}
   </script>
 
+  <script type="text/x-handlebar" id="search_tags_temp">
+    {{#each tags}}
+    {{>search_tag_temp}}
+    {{/each}}
+  </script>
+
+  <script type="text/x-handlebar" id="form_tags_temp">
+    {{#each tags}}
+    {{>form_tag_temp}}
+    {{/each}}
+  </script>
+
+  <script type="text/x-handlebar" data-type="partial" id="search_tag_temp">
+    <li data-tag="{{tagName}}" class="btn">{{name}}</li>
+  </script>
+
+  <script type="text/x-handlebar" data-type="partial" id="form_tag_temp">
+    <li>
+      <input type="checkbox" id="tag_{{id}}" name="tag_{{id}}" value="{{tagName}}">
+      <label for="tag_{{id}}">{{name}}</label>
+    </li>
+  </script>
+
   <script type="text/x-handlebar" data-type="partial" id="contact_temp">
     <li data-id="{{id}}">
       <h3>{{name}}</h3>
@@ -65,10 +106,17 @@
         <dd>{{number}}</dd>
         <dt>Email:</dt>
         <dd>{{email}}</dd>
+        {{#if tags}}
+          <dt>Tags: </dt>
+          {{#each tags}}
+          <dd class="tag-dec">{{name}}</dd>
+          {{/each}}
+        {{/if}}
       </dl>
       <a href="#" class="btn edit">Edit</a>
       <a href="#" class="btn delete">Delete</a>
     </li>
   </script>
+  <script type="text/javascript" src="contact_v2.js"></script>
 </body>
 </html>
