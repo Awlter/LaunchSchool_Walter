@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Backbone Collection Example</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="stylesheets/page.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+    <script src="http://backbonejs.org/backbone-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+  </head>
+  <body>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th data-prop="name">Name</th>
+            <th data-prop="quantity" colspan="2">Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <p><a href="#">Delete all</a></p>
+
+      <form action="" method="post">
+        <fieldset>
+          <dl>
+            <dt><label for="name">Name</label></dt>
+            <dd><input type="text" name="name" /></dd>
+            <dt><label for="quantity">Quantity</label></dt>
+            <dd><input type="text" name="quantity" /></dd>
+          </dl>
+          <input type="submit" value="Add Item" />
+        </fieldset>
+      </form>
+    </main>
+
+    <script id="items" type="text/x-handlebars">
+      {{#each items}}
+        {{#with attributes}}
+        {{> item}}
+        {{/with}}
+      {{/each}}
+    </script>
+
+    <script id="item" type="text/x-handlebars" data-type="partial">
+      <tr>
+        <td>{{name}}</td>
+        <td>{{quantity}}</td>
+        <td><a data-id="{{id}}" href="#">Delete</a></td>
+      </tr>
+    </script>
+
+    <script>
+      var items_json = [{
+        name: "Bananas",
+        quantity: 3
+      }, {
+        name: "Apples",
+        quantity: 4
+      }];
+
+      var App = {
+        $body: $('tbody'),
+        templates: {},
+        cacheTemplates: function() {
+          var self = this;
+          $("[type='text/x-handlebars']").each(function() {
+            self.templates[this.id] = Handlebars.compile(this.innerHTML);
+          });
+          $("[data-type='partial']").each(function() {
+            Handlebars.registerPartial(this.id, this.innerHTML);
+          });
+        },
+        removeItem: function(e) {
+          e.preventDefault();
+          var model = this.Items.get(+$(e.target).attr("data-id"));
+          this.Items.remove(model);
+        },
+        bind: function() {
+          this.$body.on('click', 'a', this.removeItem.bind(this));
+        },
+        init: function() {
+          this.cacheTemplates();
+          this.Items = new ItemsCollection(items_json);
+          this.Items.sortName();
+          this.Items.render();
+          this.bind();
+        }
+      }
+
+      var ItemModel = Backbone.Model.extend({
+        idAttribute: "id",
+        initialize: function() {
+          this.collection.incrementId();
+          this.set('id', this.collection.lastId);
+        }
+      });
+
+      var ItemsCollection = Backbone.Collection.extend({
+        model: ItemModel,
+        lastId: 0,
+        incrementId: function() {
+          this.lastId++
+        },
+        sortBy: function(key) {
+          this.models = _(this.models).sortBy(function(m) {
+            return m.attributes[key]
+          })
+          this.render();
+        },
+        sortName: function() {
+          this.sortBy('name');
+        },
+        render: function() {
+          App.$body.html(App.templates.items({items: this.models}));
+        },
+        initialize: function() {
+          this.on('remove reset', this.render);
+          this.on('add', this.sortName);
+        }
+      });
+
+      $('form').on('submit', function(e) {
+        e.preventDefault();
+        var inputs = $(this).serializeArray();
+        var attrs = {};
+        inputs.forEach(function(input) {
+          attrs[input.name] = input.value
+        });
+
+        App.Items.add(attrs);
+        this.reset();
+      });
+
+      $("th").on('click', function(e) {
+        e.preventDefault();
+        var prop = $(this).data('prop');
+        App.Items.sortBy(prop);
+      });
+
+      $('p a').on('click', function(e) {
+        e.preventDefault();
+        App.Items.reset()
+      })
+
+      App.init();
+    </script>
+  </body>
+</html>

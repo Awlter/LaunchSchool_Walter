@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://underscorejs.org/underscore-min.js"></script>
+  <script src="http://backbonejs.org/backbone-min.js"></script>
+</head>
+<body>
+
+<script id="post" type="text/template">
+  <article>
+    <header>
+      <h1>Title here</h1>
+      <p>By *user name*</p>
+    </header>
+    <p>Post body here</p>
+  </article>
+</script>
+<script>
+var post_html = $("#post").html();
+
+function renderPost(model) {
+  var $post_html = $(post_html.trim());
+
+  $post_html.find('h1').text(model.get('title'));
+  $post_html.find('header p').text("By " + model.get('user').get('name'));
+  $post_html.find('header + p').text(model.get('name'));
+
+  $(document.body).html($post_html)
+}
+
+var PostModel = Backbone.Model.extend({
+  urlRoot: "http://jsonplaceholder.typicode.com/posts",
+  setUser: function() {
+    var self = this;
+    var user = new UserModel({id: self.get('userId')});
+
+    user.fetch({
+      success: function(model) {
+        self.set('user', model);
+        console.log(self.toJSON())
+      }
+    });
+  },
+  initialize: function() {
+    this.has('userId') && this.setUser();
+    this.on({
+      'change:userId': this.setUser,
+      'change': function(model) {
+        console.log(model.has('user'))
+      }
+    });
+
+  }
+});
+
+var UserModel = Backbone.Model.extend({
+      urlRoot: "http://jsonplaceholder.typicode.com/users"
+    });
+
+var post_1 = new PostModel({id: 1});
+post_1.fetch();
+
+// var post_2 = new PostModel({
+//   id: 2,
+//   title: "My New Post",
+//   body: "This is my new blog post. Hope you enjoy it!",
+//   userId: 2
+// });
+
+
+
+</script>
+</body>
+</html>

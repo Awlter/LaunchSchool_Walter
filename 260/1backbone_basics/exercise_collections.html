@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Backbone Collection Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+    <script src="http://backbonejs.org/backbone-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+  </head>
+  <body>
+  <script id="users" type="text/template">
+    {{#each users}}
+    <article id="user_{{id}}">
+      <h1><a href="http://{{website}}">{{name}}</a></h1>
+      <h2><a href="mailto:{{email}}">{{email}}</a></h2>
+      <dl>
+        <dt>User name</dt>
+        <dd>{{username}}</dd>
+        <dt>Company</dt>
+        <dd>{{company.name}}</dd>
+      </dl>
+    </article>
+    {{/each}}
+  </script>
+    <script>
+      // var User = Backbone.Model.extend({
+      //   url: "http://jsonplaceholder.typicode.com/users"
+      // });
+
+      // var Users = Backbone.Collection.extend({
+      //   url: "http://jsonplaceholder.typicode.com/users",
+      //   model: User,
+      // });
+
+      // var blog_writers = new Users();
+      // blog_writers.fetch({
+      //   success: function() {
+      //   }
+      // });
+
+      // var me = new User({
+      //   name: 'Walter Wang',
+      //   email: 'wxfwalter@gmail.com'
+      // })
+
+      // blog_writers.add(me);
+
+      // me.save(null, {
+      //   success: function() {
+      //     console.log(blog_writers.toJSON());
+      //   }
+      // })
+
+      function renderCollection() {
+        $('body').html(template({users: this.toJSON()}))
+      }
+
+      var template = Handlebars.compile($('#users').html());
+
+      var User = Backbone.Model.extend({
+        url: "http://jsonplaceholder.typicode.com/users"
+      });
+
+      var Users = Backbone.Collection.extend({
+        url: "http://jsonplaceholder.typicode.com/users",
+        model: User,
+        initialize: function() {
+          this.on('sync sort', renderCollection);
+        }
+      });
+
+      var blog_writers = new Users();
+
+      blog_writers.fetch();
+
+
+      // asynchronous............. have to wait for fetch
+      // 11111
+      // var me = new User({ name: "Shane Riley", email: "shane@example.com" });
+      // blog_writers.add(me);
+      // me.save(null, {
+      //   success: function(model, response, option) {
+      //     console.log(response);
+      //   }
+      // });
+
+      // 2222
+      // blog_writers.create({ name: "Shane Riley", email: "shane@example.com" });
+
+    </script>
+  </body>
+</html>
