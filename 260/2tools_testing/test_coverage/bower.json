@@ -1,0 +1,25 @@
+{
+  "name": "test_coverage",
+  "homepage": "https://github.com/Awlter/LaunchSchool_Walter",
+  "authors": [
+    "Walter <wxfwalter@gmail.com>"
+  ],
+  "description": "test coverage and tools",
+  "main": "",
+  "keywords": [
+    "test"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "backbone": "^1.3.3"
+  }
+}
