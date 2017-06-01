@@ -1,0 +1,22 @@
+include _mixins.pug
+
+doctype html
+html(lang="en-US")
+  head
+    title Sushi Restaurant Website
+    link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous")
+    +stylesheet_link_tag('main')
+    +script_include_tag('vender/all')
+    +script_include_tag('handlebar_templates')
+  body
+    block content
+
+    +script_include_tag("app")
+    +script_include_tag("models/item")
+    +script_include_tag("collections/items", "collections/cart-items")
+    +script_include_tag("views/item", "views/items", "views/index", "views/cart-item", "views/cart", "views/checkout", "views/detail-view")
+    +script_include_tag("routers/router")
+    script(type='text/javascript').
+      App.init(!{JSON.stringify(items)})
+
+
