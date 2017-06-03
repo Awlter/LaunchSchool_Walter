@@ -4,7 +4,7 @@ var DetailView = Backbone.View.extend({
   events: {
     'click .prev': 'renderPrev',
     'click .next': 'renderNext',
-    'click #item_details .add_cart': 'addToCart'
+    'click #item_details .add_cart': 'addToCart',
   },
   addToCart: function(e) {
     e.preventDefault();
@@ -19,13 +19,17 @@ var DetailView = Backbone.View.extend({
   },
   renderPrev: function() {
     var currentId = this.getId();
-    this.id = currentId - 1 === 0 ? 1 : currentId - 1;
-    this.changeRouter();
+    if (currentId - 1 > 0) {
+      this.id = currentId - 1;
+      this.changeRouter();
+    }
   },
   renderNext: function() {
     var currentId = this.getId();
-    this.id = currentId === App.items.length + 1 ? 1 : currentId + 1;
-    this.changeRouter();
+    if (currentId < App.items.length + 1) {
+      this.id = currentId + 1;
+      this.changeRouter();
+    }
   },
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));

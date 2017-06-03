@@ -4,10 +4,10 @@ var Router = Backbone.Router.extend({
     ':id' : 'renderDetail'
   },
   renderDetail: function(id) {
-    var itemDetail = new DetailView({
+    this.itemDetail = new DetailView({
       model: App.items.get(id)
     });
-    itemDetail.render();
+    this.itemDetail.render();
   },
   renderCheckbox: function() {
     var checkoutView;

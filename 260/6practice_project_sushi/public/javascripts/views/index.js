@@ -5,7 +5,7 @@ var IndexView = Backbone.View.extend({
     this.$el.html(this.template({totalItems: App.cart.length}));
   },
   update: function() {
-    $('.count').text(App.cart.length);
+    this.$('.count').text(App.cart.length);
   },
   initialize: function() {
     this.render();

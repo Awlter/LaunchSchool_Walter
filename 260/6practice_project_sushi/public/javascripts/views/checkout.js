@@ -2,6 +2,7 @@ var CheckoutView = Backbone.View.extend({
   el: '#content',
   template: App.templates.checkout,
   events: {
+    'submit': 'order',
     "click .fa-minus": "reduceOneItem",
     "click .fa-plus": "addOneItem"
   },
@@ -18,11 +19,16 @@ var CheckoutView = Backbone.View.extend({
     App.trigger("reduceCartItem", App.cart.get(id));
     this.render();
   },
+  order: function(e) {
+    e.preventDefault();
+    App.cart.reset();
+    App.router.navigate('/', { trigger: true });
+  },
   render: function() {
     this.$el.html(this.template({
       cartItems: App.cart.toJSON(),
       total: App.cart.getTotal()
     }));
-    $('#cart').hide();
+    this.$('#cart').hide();
   }
 })
