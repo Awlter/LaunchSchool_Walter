@@ -27,7 +27,7 @@ var CheckoutView = Backbone.View.extend({
   render: function() {
     this.$el.html(this.template({
       cartItems: App.cart.toJSON(),
-      total: App.cart.getTotal()
+      total: App.cart.total
     }));
     this.$('#cart').hide();
   }

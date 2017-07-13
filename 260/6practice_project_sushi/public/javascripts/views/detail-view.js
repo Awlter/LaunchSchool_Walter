@@ -1,10 +1,10 @@
 var DetailView = Backbone.View.extend({
-  el: '#content',
+  id: "item_details",
   template: App.templates.detail,
   events: {
     'click .prev': 'renderPrev',
     'click .next': 'renderNext',
-    'click #item_details .add_cart': 'addToCart',
+    'click .add_cart': 'addToCart',
   },
   addToCart: function(e) {
     e.preventDefault();
@@ -14,7 +14,7 @@ var DetailView = Backbone.View.extend({
     return Number(this.model.get('id'));
   },
   changeRouter: function() {
-    this.undelegateEvents();
+    this.remove();
     App.router.navigate(this.id.toString(), {trigger: true});
   },
   renderPrev: function() {
@@ -33,5 +33,6 @@ var DetailView = Backbone.View.extend({
   },
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
+    $("#content").html(this.$el);
   },
 })

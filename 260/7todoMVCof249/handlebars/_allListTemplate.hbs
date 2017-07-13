@@ -1,0 +1,6 @@
+{{#each todosByDate}}
+  <dl data-title="{{@key}}" data-total="{{this.length}}">
+    <dt><time>{{@key}}</time></dt>
+    <dd>{{this.length}}</dd>
+  </dl>
+{{/each}}

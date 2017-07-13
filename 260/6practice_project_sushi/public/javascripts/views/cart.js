@@ -15,9 +15,13 @@ var CartView = Backbone.View.extend({
   loadExistingItems: function() {
     this.collection.each(this.addItem.bind(this));
   },
-  update: function() {
-    var totalPrice = App.cart.getTotal();
-    $('.total').html('$' + totalPrice);
+  getTotal: function() {
+    return this.collection.reduce(function(total, item) {
+      return total + Number(item.get('quantity')) * Number(item.get('price'));
+    }, 0);
+  },
+  updateTotal: function() {
+    $('.total').html('$' + this.getTotal());
   },
   addItem: function(item) {
     this.cartList = this.cartList || this.$el.find('ul');
@@ -26,7 +30,7 @@ var CartView = Backbone.View.extend({
     }
     var cartItemView = new CartItemView({model: item});
     cartItemView.$el.appendTo(this.cartList);
-    this.update();
+    this.updateTotal();
   },
   empty: function(e) {
     e.preventDefault();
@@ -36,7 +40,7 @@ var CartView = Backbone.View.extend({
   },
   initialize: function() {
     this.collection.view = this;
-    this.listenTo(this.collection, 'add', this.addItem)
+    this.listenTo(this.collection, 'add', this.addItem);
     this.render();
   }
 })

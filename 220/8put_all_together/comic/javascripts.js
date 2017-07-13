@@ -28,7 +28,7 @@ $(function() {
     //   $blind.finish();
     // })
 
-    $blinds.stop(true);
+    $blinds.stop(true, true);
 
     // $blinds.each(function(i) {
     //   var height = heights[i];

@@ -1,9 +1,10 @@
 var CartItems = Backbone.Collection.extend({
   addItem: function(item) {
+    this.updateTotal(item);
     var item = this.findWhere({id: item.id}) || item.clone();
     if (item.has('quantity')) {
       item.set('quantity', Number(item.get('quantity')) + 1);
-      this.view.update();
+      this.view.updateTotal();
     } else {
       item.set('quantity', 1);
       this.add(item);
@@ -16,10 +17,9 @@ var CartItems = Backbone.Collection.extend({
       item.set('quantity', Number(item.get('quantity')) - 1);
     }
   },
-  getTotal: function() {
-    return this.reduce(function(total, item) {
-      return total + Number(item.get('quantity')) * Number(item.get('price'));
-    }, 0);
+  updateTotal: function(item) {
+    this.total = this.total || 0;
+    this.total = this.total + Number(item.get('price'));
   },
   readeStorage: function() {
     var storgedItems = JSON.parse(localStorage.getItem('cartItems'));

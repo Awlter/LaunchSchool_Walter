@@ -17,7 +17,7 @@ App = {
     _.extend(this, Backbone.Events);
     this.on("addCartItem", this.cart.addItem.bind(this.cart));
     this.on("reduceCartItem", this.cart.reduceItem.bind(this.cart));
-    window.addEventListener('unload', App.updateStorage.bind(App));
+    $(window).on('unload', App.updateStorage.bind(App));
   },
   init: function (items) {
     this.items = new ItemsCollection(items);

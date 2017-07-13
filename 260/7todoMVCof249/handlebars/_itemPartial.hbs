@@ -1,0 +1,12 @@
+<tr data-id="{{id}}" >
+  <td class="list_item">
+    {{#if completed}}
+    <input type="checkbox" name="item_{{id}}" id="item_{{id}}" checked/>
+    {{else}}
+    <input type="checkbox" name="item_{{id}}" id="item_{{id}}"/>
+    {{/if}}
+    <span class="check"></span>
+    <label>{{title}} - {{dueDate}}</label>
+  </td>
+  <td class="delete"><img src="images/delete.png" alt="Delete"/></td>
+</tr>

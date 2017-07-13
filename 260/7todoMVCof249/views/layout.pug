@@ -1,0 +1,20 @@
+include _mixins
+
+doctype html
+html
+  head
+    title= title
+    meta(charset="utf-8")
+    +stylesheet_link_tag('todos')
+    +script_include_tag('vendor/all')
+    +script_include_tag('handlebar_templates')
+  body
+    block content
+
+    +script_include_tag('app')
+    +script_include_tag('models/todo')
+    +script_include_tag('collections/todos')
+    +script_include_tag('views/index', 'views/allTodos', 'views/allList', 'views/completedTodos', 'views/completedList', 'views/currentTitle', 'views/currentList')
+    +script_include_tag('routers/router')
+    script(type="text/javascript").
+      App.init();
