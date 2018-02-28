@@ -14,3 +14,24 @@ Extra Curriculum (On going)
   - https://launchschool.com/curriculum/courses/73ab8ea0
 - 360 - Working with Web API
   - https://launchschool.com/curriculum/courses/21891c51
+
+Extra Exercises(Each course itself also contains lots exercises)
+- Ruby
+  - https://github.com/Awlter/LaunchSchool_Walter/tree/master/Exercises
+  - https://github.com/Awlter/LaunchSchool_Walter/tree/master/challenges
+  - https://github.com/Awlter/LS-Ruby-Foundations
+  - https://github.com/Awlter/LS-Ruby-Exercises
+
+- Postgresql
+  - https://github.com/Awlter/LaunchSchool_Walter/tree/master/exercises/180
+
+- HTML & CSS
+  - https://github.com/Awlter/LaunchSchool_Walter/tree/master/201
+
+- Javascript
+  - https://github.com/Awlter/LaunchSchool_Walter/tree/master/exercises/210_small_problems
+  - https://github.com/Awlter/LaunchSchool_Walter/tree/master/exercises/javascript_fundamentals
+
+Personal Projects
+- Ruby & Sinatra
+  - https://github.com/Awlter/LaunchSchool_Walter/tree/master/170/170_6/sinatra_todos
