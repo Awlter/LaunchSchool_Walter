@@ -1,5 +1,6 @@
-The Course Curriculum of Launch School
+The Core Course Curriculum of Launch School
+- https://launchschool.com/courses(All finished)
 
-
-360 - Working with Web API
-- https://launchschool.com/curriculum/courses/21891c51
+Extra Curriculum (On going)
+- 360 - Working with Web API
+  - https://launchschool.com/curriculum/courses/21891c51
