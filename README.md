@@ -17,6 +17,7 @@ Extra Curriculum (On going)
 
 Extra Exercises(Each course itself also contains lots exercises)
 - Ruby
+  - The whole courses from 101 - 170 contain lots of Ruby practice projects, please take a look
   - https://github.com/Awlter/LaunchSchool_Walter/tree/master/Exercises
   - https://github.com/Awlter/LaunchSchool_Walter/tree/master/challenges
   - https://github.com/Awlter/LS-Ruby-Foundations
